@@ -1,0 +1,7 @@
+"0","#Filters out all non 'Event' data
+
+Lincolnshire_Text <- filter(LincolnshireOCR, TYPE == 'EVENT')
+
+#Tokenizes the text
+
+Lincolnshire_Text %>% unnest_tokens(word, 'QUOTE_TRANSCRIPTION')"

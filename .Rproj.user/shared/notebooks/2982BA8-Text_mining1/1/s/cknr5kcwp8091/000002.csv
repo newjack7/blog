@@ -1,0 +1,3 @@
+"0","# This removes the digits
+
+lincs_digit_stopped <- lincs_people_stopped %>% filter(grepl('^\\D', word))"

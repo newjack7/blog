@@ -1,0 +1,4 @@
+"0","```r
+#Data with stop words removed and plot >200
+Lincolnshire_Stopped %>% count(word, sort = TRUE) %>% filter(n > 200) %>% mutate(word = reorder(word,n)) %>% ggplot(aes(word, n)) + geom_col(fill=\"#ffd700\") + xlab(NULL) + coord_flip()
+```"

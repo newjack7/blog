@@ -1,0 +1,4 @@
+"0","```r
+#Plot with personal names removed and >150 occurences
+lincs_people_stopped %>% count(word, sort = TRUE) %>% filter(n > 100) %>% mutate(word = reorder(word,n)) %>% ggplot(aes(word, n)) + geom_col(fill=\"#ffd700\") + xlab(NULL) + coord_flip()
+```"

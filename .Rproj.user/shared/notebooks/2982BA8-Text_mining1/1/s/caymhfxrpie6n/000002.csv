@@ -1,0 +1,11 @@
+"0","#Create a list of Personal names from the original data
+lincs_people <- filter(LincolnshireOCR, TYPE == \"PERSON\")
+
+#Select desired columns from original text
+lincs_stop_people <- lincs_people %>% select(QUOTE_TRANSCRIPTION, TYPE)
+
+#Unnest Tokens
+lincs_stop_people <- lincs_stop_people %>% unnest_tokens(word, QUOTE_TRANSCRIPTION)
+
+#Removing Personal name using anti_join()
+lincs_people_stopped <- Lincolnshire_Stopped %>% anti_join(lincs_stop_people)"

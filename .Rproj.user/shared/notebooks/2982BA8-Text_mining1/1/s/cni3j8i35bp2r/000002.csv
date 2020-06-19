@@ -1,0 +1,9 @@
+"0","#inner_join to find months from the data and return to a new data frame called monthsCount
+
+monthsCount <- inner_join(Lincolnshire_Tokens, months)
+
+#I also needed to format the new dataset to single variables as McLane included months in the long and short format (Jan and January). I have only included the beginning to give you an idea of how I did it. I am sure there is an easier way to accomplish this but I don't know it.
+
+monthsCount <- monthsCount %>% mutate(word = case_when(
++ word == \"january\" ~ \"jan\",
++ word == \"jan\" ~ \"jan\",))'"

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Text mining Lincolnshire</title>
+<meta name="description" content="Portfolio">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/owl.carousel.css">
+<link rel="stylesheet" href="/css/owl.theme.css">
+
+
+  <link href="/css/style.default.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="/img/favicon.png">
+
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
+  <div class="sidebar-content">
+    <h1 class="sidebar-heading"><a href="/">Jack Newman</a></h1>
+    
+      <p class="sidebar-p">Royal Historical Society Centenary Fellow</p>
+    
+      <p class="sidebar-p">CHASE funded doctoral candidate based at the Institute for Historical Research and the Centre for Medieval and Early Modern Studies (MEMS) at the University of Kent</p>
+    
+    <ul class="sidebar-menu">
+      
+        <li><a href="/portfolio/">Home</a></li>
+      
+        <li><a href="/about/">About</a></li>
+      
+        <li><a href="/contact/">Get in touch</a></li>
+      
+    </ul>
+    <p class="social">
+  
+  <a href="full%20page%20or%20profile%20url%20in%20facebook" data-animate-hover="pulse" class="external facebook">
+    <i class="fa fa-facebook"></i>
+  </a>
+  
+  
+  <a href="full%20profile%20url%20in%20googleplus" data-animate-hover="pulse" class="external gplus">
+    <i class="fa fa-google-plus"></i>
+  </a>
+  
+  
+  <a href="full%20profile%20url%20in%20twitter" data-animate-hover="pulse" class="external twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  
+  
+  <a href="full%20profile%20url%20in%20instagram" title="" class="external instagram">
+    <i class="fa fa-instagram"></i>
+  </a>
+  
+  
+  <a href="mailto:email@example.com" data-animate-hover="pulse" class="email">
+    <i class="fa fa-envelope"></i>
+  </a>
+  
+  
+  <a href="full%20profile%20url%20in%20linkedin" data-animate-hover="pulse" class="external">
+    <i class="fa fa-linkedin"></i>
+  </a>
+  
+  
+  <a href="full%20profile%20url%20in%20stackoverflow" data-animate-hover="pulse" class="external">
+    <i class="fa fa-stack-overflow"></i>
+  </a>
+  
+  
+  <a href="full%20profile%20url%20in%20github" data-animate-hover="pulse" class="external">
+    <i class="fa fa-github"></i>
+  </a>
+  
+  
+  <a href="full%20profile%20url%20in%20youtube" data-animate-hover="pulse" class="external">
+    <i class="fa fa-youtube"></i>
+  </a>
+  
+  
+  <a href="wa.me%20service%20link" data-animate-hover="pulse" class="external">
+    <i class="fa fa-whatsapp"></i>
+  </a>
+  
+</p>
+
+
+    <div class="copyright">
+      <p class="credit">
+        
+          &copy;2020 Jack Newman |
+        
+        Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
+
+&amp; ported to Hugo by <a href="https://github.com/kishaningithub">Kishan B</a>
+
+      </p>
+    </div>
+  </div>
+</div>
+
+              
+<div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="/">Jack Newman</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="content-column-content">
+         <h1>Text mining Lincolnshire</h1>
+         <p>I was really looking forward to giving a paper at the International Medieval Congress at Leeds this year on text mining medieval court records on <a href="https://www.imc.leeds.ac.uk/imc2020callforpapers/programme/">session 836</a> which was organised by Dr Claire Kennan and Dr Emma J. Wells. I had intended to use the process as an excuse to learn text mining using R. I thought it might be provide some material for my thesis and I am quite evangelical about the possibilities of text mining historical documents. For obvious reasons the Congress was cancelled but I still wanted to go ahead with the work and I thought I could share it via a blog post instead. This post is intended as an outline of some potential uses of text mining rather than an exhaustive step-by-step tutorial. At this point I should stress that I relied a lot on the generosity of the R community who make a lot of training materials available online for free and particularly on <a href="https://www.tidytextmining.com/"><em>Text Mining with R</em></a> which is available for free or can be purchased online.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<p>A <a href="https://boydellandbrewer.com/imprints-affiliates/lincoln-record-society/the-1341-royal-inquest-in-lincolnshire-hb.html">Lincolnshire Records Society Volume</a> was a good beginning point for learning text mining.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> This volume is well suited to digitisation thanks to the dillegences of editor and translator. The records which McLane edited are drawn from an investigation which took place in 1340 on the insistence of Edward III in the aftermath of a failed military campaign against the French crown in the Low Countries. They began as investigations of royal ministers who were suspected of enriching themselves at the expense of the crown and the populace during Edward&rsquo;s absence. They ultimately expanded to include all offences and so the records concern a variety of alleged crimes. Ultimately McLane estimated that 767 offences were carried out by officials and 325 by ordinary citizens. I set myself the goal of attempting to use text mining techniques to automatically categorise some of these offences according to my research themes. This post will outline some of the first steps that are generally taken when mining a document like this.</p>
+<p><img src="favicon.png" alt="Some allegations from The 1341 Royal Inquest in Lincolnshire"></p>
+<h1 id="preparing-your-data-for-analysis">Preparing your data for analysis</h1>
+<p>I scanned and put the OCR data from McLane&rsquo;s volume as a text file which I uploaded to <a href="https://recogito.pelagios.org/">Recogito</a> platform. This is provided by the <a href="https://pelagios.org/">Pelagios project</a> and provides a interface to annotate text and images with XML, RDF, JSON, or KML. It can also perform &lsquo;named entity recognition&rsquo; which extracts names and locations. If you want to you can also geocode the locations within Recogito. I found this aspect less useful because of the lack of an integrated gazetteer for medieval England (I harbour an ambition to build one for Lincolnshire). There is also a  text editor in which you can manually tag personal names, locations, or events from your text. All of this data can be exported in a few different ways.</p>
+<p>I used the text editor to check the automated tagging, which required some correction, and to tag each individual entry from the trial records as an event. This would make it easier to carry out meaningful analysis and manipulation once I exported the data to a csv file. After this I downloaded the data as a csv file and loaded it into R Studio for the text mining process. Firstly, I stripped out anything that wasn&rsquo;t an &lsquo;event&rsquo; or allegation with the &lsquo;filter()&rsquo; command. This is useful to extract sections of the data you are interested in working with.</p>
+<pre><code class="language-{r" data-lang="{r">#Filters out all non 'Event' data
+
+Lincolnshire_Text &lt;- filter(LincolnshireOCR, TYPE == 'EVENT')
+
+#Tokenizes the text
+
+Lincolnshire_Text %&gt;% unnest_tokens(word, 'QUOTE_TRANSCRIPTION')
+
+</code></pre><h1 id="tokenisation">Tokenisation</h1>
+<p>Luckily Bernard McLane labelled each entry on the court roll with a unique ID. I extracted the first word from each entry to create an index which would allow me to refer back to McLane&rsquo;s volume. After this I took this data and broke it up into single word observations through a function called &lsquo;unnest_tokens()'. This process is called tokenisation and each individual word, or set of digits, is refereed to as a token. This is useful for analysis of the corpus as a whole. This process removes all punctuation and puts the text into lower case. It is possible to unnest the data as bi grams (two word pairings) or even further but that is a job for another day. At this point the goal is just to uncover single words which I can then use to auto-label allegations as particular offences. After tokenization there were 4,739 unique words in the corpus.</p>
+<pre><code class="language-{r" data-lang="{r">#Unstopped plot
+
+
+Lincolnshire_Tokens %&gt;% count(word, sort = TRUE) %&gt;% filter(n &gt; 200) %&gt;% mutate(word = reorder(word,n)) %&gt;% ggplot(aes(word, n)) + geom_col(fill=&quot;#ffd700&quot;) + xlab(NULL) + coord_flip()
+
+</code></pre><p><img src="unstopped.png" alt="Unstopped Corpus"></p>
+<h1 id="stop-words">Stop Words</h1>
+<p>This plot only shows those words with a frequency of 200 or greater. An immediate problem is the prevalence of the most common words. Luckily this is an easy fix. Using the &lsquo;anti_join(stop_words)&rsquo; command we can remove these common words. This is a collection of frequently used English words and it was here I found myself particularly grateful that Dr McLane translated the records. There are of course equivalent versions for other languages although none, as far as I am aware, for medieval British Latin. Once these words are removed the plot looks quite different but no more useful.</p>
+<pre><code class="language-{r" data-lang="{r">#Removing 'stop words' 
+Lincolnshire_Stopped &lt;- Lincolnshire_Tokens %&gt;% anti_join(stop_words)
+
+</code></pre><pre><code class="language-{r" data-lang="{r">#Data with stop words removed and plot &gt;200
+Lincolnshire_Stopped %&gt;% count(word, sort = TRUE) %&gt;% filter(n &gt; 200) %&gt;% mutate(word = reorder(word,n)) %&gt;% ggplot(aes(word, n)) + geom_col(fill=&quot;#ffd700&quot;) + xlab(NULL) + coord_flip()
+</code></pre><p>Applying the stop_words data takes the count of unique tokens down to 4,472. There is a prevalence of names, places, or other immaterial information. This is slightly harder to fix but as Recogito tags individuals I was able to use that information. The automated tagging was not perfect but I caught most of its mistakes in my read through.</p>
+<pre><code class="language-{r" data-lang="{r">#Create a list of Personal names from the original data
+lincs_people &lt;- filter(LincolnshireOCR, TYPE == &quot;PERSON&quot;)
+
+#Select desired columns from original text
+lincs_stop_people &lt;- lincs_people %&gt;% select(QUOTE_TRANSCRIPTION, TYPE)
+
+#Unnest Tokens
+lincs_stop_people &lt;- lincs_stop_people %&gt;% unnest_tokens(word, QUOTE_TRANSCRIPTION)
+
+#Removing Personal name using anti_join()
+lincs_people_stopped &lt;- Lincolnshire_Stopped %&gt;% anti_join(lincs_stop_people)
+</code></pre><pre><code class="language-{r" data-lang="{r">
+#Plot with personal names removed and &gt;150 occurences
+
+lincs_people_stopped %&gt;% count(word, sort = TRUE) %&gt;% filter(n &gt; 100) %&gt;% mutate(word = reorder(word,n)) %&gt;% ggplot(aes(word, n)) + geom_col(fill=&quot;#ffd700&quot;) + xlab(NULL) + coord_flip()
+
+</code></pre><h1 id="stop-regex-time">Stop! Regex Time</h1>
+<p>This plot indicates a further problem. It contains numbers and years which are very frequent. Regular expressions (regex) can be used to remove these. These are codes which can be used in place of text characteristics such as upper case letter, punctuation, or, in this case, digits.</p>
+<pre><code class="language-{r" data-lang="{r">
+# This removes the digits
+
+lincs_digit_stopped &lt;- lincs_people_stopped %&gt;% filter(grepl('^\\D', word))
+
+</code></pre><p>The edited data now looks more informative. The vast majority of the unique tokens in this corpus was personal names: the count of individual tokens drops to 1,641 unique words from 4,472 when they are removed.  This collection of names now constitutes a useful data set which I can use to interrogate future digitised texts. With these I could automatically identify individuals and this may be more useful than the Recogito tools when working with texts from fourteenth century England.</p>
+<pre><code class="language-{r" data-lang="{r">#This re-runs the plot filtered to only include words which occur 75 times or more.
+
+lincs_digit_stopped %&gt;% count(word, sort = TRUE) %&gt;% filter(n &gt; 75) %&gt;% mutate(word = reorder(word,n)) %&gt;% ggplot(aes(word, n)) + geom_col(fill=&quot;#ffd700&quot;) + xlab(NULL) + coord_flip()
+</code></pre><p>There are now several words which could be used, with context, to indicate the nature of an allegation. Wool, for example, could be utilised to tag an event as an offence involving wool. Beat, kill, or force can be used to indicate the allegation contained an accusation of violence &lsquo;Feloniously&rsquo; however always occurs alongside another word such as theft or beat and so is less useful when it is &lsquo;de-coupled&rsquo;. This will be useful however when I interrogate this same data using bi-grams (two word pairings). It is possible, using words like &lsquo;aug&rsquo;, &lsquo;sept&rsquo;, or &lsquo;june&rsquo; to automatically date allegations but it would require slightly more work and I don&rsquo;t currently have the energy, or willpower, for that just now.</p>
+<h1 id="month-by-month">Month by Month</h1>
+<p>However, out of interest, I gathered every instance of a month name and plotted these to depict the most common months recorded in the trial. I did this by creating a data frame with all the months of the year and used &lsquo;inner_join()&rsquo; (the opposite of &lsquo;anti_join()') to match all the months from the data. There were six hundred cases in which allegations included some mention of a month and the resulting plot is a fairly good, although crude, indicator of when most crimes were said to have occurred.</p>
+<pre><code class="language-{r" data-lang="{r">#inner_join to find months from the data and return to a new data frame called monthsCount
+
+monthsCount &lt;- inner_join(Lincolnshire_Tokens, months)
+
+#I also needed to format the new dataset to single variables as McLane included months in the long and short format (Jan and January). I have only included the beginning to give you an idea of how I did it. I am sure there is an easier way to accomplish this but I don't know it.
+
+monthsCount &lt;- monthsCount %&gt;% mutate(word = case_when(
++ word == &quot;january&quot; ~ &quot;jan&quot;,
++ word == &quot;jan&quot; ~ &quot;jan&quot;,))'
+</code></pre><pre><code class="language-{r" data-lang="{r">#Plot of months
+
+monthsCount %&gt;% count(word) %&gt;% ggplot(aes(x = factor(word, level = monthsReversed), y = n)) + geom_col(fill=&quot;#ffd700&quot;) + xlab(NULL) + coord_flip()
+
+
+</code></pre><p>It is immediately striking that the months from June (78 occurrences) to September (79 occurrences) are the peak for alleged offences. Apparently this is a  known phenomena even today: &ldquo;most violent crimes against persons increase linearly with heat, while property crimes are not strongly related to temperature changes&rdquo;<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>. It is intriguing that this is observable over six-hundred years earlier and in future I will try and see if if I can plot this time data against a categorisation of the allegations.</p>
+<h1 id="lets-get-toponymical">Let&rsquo;s get toponymical</h1>
+<p>As lots of names are toponymical, especially in the fourteenth century, many place names were removed when I eliminated personal names. Fortunately Recogito also automatically labels text it thinks are place names and generates latitude and longitude. As stated earlier this requires a bit of oversight as the gazeteers it uses to carry out this analysis are not geared towards medieval English locations. In the longer term I would love to develop a gazetteer for medieval English place names but for now it requires a lot of manual oversight. Currently, to auto-generate geo-locations I use a script which queries Google map data (I have written about this elsewhere and I will migrate this over to the new site shortly). This is not perfect either but currently it is easier fix the mistakes in this process than Recogito which can be a bit convoluted. Removing the place names reduces the data set to 1,232 (c. 400) unique tokens. At this point in order to generate a manageable amount of tokens I filtered to only include words which occur 6 or more times in the corpus and this left only 294 unique tokens.</p>
+<pre><code class="language-{r" data-lang="{r">#Plot with personal names removed
+
+lincs_filterOver25 %&gt;% filter(n &gt; 70) %&gt;% mutate(word = reorder(word,n)) %&gt;% ggplot(aes(word, n)) + geom_col(fill=&quot;#ffd700&quot;) + xlab(NULL) + coord_flip()
+
+</code></pre><h1 id="manual-tagging">Manual Tagging</h1>
+<p>The resulting data after filtering began to resemble something which may be useful. The preponderance of wool in the corpus is due to the importance of the wool trade nationally but also particularly for Lincolnshire which produced the best wool in the country. Lincolnshire was also home to some of the most important wool merchants in the country, and perhaps continent, at this point. The majority of the references to wool relate to allegations of corrupt wool collectors who were engaged in revenue raising for Edward III in the late 1330s.</p>
+<p>For the next step I manually added tags to each of these tokens. Words were tagged according to certain categories such as times (day, night etc), locations (house, court, fairs), as relating to allegations against officials (weighing, tax, coroner), descriptors which might indicate the nature of a crime (beat, imprisoned, stole), produce (wheat, wool, oats), livestock (pigs, horse, cattle), position (church officials, professions). Clearly there is some overlap is these categorisations. I have labelled the token &lsquo;imprisoned&rsquo; as relating to the crimes of officials as it is usually carried out by bailiffs, sheriffs, or under sheriffs. However, in some cases this did not relate to the actions of royal officials but private individuals such as the Lincoln couple who were said to have &lsquo;caused Walter de Toronde, lute player, living in Lincoln, to come to their house and [&hellip;] imprisoned him&rsquo;. However, when I use these tags to label the allegations I will be using them in conjunction with other methods which will give a more nuanced picture. Clearly this stage requires quite good familiarity with the text and its context. Utilising these tags I can generate new plots that demonstrate interesting trends.</p>
+<pre><code class="language-{r" data-lang="{r">#Plot of words associated with allegations against officials
+
+lincs_filterOver25 %&gt;% filter(tag1 == 'official', n &gt; 15) %&gt;% mutate(word = reorder(word,n)) %&gt;% ggplot(aes(word, n)) + geom_col(fill=&quot;#ffd700&quot;) + xlab(NULL) + coord_flip()
+</code></pre><p>That the sheriff takes pride of place is perhaps expected due to the pivotal role of the sheriff as the keystone of royal administration in the counties. Likewise the frequency of the escheator is a result of their widespread and varied activities. Both of these officials often devolved their responsibilities onto subordinates and this is borne out in the large numbers of deputies mentioned. The prominence of words like acquittance and receivers, among others, are a result of the widespread corruption of wool collectors in the late 1330s. The prevalence of fifteenth, assessment, and assessed can be associated with tax collection. Collectors, collect, weighing, weight, excess are connected to a number of roles including wool collectors, taxers, and purveyors who supplied foodstuffs to the armies of Edward III.</p>
+<p>The tidy text package has allowed me to pare down this corpus to a small manageable set which I will use to identify crime by particular types of officials. Hopefully this has demonstrated some of the value of text mining. In future I will outline how I used the data produced by this analysis to automatically categorise allegations. The steps I have carried out today are repeatable for any future texts of a similar nature. I have three more court rolls that have been published by local record societies and I plan to process them in a similar way. While each text will vary according to the practice and goals of the editors I can use the steps I have outlined here to remove digits, months, personal, or place names, as well as common English words.</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>Silge, Julia, and David Robinson. Text Mining with R: A Tidy Approach. Boston: O’Reilly, 2017. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p>McLane, Bernard William, ed. The 1341 Royal Inquest in Lincolnshire. The Publications of the Lincoln Record Society, v. 78. Woodbridge, Suffolk: Lincoln Record Society; Boydell Press, 1988. <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3" role="doc-endnote">
+<p>Cohn, Ellen G. ‘Weather and Crime’. The British Journal of Criminology 30, no. 1 (1990): 51–64; Also see: Butke, Paul, and Scott C. Sheridan. ‘An Analysis of the Relationship between Weather and Aggressive Crime in Cleveland, Ohio’. Weather, Climate, and Society 2, no. 2 (2010): 127–39. <a href="https://doi.org/10.1175/2010WCAS1043.1;">https://doi.org/10.1175/2010WCAS1043.1;</a> or: Horrocks, James, and Andrea Kutinova Menclova. ‘The Effects of Weather on Crime’. New Zealand Economic Papers 45, no. 3 (December 2011): 231–54. <a href="https://doi.org/10.1080/00779954.2011.572544">https://doi.org/10.1080/00779954.2011.572544</a>. <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+
+         
+      </div>
+    </div>
+  </div>
+</div>
+
+          </div>
+      </div>
+  </div>
+  <script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery.cookie.js"> </script>
+<script src="/js/ekko-lightbox.js"></script>
+<script src="/js/jquery.scrollTo.min.js"></script>
+<script src="/js/masonry.pkgd.min.js"></script>
+<script src="/js/imagesloaded.pkgd.min.js"></script>
+<script src="/js/owl.carousel.min.js"></script>
+<script src="/js/front.js"></script>
+
+
+
+</body>
+</html>

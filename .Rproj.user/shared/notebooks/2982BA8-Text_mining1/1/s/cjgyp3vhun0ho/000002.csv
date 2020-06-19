@@ -1,0 +1,4 @@
+"0","```r
+#This re-runs the plot filtered to only include words which occur 75 times or more.
+lincs_digit_stopped %>% count(word, sort = TRUE) %>% filter(n > 75) %>% mutate(word = reorder(word,n)) %>% ggplot(aes(word, n)) + geom_col(fill=\"#ffd700\") + xlab(NULL) + coord_flip()
+```"

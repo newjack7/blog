@@ -1,0 +1,2 @@
+"0","#Removing 'stop words' 
+Lincolnshire_Stopped <- Lincolnshire_Tokens %>% anti_join(stop_words)"

@@ -1,0 +1,4 @@
+"0","```r
+#Plot of months
+monthsCount %>% count(word) %>% ggplot(aes(x = factor(word, level = monthsReversed), y = n)) + geom_col(fill=\"#ffd700\") + xlab(NULL) + coord_flip()
+```"
