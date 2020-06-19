@@ -5,15 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "2644466158",
+    "hash" : "0",
     "id" : "645A2F08",
     "lastKnownWriteTime" : 1591825418,
     "last_content_update" : 1591825418477,
-    "path" : "~/GitHub/BlogTesting/blog4/content/portfolio/tester/2020-06-10-text-mining5.Rmd",
+    "path" : "~/GitHub/blog/content/portfolio/tester/2020-06-10-text-mining5.Rmd",
     "project_path" : "content/portfolio/tester/2020-06-10-text-mining5.Rmd",
     "properties" : {
         "cursorPosition" : "22,81",
-        "scrollLine" : "35"
+        "scrollLine" : "43"
     },
     "relative_order" : 1,
     "source_on_save" : false,
