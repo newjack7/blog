@@ -112,20 +112,20 @@ Education University of Kent  CHASE AHRC Funded Ph.D. Medieval and Early Modern 
     </item>
     
     <item>
-      <title>Text mining Lincolnshire</title>
-      <link>/portfolio/test/</link>
-      <pubDate>Wed, 10 Jun 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/portfolio/test/</guid>
-      <description>I was really looking forward to giving a paper at the International Medieval Congress at Leeds this year on text mining medieval court records on session 836 which was organised by Dr Claire Kennan and Dr Emma J. Wells. I had intended to use the process as an excuse to learn text mining using R. I thought it might be provide some material for my thesis and I am quite evangelical about the possibilities of text mining historical documents.</description>
-    </item>
-    
-    <item>
       <title>Text Mining5</title>
       <link>/portfolio/tester/text-mining5/</link>
       <pubDate>Wed, 10 Jun 2020 00:00:00 +0000</pubDate>
       
       <guid>/portfolio/tester/text-mining5/</guid>
+      <description>I was really looking forward to giving a paper at the International Medieval Congress at Leeds this year on text mining medieval court records on session 836 which was organised by Dr Claire Kennan and Dr Emma J. Wells. I had intended to use the process as an excuse to learn text mining using R. I thought it might be provide some material for my thesis and I am quite evangelical about the possibilities of text mining historical documents.</description>
+    </item>
+    
+    <item>
+      <title>Text mining Lincolnshire</title>
+      <link>/portfolio/test/</link>
+      <pubDate>Sat, 06 Jun 2020 22:55:33 +0000</pubDate>
+      
+      <guid>/portfolio/test/</guid>
       <description>I was really looking forward to giving a paper at the International Medieval Congress at Leeds this year on text mining medieval court records on session 836 which was organised by Dr Claire Kennan and Dr Emma J. Wells. I had intended to use the process as an excuse to learn text mining using R. I thought it might be provide some material for my thesis and I am quite evangelical about the possibilities of text mining historical documents.</description>
     </item>
     
@@ -147,16 +147,6 @@ Education University of Kent  CHASE AHRC Funded Ph.D. Medieval and Early Modern 
       <description>R MarkdownThis is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
 You can embed an R code chunk like this:
 summary(cars)## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>/post/cv/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/post/cv/</guid>
-      <description>Royal Historical Society Centenary Fellow affiliated with the Institute for Historical Research and the Centre for Medieval and Early Modern Studies at the University of Kent.
-EducationUniversity of KentCHASE AHRC Funded Ph.D. Medieval and Early Modern Studies (2016-2020).Provisional Title: Corruption and Conflict: Institutional adaptation in pre-Black Death England (c.1307-1348). Supervisors: Professor Barbara Bombi and Dr Ryan Perry.MA Medieval and Early Modern Studies (Distinction - 2015-2016).</description>
     </item>
     
   </channel>
