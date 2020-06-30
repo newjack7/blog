@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Jack Newman</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Thu, 23 Jul 2015 21:13:14 -0500</lastBuildDate>
+    <lastBuildDate>Tue, 30 Jun 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Dating a medieval court roll </title>
+      <link>/post/dating-a-medieval-court-roll/</link>
+      <pubDate>Tue, 30 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/dating-a-medieval-court-roll/</guid>
+      <description>Dating the rollThe previous post was spent learning the basics of text mining and exploring some possible avenues for analysis. In this post I label each offence with as precise a date as possible. In future I will also label it according to particular categories. I can do the first by extracting days, month, or years from the text to new columns and the pairing these with the original text.</description>
+    </item>
     
     <item>
       <title>Hello R Markdown</title>

@@ -6,118 +6,27 @@
     <description>Recent content on Jack Newman</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Fri, 19 Jun 2020 22:55:33 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 30 Jun 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Name of the work 2</title>
-      <link>/portfolio/work2/</link>
-      <pubDate>Sat, 05 Nov 2016 19:41:01 +0530</pubDate>
+      <title>Dating a medieval court roll</title>
+      <link>/portfolio/dating-a-medieval-court-roll/</link>
+      <pubDate>Tue, 30 Jun 2020 00:00:00 +0000</pubDate>
       
-      <guid>/portfolio/work2/</guid>
-      <description>&lt;p&gt;When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane.&lt;/p&gt;</description>
+      <guid>/portfolio/dating-a-medieval-court-roll/</guid>
+      <description>The previous post was spent learning the basics of text mining and exploring some possible avenues for analysis. In this post I label each offence with as precise a date as possible. In future I will also label it according to particular categories. I can do the first by extracting days, month, or years from the text to new columns and the pairing these with the original text. Essentially the text of the trials is broken into smaller observations and sorted according to particular criteria, in thie case, dates.</description>
     </item>
     
     <item>
-      <title>Name of the work 3</title>
-      <link>/portfolio/work3/</link>
-      <pubDate>Sat, 05 Nov 2016 19:44:32 +0530</pubDate>
+      <title>Dating a medieval court roll </title>
+      <link>/post/dating-a-medieval-court-roll/</link>
+      <pubDate>Tue, 30 Jun 2020 00:00:00 +0000</pubDate>
       
-      <guid>/portfolio/work3/</guid>
-      <description>&lt;p&gt;Fifth abundantly made Give sixth hath. Cattle creature i be don&amp;rsquo;t them.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Item without image</title>
-      <link>/portfolio/work4/</link>
-      <pubDate>Sat, 05 Nov 2016 19:50:47 +0530</pubDate>
-      
-      <guid>/portfolio/work4/</guid>
-      <description>&lt;p&gt;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Name of the work 5</title>
-      <link>/portfolio/work5/</link>
-      <pubDate>Sat, 05 Nov 2016 19:53:42 +0530</pubDate>
-      
-      <guid>/portfolio/work5/</guid>
-      <description>&lt;p&gt;Fifth abundantly made Give sixth hath. Cattle creature i be don&amp;rsquo;t them.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Name of the work 6</title>
-      <link>/portfolio/work6/</link>
-      <pubDate>Sat, 05 Nov 2016 19:56:17 +0530</pubDate>
-      
-      <guid>/portfolio/work6/</guid>
-      <description>&lt;p&gt;Fifth abundantly made Give sixth hath. Cattle creature i be don&amp;rsquo;t them.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Name of the work 7</title>
-      <link>/portfolio/work7/</link>
-      <pubDate>Sat, 05 Nov 2016 19:57:40 +0530</pubDate>
-      
-      <guid>/portfolio/work7/</guid>
-      <description>&lt;p&gt;Fifth abundantly made Give sixth hath. Cattle creature i be don&amp;rsquo;t them.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Name of the work 8</title>
-      <link>/portfolio/work8/</link>
-      <pubDate>Sat, 05 Nov 2016 19:59:22 +0530</pubDate>
-      
-      <guid>/portfolio/work8/</guid>
-      <description>&lt;p&gt;Fifth abundantly made Give sixth hath. Cattle creature i be don&amp;rsquo;t them.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Item with image</title>
-      <link>/portfolio/work9/</link>
-      <pubDate>Sat, 05 Nov 2016 20:02:19 +0530</pubDate>
-      
-      <guid>/portfolio/work9/</guid>
-      <description>&lt;p&gt;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Item with image</title>
-      <link>/portfolio/work10/</link>
-      <pubDate>Sat, 05 Nov 2016 20:22:08 +0530</pubDate>
-      
-      <guid>/portfolio/work10/</guid>
-      <description>&lt;p&gt;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Item with image</title>
-      <link>/portfolio/work11/</link>
-      <pubDate>Sat, 05 Nov 2016 20:23:59 +0530</pubDate>
-      
-      <guid>/portfolio/work11/</guid>
-      <description>&lt;p&gt;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>About me</title>
-      <link>/portfolio/about/</link>
-      <pubDate>Fri, 19 Jun 2020 22:55:33 +0000</pubDate>
-      
-      <guid>/portfolio/about/</guid>
-      <description>Royal Historical Society Centenary Fellow affiliated with the Institute for Historical Research and the Centre for Medieval and Early Modern Studies at the University of Kent.
-Education University of Kent  CHASE AHRC Funded Ph.D. Medieval and Early Modern Studies (2016-2020). - Provisional Title: Corruption and Conflict: Institutional adaptation in pre-Black Death England (c.1307-1348). Supervisors: Professor Barbara Bombi and Dr Ryan Perry. MA Medieval and Early Modern Studies (Distinction - 2015-2016).</description>
-    </item>
-    
-    <item>
-      <title>Text Mining5</title>
-      <link>/portfolio/tester/text-mining5/</link>
-      <pubDate>Wed, 10 Jun 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/portfolio/tester/text-mining5/</guid>
-      <description>I was really looking forward to giving a paper at the International Medieval Congress at Leeds this year on text mining medieval court records on session 836 which was organised by Dr Claire Kennan and Dr Emma J. Wells. I had intended to use the process as an excuse to learn text mining using R. I thought it might be provide some material for my thesis and I am quite evangelical about the possibilities of text mining historical documents.</description>
+      <guid>/post/dating-a-medieval-court-roll/</guid>
+      <description>Dating the rollThe previous post was spent learning the basics of text mining and exploring some possible avenues for analysis. In this post I label each offence with as precise a date as possible. In future I will also label it according to particular categories. I can do the first by extracting days, month, or years from the text to new columns and the pairing these with the original text.</description>
     </item>
     
     <item>
@@ -127,15 +36,6 @@ Education University of Kent  CHASE AHRC Funded Ph.D. Medieval and Early Modern 
       
       <guid>/portfolio/test/</guid>
       <description>I was really looking forward to giving a paper at the International Medieval Congress at Leeds this year on text mining medieval court records on session 836 which was organised by Dr Claire Kennan and Dr Emma J. Wells. I had intended to use the process as an excuse to learn text mining using R. I thought it might be provide some material for my thesis and I am quite evangelical about the possibilities of text mining historical documents.</description>
-    </item>
-    
-    <item>
-      <title>Name of the work 1</title>
-      <link>/portfolio/work1/</link>
-      <pubDate>Sat, 05 Nov 2016 18:25:22 +0530</pubDate>
-      
-      <guid>/portfolio/work1/</guid>
-      <description>&lt;p&gt;Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life. One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.&lt;/p&gt;</description>
     </item>
     
     <item>
