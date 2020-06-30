@@ -5,7 +5,8 @@ title: About me
 
 
 **Royal Historical Society Centenary Fellow affiliated with the Institute for Historical Research and the Centre for Medieval and Early Modern Studies at the University of Kent.**
-
+<details>
+  <summary> Education </summary>
 ## Education
 
 #### University of Kent
@@ -42,6 +43,10 @@ Studies Festival 2017 (June 2017).
 * July 2020	‘Mining the Medieval: Digitising a 14th-Century Anti-Corruption Lincolnshire Court Roll’ on panel ‘Borderlines: Navigating the Medieval through History’ International Medieval Congress, Leeds, UK (delayed to 2021).
 
 * February 2020	‘Extortion, Oppression, Excess: Corruption and Anti-Corruption c. 1314-44’ Late Medieval Seminar, Institute of Historical Research, London, UK.
+
+* December 2020 ‘Fail Better: A (semi-successful) digital approach to medieval legal records’, Digital History Seminar, Institute of Historical Research, London, UK
+
+* October 2020, ‘Anti-Corruption as propaganda c. 1314-1344’, Centre for Medieval and Early Modern Studies, University of Kent, Canterbury, UK
 
 * July 2019	‘Corruption, Entropy, and Crown Officials: England c. 1307-1344’, International Medieval Congress, Leeds, UK.
 
