@@ -17,7 +17,7 @@
       <pubDate>Tue, 30 Jun 2020 00:00:00 +0000</pubDate>
       
       <guid>/portfolio/dating-a-medieval-court-roll/</guid>
-      <description>The previous post was spent learning the basics of text mining and exploring some possible avenues for analysis. In this post I label each offence with as precise a date as possible. In future I will also label it according to particular categories. I can do the first by extracting days, month, or years from the text to new columns and the pairing these with the original text. Essentially the text of the trials is broken into smaller observations and sorted according to particular criteria, in thie case, dates.</description>
+      <description>The previous post was spent outlining the basics of text mining and exploring some possible avenues for analysis. I learnt a lot in the process and hopefully was able to convey at least some of the potential for digital exploitation of historic texts. In this post I want to label each offence with as precise a date as possible. I can do this by extracting days, month, or years from the text to new columns and the pairing these with the original text.</description>
     </item>
     
     <item>
