@@ -10,21 +10,21 @@ I am a CHASE funded doctoral candidate based at the Centre for Medieval and Earl
 
 As part of my CHASE studentship I completed a two-month funded placement at the National Archives using subpoena writs to accurately date over six hundred cases from the Court of Chancery in the late fifteenth century. I also work with ‘Up on the Downs’, a landscape-based Heritage Lottery Funded project based in the Dover District Area which is exploring how to engage the public with medieval heritage in the Dover area. 
 
-![This is me][1]
+![This is me][/img/about.jpg]
 
 My thesis is an investigation of corruption and anti-corruption processes within the development of English government institutions from 1307 to 1348. This work looks at the negotiation of centralised and devolved authority and how this authority, when subverted by corrupt actors, affected the crown and its subjects. The thesis includes a database of over 2000 individual cases of wrongdoing collated from anti-corruption investigations carried out in the first half of the fourteenth century. Jack utilises data science methodologies to collect, analyse, and visualise networks of officials and their patrons. I am interested in corruption, digital approaches to the study of the medieval period, Irish history, North Sea Trade, and cricket. You can find a brief C.V. below.
 
-## This Site
-This site is written in markdown using [RStudio](https://rstudio.com/), the [blogdown package](https://bookdown.org/yihui/blogdown/), and [Hugo](https://gohugo.io/). The content is pushed to [Github](https://github.com/) and hosted by [Netlify](https://www.netlify.com/). If you are interested in using a similar approach I used a combination of various tutorials found with some judicious searches and parts of this [youtubers guides](https://www.youtube.com/playlist?list=PL-Kz5P-mYdMgAJDmRJquyMHfdaIOD-3oj) which waswere really helpful.
+## About this Site
+This site is written in markdown using [RStudio](https://rstudio.com/), the [blogdown package](https://bookdown.org/yihui/blogdown/), and [Hugo](https://gohugo.io/). The content is pushed to [Github](https://github.com/) and hosted by [Netlify](https://www.netlify.com/). If you are interested in using a similar approach I used a combination of various tutorials found with some judicious searches and parts of this [Youtuber's guides](https://www.youtube.com/playlist?list=PL-Kz5P-mYdMgAJDmRJquyMHfdaIOD-3oj) which were very helpful.
 
 ## Academic C.V.
 
 #### University of Kent
-* **CHASE AHRC Funded Ph.D. Medieval and Early Modern Studies (2016-2020).**
+* **CHASE AHRC Funded Ph.D. Medieval and Early Modern Studies (2016-2020)**
       - Provisional Title: Corruption and Conflict: Institutional adaptation in pre-Black         Death England (c.1307-1348). Supervisors: Professor Barbara Bombi and Dr Ryan Perry.
-* **MA Medieval and Early Modern Studies (Distinction - 2015-2016).**
+* **MA Medieval and Early Modern Studies (Distinction - 2015-2016)**
       - Subject of thesis: ‘Corrupt Officials and Deprived Peasants: Governmental                 Malfeasance in Pre-Black Death Lincolnshire Countryside’. Awarded 72 (Distinction).
-* **BA in History (First Class Honours - 2012-2015).**
+* **BA in History (First Class Honours - 2012-2015)**
       - Subject of thesis: ‘‘Evolution not Revolution’: Towards an evolutionary approach to       warfare in the British Isles in the First Scottish War of Independence’. Awarded 68         (2:1). Nominated for Royal Historical Society *History Scotland Award*.
       
 #### The Open University
@@ -34,20 +34,20 @@ This site is written in markdown using [RStudio](https://rstudio.com/), the [blo
 
 ## Grants and Awards
 
-* Awarded £1000 Sebastian Rahtz ‘SPQR’ Digital Humanities bursary to attend the Digital Humanities at Oxford Summer School (delayed to 2021). July 2020.
+*Awarded £1000 Sebastian Rahtz ‘SPQR’ Digital Humanities bursary to attend the Digital Humanities at Oxford Summer School (delayed to 2021). July 2020.
 
-* Royal Historical Society Centenary Fellow based at The Institute for Historical Research. Sept. 2019–Sept. 2020
+*Royal Historical Society Centenary Fellow based at The Institute for Historical Research. Sept. 2019–Sept. 2020
 
-* Jointly bid for £2,000 toward the organising of Medieval and Early Modern
+*Jointly bid for £2,000 toward the organising of Medieval and Early Modern
 Studies Festival (June 2019).
 
-* Jointly bid for £2,000 toward the organising of Medieval and Early Modern
+*Jointly bid for £2,000 toward the organising of Medieval and Early Modern
 Studies Festival (June 2018).
 
-* Jointly bid for	£1,500 toward the organising of Medieval and Early Modern
+*Jointly bid for	£1,500 toward the organising of Medieval and Early Modern
 Studies Festival 2017 (June 2017).
 
-* AHRC CHASE DTP Ph.D. Studentship (2016-2019).
+*AHRC CHASE DTP Ph.D. Studentship (2016-2019).
 
 ## Conference Papers
 * July 2020	‘Mining the Medieval: Digitising a 14th-Century Anti-Corruption Lincolnshire Court Roll’ on panel ‘Borderlines: Navigating the Medieval through History’ International Medieval Congress, Leeds, UK (delayed to 2021).
@@ -100,5 +100,3 @@ Studies Festival 2017 (June 2017).
 * Sept. 2017-Dec. 2018	Seminar leader for HI410 ‘Early Medieval Europe’ in the School of History at the University of Kent.
 
 * 2017-2019	Co-organiser for Medieval and Early Modern Studies Summer Festival 2017, 2018, 2019 (100+ participants per year).
-
-[1]:/about.jpg
