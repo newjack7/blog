@@ -1,12 +1,10 @@
 ---
-title: Mining a Medieval Court Roll 2: Dates and Categories
+title: 'Mining a medieval court roll 2: Dating and Categorisation'
 author: ''
-date: '2020-06-30'
-slug: dating-a-medieval-court-roll
+date: '2020-08-08'
+slug: mining-a-medieval-court-roll-2-dating-and-categorisation
 categories: []
 tags: []
-image: img/histogram.png
-showonlyimage: no
 ---
 
 ```{r include=FALSE}

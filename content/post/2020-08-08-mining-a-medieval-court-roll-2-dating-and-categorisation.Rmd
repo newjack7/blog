@@ -1,12 +1,10 @@
 ---
-title: Mining a Medieval Court Roll 2: Dates and Categories
+title: 'Mining a medieval court roll 2: Dating and Categorisation'
 author: ''
-date: '2020-06-30'
-slug: dating-a-medieval-court-roll
+date: '2020-08-08'
+slug: mining-a-medieval-court-roll-2-dating-and-categorisation
 categories: []
 tags: []
-image: img/histogram.png
-showonlyimage: no
 ---
 
 ```{r include=FALSE}
@@ -221,11 +219,10 @@ We can also plot all allegations which are dated to day, month, and year across 
 
 ``` {r histogram plot, messages=FALSE, message=FALSE, warnings=FALSE, warning=FALSE}
 #Convert Year into a factor
-#lincsEventsDated$year <- factor(lincsEventsDated$year)
+lincsEventsDated$year <- factor(lincsEventsDated$year)
+
 #Plot
 lincsEventsDated %>% count(date, year, sort=TRUE) %>% ggplot(aes(date)) + geom_histogram(fill="#ffd700", binwidth = 35) + ggtitle("Dates mentioned in McLane, 'The 1341 Royal Inquest in Lincolnshire' c. 1327-1341")+ ylab(NULL) +xlab(NULL) + theme_minimal()
-
-#I had this working with a properly labeled x axis for each year but I broke it somehow. If you know how to make it work then let me know!
 ```
 In this post I have outlined how to work with dates in several formats and add new columns to the data which can act as a tag and reveal trends. I want to point out a few things about the approach I have taken though. One problem is that each allegation might include multiple dates. In those instances I will have created duplicate entries. This isn't a huge problem as I am interested in the focus of the court. When editing the volume McLane followed the construction of the records by the court clerks. Some individual allegations in fact contain many offences which may have occured at different times. If I attempted to just assign a single date to each allegation I would have to exclude a lot of information. It does mean however that the data I have shown here only demonstrates the number of times that a particular date is mentioned rather than dating each allegation specifically. I learnt quite a lot and I am sure if I began again I would make some changes to the process I have outlined. I think, at times, I took several steps when only one or two were necessary. The next post will have more analysis of the work carried out here and less coding!
 
