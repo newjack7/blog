@@ -1,4 +1,4 @@
-baseurl = "https://blog-site-newjack7.netlify.app/"
+baseurl = "https://jack-newman.com"
 title = "Jack Newman"
 theme = "hugo-creative-portfolio-theme"
 languageCode = "en-gb"
