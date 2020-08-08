@@ -1,13 +1,23 @@
 ---
 date: "2020-06-19T22:55:33+00:00"
-title: About me
+title: About
 ---
 
+## About me
+**Royal Historical Society Centenary Fellow (2019-20) based at the Institute for Historical Research and the Centre for Medieval and Early Modern Studies at the University of Kent.**
 
-**Royal Historical Society Centenary Fellow affiliated with the Institute for Historical Research and the Centre for Medieval and Early Modern Studies at the University of Kent.**
-<details>
-  <summary> Education </summary>
-## Education
+I am a CHASE funded doctoral candidate based at the Centre for Medieval and Early Modern Studies (MEMS) at the University of Kent. After ten years as a painter and decorator I began my studies at the Open University before completing a BA in History at Kent. Subsequently I found my home during an MA at MEMS where I was granted a CHASE AHRC doctoral studentship in 2016.
+
+As part of my CHASE studentship I completed a two-month funded placement at the National Archives using subpoena writs to accurately date over six hundred cases from the Court of Chancery in the late fifteenth century. I also work with ‘Up on the Downs’, a landscape-based Heritage Lottery Funded project based in the Dover District Area which is exploring how to engage the public with medieval heritage in the Dover area. 
+
+![This is me][1]
+
+My thesis is an investigation of corruption and anti-corruption processes within the development of English government institutions from 1307 to 1348. This work looks at the negotiation of centralised and devolved authority and how this authority, when subverted by corrupt actors, affected the crown and its subjects. The thesis includes a database of over 2000 individual cases of wrongdoing collated from anti-corruption investigations carried out in the first half of the fourteenth century. Jack utilises data science methodologies to collect, analyse, and visualise networks of officials and their patrons. I am interested in corruption, digital approaches to the study of the medieval period, Irish history, North Sea Trade, and cricket. You can find a brief C.V. below.
+
+## This Site
+This site is written in markdown using [RStudio](https://rstudio.com/), the [blogdown package](https://bookdown.org/yihui/blogdown/), and [Hugo](https://gohugo.io/). The content is pushed to [Github](https://github.com/) and hosted by [Netlify](https://www.netlify.com/). If you are interested in using a similar approach I used a combination of various tutorials found with some judicious searches and parts of this [youtubers guides](https://www.youtube.com/playlist?list=PL-Kz5P-mYdMgAJDmRJquyMHfdaIOD-3oj) which waswere really helpful.
+
+## Academic C.V.
 
 #### University of Kent
 * **CHASE AHRC Funded Ph.D. Medieval and Early Modern Studies (2016-2020).**
@@ -90,3 +100,5 @@ Studies Festival 2017 (June 2017).
 * Sept. 2017-Dec. 2018	Seminar leader for HI410 ‘Early Medieval Europe’ in the School of History at the University of Kent.
 
 * 2017-2019	Co-organiser for Medieval and Early Modern Studies Summer Festival 2017, 2018, 2019 (100+ participants per year).
+
+[1]:/about.jpg
