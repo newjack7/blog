@@ -17,7 +17,7 @@
       <pubDate>Sat, 08 Aug 2020 00:00:00 +0000</pubDate>
       
       <guid>/portfolio/minins-a-medieval-court-roll-2-dating-and-categorisation/</guid>
-      <description>The previous post was spent outlining the basics of text mining and exploring some possible avenues for analysis. I learnt a lot in the process and hopefully was able to convey at least some of the potential for digital exploitation of historic texts. In this post I want to label each offence with as precise a date as possible and also assigning some basic categories to the allegations. I can do the firstby extracting days, month, or years from the text to new columns and the pairing these with the original text.</description>
+      <description>The previous post was spent outlining the basics of text mining and exploring some possible avenues for analysis. I learnt a lot in the process and hopefully was able to convey at least some of the potential for digital exploitation of historic texts. In this post I want to label each offence with as precise a date as possible and also assigning some basic categories to the allegations. I can do the first by extracting days, month, or years from the text to new columns and the pairing these with the original text.</description>
     </item>
     
     <item>

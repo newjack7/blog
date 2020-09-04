@@ -10,93 +10,11 @@ I am a CHASE funded doctoral candidate based at the Centre for Medieval and Earl
 
 As part of my CHASE studentship I completed a two-month funded placement at the National Archives using subpoena writs to accurately date over six hundred cases from the Court of Chancery in the late fifteenth century. I also work with ‘Up on the Downs’, a landscape-based Heritage Lottery Funded project based in the Dover District Area which is exploring how to engage the public with medieval heritage in the Dover area. 
 
-![This is me][/img/about.jpg]
+My thesis is an investigation of corruption and anti-corruption processes within the development of English government institutions from 1307 to 1348. This work looks at the negotiation of centralised and devolved authority and how this authority, when subverted by corrupt actors, affected the crown and its subjects. The thesis includes a database of over 2000 individual cases of wrongdoing collated from anti-corruption investigations carried out in the first half of the fourteenth century. Jack utilises data science methodologies to collect, analyse, and visualise networks of officials and their patrons. I am interested in corruption, digital approaches to the study of the medieval period, Irish history, North Sea Trade, and cricket. 
 
-My thesis is an investigation of corruption and anti-corruption processes within the development of English government institutions from 1307 to 1348. This work looks at the negotiation of centralised and devolved authority and how this authority, when subverted by corrupt actors, affected the crown and its subjects. The thesis includes a database of over 2000 individual cases of wrongdoing collated from anti-corruption investigations carried out in the first half of the fourteenth century. Jack utilises data science methodologies to collect, analyse, and visualise networks of officials and their patrons. I am interested in corruption, digital approaches to the study of the medieval period, Irish history, North Sea Trade, and cricket. You can find a brief C.V. below.
+An academic C.V. is available in PDF form [here](Jack_Newman_CV.pdf). Up to date as of September 2020.
 
 ## About this Site
-This site is written in markdown using [RStudio](https://rstudio.com/), the [blogdown package](https://bookdown.org/yihui/blogdown/), and [Hugo](https://gohugo.io/). The content is pushed to [Github](https://github.com/) and hosted by [Netlify](https://www.netlify.com/). If you are interested in using a similar approach I used a combination of various tutorials found with some judicious searches and parts of this [Youtuber's guides](https://www.youtube.com/playlist?list=PL-Kz5P-mYdMgAJDmRJquyMHfdaIOD-3oj) which were very helpful.
+This site is written in markdown using [RStudio](https://rstudio.com/), the [blogdown package](https://bookdown.org/yihui/blogdown/), and [Hugo](https://gohugo.io/). The content is pushed to [Github](https://github.com/) and hosted by [Netlify](https://www.netlify.com/). If you are interested in using a similar approach I used a combination of various tutorials, easily discoverable through a simple search, and parts of this [Youtuber's guides](https://www.youtube.com/playlist?list=PL-Kz5P-mYdMgAJDmRJquyMHfdaIOD-3oj) which were very helpful.
 
-## Academic C.V.
-
-#### University of Kent
-* **CHASE AHRC Funded Ph.D. Medieval and Early Modern Studies (2016-2020)**
-      - Provisional Title: Corruption and Conflict: Institutional adaptation in pre-Black         Death England (c.1307-1348). Supervisors: Professor Barbara Bombi and Dr Ryan Perry.
-* **MA Medieval and Early Modern Studies (Distinction - 2015-2016)**
-      - Subject of thesis: ‘Corrupt Officials and Deprived Peasants: Governmental                 Malfeasance in Pre-Black Death Lincolnshire Countryside’. Awarded 72 (Distinction).
-* **BA in History (First Class Honours - 2012-2015)**
-      - Subject of thesis: ‘‘Evolution not Revolution’: Towards an evolutionary approach to       warfare in the British Isles in the First Scottish War of Independence’. Awarded 68         (2:1). Nominated for Royal Historical Society *History Scotland Award*.
-      
-#### The Open University
-
-* AA100 – The Arts Past and Present – Awarded 80 (Distinction - 2011-2012).
-
-
-## Grants and Awards
-
-*Awarded £1000 Sebastian Rahtz ‘SPQR’ Digital Humanities bursary to attend the Digital Humanities at Oxford Summer School (delayed to 2021). July 2020.
-
-*Royal Historical Society Centenary Fellow based at The Institute for Historical Research. Sept. 2019–Sept. 2020
-
-*Jointly bid for £2,000 toward the organising of Medieval and Early Modern
-Studies Festival (June 2019).
-
-*Jointly bid for £2,000 toward the organising of Medieval and Early Modern
-Studies Festival (June 2018).
-
-*Jointly bid for	£1,500 toward the organising of Medieval and Early Modern
-Studies Festival 2017 (June 2017).
-
-*AHRC CHASE DTP Ph.D. Studentship (2016-2019).
-
-## Conference Papers
-* July 2020	‘Mining the Medieval: Digitising a 14th-Century Anti-Corruption Lincolnshire Court Roll’ on panel ‘Borderlines: Navigating the Medieval through History’ International Medieval Congress, Leeds, UK (delayed to 2021).
-
-* February 2020	‘Extortion, Oppression, Excess: Corruption and Anti-Corruption c. 1314-44’ Late Medieval Seminar, Institute of Historical Research, London, UK.
-
-* December 2020 ‘Fail Better: A (semi-successful) digital approach to medieval legal records’, Digital History Seminar, Institute of Historical Research, London, UK
-
-* October 2020, ‘Anti-Corruption as propaganda c. 1314-1344’, Centre for Medieval and Early Modern Studies, University of Kent, Canterbury, UK
-
-* July 2019	‘Corruption, Entropy, and Crown Officials: England c. 1307-1344’, International Medieval Congress, Leeds, UK.
-
-* May 2019	‘Fleecing the System: English Crown Corruption in the Early Fourteenth Century’, International Congress on Medieval Studies, Kalamazoo, Michigan, U.S.A.
-
-* April 2019	‘Signed, Sealed, Embezzled – Counterfeit Seals, Italian Merchants, and the Deception of the Crown’, Cross-Channel Exchanges in the Middle Ages, Ghent, Belgium.
-
-* July 2018	‘Crisis, Corruption, Commissions of Oyer and Terminer: Institutional adaptation in the early Fourteenth Century’, International Medieval Congress, Leeds, UK.
-
-* May 2018	‘Crisis, Corruption, and Climate in pre-Black Death England’, International Congress on Medieval Studies, Kalamazoo, Michigan, U.S.A.
-
-* June 2017 	‘Lie, Cheat, Steal, Kill, Win: Anger, Sadness, and Corruption in Fourteenth Century England’, Medieval and Early Modern Studies Festival, The University of Kent, Canterbury, UK.
-
-* May 2017 	‘Corrupt Officials and Deprived Peasants: Governmental Malfeasance in Pre-Black Death Lincolnshire’, International Congress on Medieval Studies, Kalamazoo, Michigan, U.S.A.
-
-* April 2017 	‘Governmental Malfeasance in Pre-Black Death Lincolnshire’ Borderlines XXI, Cork, Ireland.
-
-* June 2016	‘Corrupt Crown Officials in Fourteenth Century Lincolnshire’, Medieval and Early Modern Studies Festival, The University of Kent, Canterbury, UK.
-
-## Placements and Professional Activities
-* July 2020	Organised two panels ‘Boundaries of Acceptability: Physical, Moral, and Political Corruption in the Middle Ages’ International Medieval Congress, Leeds, UK (delayed to 2021).
-	
-* Enrolled to attend Digital Humanities at Oxford Summer School a five-day series of online workshops on digital humanities including ‘An Introduction to the TEI’.
-
-* June 2020	Enrolled in e-editiones’ ‘Stay Home, Learn TEI Publisher From Scratch’ online course taking place in three sessions throughout June.
-
-* July 2019	Co-organised a strand ‘Re-instituting the Institutions – new perspectives of Institutional Studies’ sponsored by the Pipe Roll Society at Leeds International Medieval Congress 2019.
-	
-* July 2019 Attended Digital Humanities at Oxford Summer School a five-day series of workshops on ‘Linked Data for Digital Humanities’ 
-
-* May 2019	Organised a panel ‘Crisis, Corruption, and Entropy in England c. 1250-1450’ at the International Congress on Medieval Studies, Kalamazoo, Michigan.
-
-* August 2018	Assisted with the delivery of workshop ‘Drawing Water’ at the Royal Geographical Society Annual Conference – Cardiff, UK. In collaboration with Leah Fusco, (Royal College of Art), and Dr George Jaramillo, (Glasgow School of Arts).
-
-* July 2018-May 2019	Placement with ‘Up on the Downs’ a Heritage Lottery Funded Landscape Partnership with Dover District Council to promote engagement with landscape and heritage within the Kent Downs.
-
-* July 2018	Recorded audio documentary ‘Northeye’ an artist’s exploration of a deserted Medieval village (exhibited in Dubai).
-
-* March – May 2018	Collaborative Doctoral Partnership Researcher at The National Archives, London. Outreach activities in the form of blogs, as well as contributing to on-going cataloguing work and educational activities.
-
-* Sept. 2017-Dec. 2018	Seminar leader for HI410 ‘Early Medieval Europe’ in the School of History at the University of Kent.
-
-* 2017-2019	Co-organiser for Medieval and Early Modern Studies Summer Festival 2017, 2018, 2019 (100+ participants per year).
+![This is me](about.jpg)
