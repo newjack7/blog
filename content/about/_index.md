@@ -16,5 +16,3 @@ An academic C.V. is available in PDF form [here](Jack_Newman_CV.pdf). Up to date
 
 ## About this Site
 This site is written in markdown using [RStudio](https://rstudio.com/), the [blogdown package](https://bookdown.org/yihui/blogdown/), and [Hugo](https://gohugo.io/). The content is pushed to [Github](https://github.com/) and hosted by [Netlify](https://www.netlify.com/). If you are interested in using a similar approach I used a combination of various tutorials, easily discoverable through a simple search, and parts of this [Youtuber's guides](https://www.youtube.com/playlist?list=PL-Kz5P-mYdMgAJDmRJquyMHfdaIOD-3oj) which were very helpful.
-
-![This is me](about.jpg)
