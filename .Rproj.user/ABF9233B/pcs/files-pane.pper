@@ -1,9 +1,9 @@
 {
-    "path": "~/GitHub/blog/content/about",
-    "sortOrder": [
+    "path" : "~/GitHub/blog/content/portfolio",
+    "sortOrder" : [
         {
-            "columnIndex": 2,
-            "ascending": true
+            "ascending" : true,
+            "columnIndex" : 2
         }
     ]
 }

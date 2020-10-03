@@ -14,7 +14,7 @@ googleAnalytics = ""
   description = "Portfolio"
   copyright = "&copy;2020 Jack Newman"
   sidebarAbout = [
-    "Royal Historical Society Centenary Fellow",
+    "Royal Historical Society Centenary Fellow 2019-20",
     "CHASE funded doctoral candidate based at the Institute for Historical Research and the Centre for Medieval and Early Modern Studies (MEMS) at the University of Kent"
   ]
   # Contact page
@@ -50,12 +50,12 @@ googleAnalytics = ""
   name = "About"
   url = "about/"
 
-  [[params.navlinks]]
-  name = "Get in touch"
-  url = "contact/"
+  #[[params.navlinks]]
+  #name = "Get in touch"
+  #url = "contact/"
 
   [params.social]
-  email         = "email@example.com"
+  #email         = "email@example.com"
   twitter       = "https://twitter.com/NewJack7"
   linkedin      = "https://www.linkedin.com/in/newjack7/"
   github        = "https://github.com/newjack7"
