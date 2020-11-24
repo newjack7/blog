@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Text Mining on Jack Newman</title>
+    <link>https://jack-newman.com/tags/text-mining/</link>
+    <description>Recent content in Text Mining on Jack Newman</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Mon, 16 Nov 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://jack-newman.com/tags/text-mining/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Mining a Medieval Court Roll 3: TF-IDF</title>
+      <link>https://jack-newman.com/portfolio/text-mining/</link>
+      <pubDate>Mon, 16 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://jack-newman.com/portfolio/text-mining/</guid>
+      <description>Term frequency inverse document frequency (TF-IDF) is both a mouthful and a process often carried out as part of the text mining approach. The primary idea behind TF-IDF is to find the words which are most important for the content of each document by decreasing the weight for commonly used words and increasing the weight for words that are not used very much in a collection as a whole.</description>
+    </item>
+    
+  </channel>
+</rss>

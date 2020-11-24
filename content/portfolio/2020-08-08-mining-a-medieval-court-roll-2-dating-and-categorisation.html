@@ -1,0 +1,166 @@
+---
+title: 'Mining a medieval court roll 2: Dating'
+author: ''
+date: '2020-08-08'
+slug: minins-a-medieval-court-roll-2-dating-and-categorisation
+categories: []
+tags: []
+image: img/histogram.png
+showonlyimage: no
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+<link href="/rmarkdown-libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/anchor-sections/anchor-sections.js"></script>
+
+
+<p>The previous post was spent outlining the basics of text mining and exploring some possible avenues for analysis. I learnt a lot in the process and hopefully was able to convey at least some of the potential for digital exploitation of historic texts. In this post I want to label each offence with as precise a date as possible and also assigning some basic categories to the allegations. I can do the first by extracting days, month, or years from the text to new columns and the pairing these with the original text. Essentially this approach breaks the text of the trials into smaller observations which are then filtered according to particular criteria, in this case, dates. This list is then appended to the original text which will give each allegation a modern, machine readable date.</p>
+<p>To categorise the offences I take a similar approach. To do this I will use some of the words I extracted in the previous post. For example one of the words that I found was ‘feloniously’. This word only ever refers to property or personal violence. As I am not, at this stage, concerned with differentiating between the two I can assign this word a high value for a ‘violence’ category. This process can be repeated, with some more nuance, to assign more precise categories. These words and their values can be cross checked with the original text to give each allegation a particular value.</p>
+<div id="dating-the-roll" class="section level3">
+<h3>Dating the roll</h3>
+<p>Initially, assigning years to each allegation is a fairly straightforward process. In some instances McLane, the editor of the roll, used calendar years ‘1327’ etc. I quickly realised however that, on occasion, he also used regnal years, for example, ‘Edward 3’ to refer to the third year of the king Edward. This is typically how medieval documents would date a particular year. Below is the plot of allegations which contain a calendar year. As before if you are new to R or coding please don’t worry about understanding the code. I have supplied it so you can see my workings and in case it is of interest.</p>
+<pre class="r"><code>#In this command I create a filter which extracts allegations with at least a year mentioned. This creates a table of allegations which include a year.
+
+yearsCount &lt;- Lincolnshire_Tokens %&gt;% 
+  filter(word %in% c(&quot;1327&quot;, &quot;1328&quot;, &quot;1329&quot;, &quot;1330&quot;, &quot;1331&quot;, &quot;1332&quot;, &quot;1333&quot;, &quot;1334&quot;, &quot;1335&quot;, &quot;1336&quot;, &quot;1337&quot;, &quot;1338&quot;, &quot;1339&quot;, &quot;1340&quot;, &quot;1341&quot;)) %&gt;% count(word, sort = TRUE)
+
+# This plot shows which years are most commonly mentioned in the allegations
+
+plot1Year &lt;- yearsCount %&gt;% ggplot(aes(word, n)) + geom_col(fill=&quot;#ffd700&quot;, position = &quot;dodge&quot;) + geom_text(aes(label=n), hjust=-0.3, size=3.5) + ggtitle(&quot;Frequency of allegations by year in TNA JUST 1/521&quot;)+ ylab(NULL) + xlab(NULL) + coord_flip() + theme_minimal()
+
+plot1Year</code></pre>
+<p><img src="/portfolio/2020-08-08-mining-a-medieval-court-roll-2-dating-and-categorisation_files/figure-html/Frequency%20of%20allegations%20by%20year-1.png" width="672" /></p>
+</div>
+<div id="converting-regnal-years" class="section level3">
+<h3>Converting Regnal Years</h3>
+<p>The trial was commissioned in December 1340 so it is unsurprising that the majority of offences are said to have happened in the preceding year. The spike in 1338 is likely due to the wool levy of 1338. Later, in order to test this I will tag each allegation according to categories. The plot is a crude measure but does demonstrate the recency bias of the allegations heard by the justices. Complainants or juries seem to have been more likely to bring offences which occurred close to the trial to the justices. It might be that other courts, local or royal, heard earlier offences or perhaps complainants were less willing to bring forward old allegations. As stated earlier, this data only includes those allegations which have exact dates (year, month, and day). Most documents produced by medieval English courts dated events according to their proximity to saints feast days. For example a common date might be ‘the nearest Thursday after Michaelmas in the fourth year of Edward III’. Quite a bit of work is required to update these to modern dates as some feasts are movable (they occur at different times from year-to-year). In this corpus many charges simply include a regnal year. This is problematic for updating to calendar years as a regnal year runs from the date of the monarch’s ascension yearly until the monarch dies, is deposed, or abdicates. Richard II’s regnal year, for example, runs from the 22<sup>nd</sup> of June to the 21<sup>st</sup> of June. Even worse King John’s regnal year began on on a movable feast so the start date of John’s regnal years change annually. An event which is relayed as just ‘Richard 1’ could have taken place anywhere from the 22<sup>nd</sup> of June 1377 to 21<sup>st</sup> of June 1378. In these instances it would be better to retain the regnal dating rather than updating to a calendar year. Luckily Edward III was crowned on the 25<sup>th</sup> of January which simplifies matters. A regnal year of ‘12 Edward III’ will have taken place between January 25<sup>th</sup> 1338 and January 24<sup>th</sup> 1339. For the purposes of the analysis events on a year-by-year basis I am comfortable with the 25 day margin of error. Now I can get on with extracting regnal dates and then converting them to calendar years.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<p>Firstly, I break the text into two-word pairings (bi-grams) using <code>unnest_tokens()</code>. Then I break these two-word pairings into separate columns which I can <code>filter()</code> for those pairings which have a digit followed by ‘Edward’. Afterwards I reunite the columns using <code>unite()</code> for the rest of the analysis. Then I can convert those regnal years into modern calendar years.</p>
+<pre class="r"><code>#First I have to break the corpus into bigrams (two word pairings)
+
+lincs_bigrams &lt;- LincolnshireEvents %&gt;%
+  unnest_tokens(bigram, QUOTE_TRANSCRIPTION, token = &quot;ngrams&quot;, n = 2)
+
+#In order to extract the regnal years however I need to split this text into two columns which I can filter
+bigrams_separated &lt;- lincs_bigrams %&gt;%
+  separate(bigram, c(&quot;word1&quot;, &quot;word2&quot;), sep = &quot; &quot;)
+
+
+#Filter for the regnal years
+regYears &lt;- bigrams_separated %&gt;% 
+  filter(word1 %in% c(&quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;, &quot;6&quot;, &quot;7&quot;, &quot;8&quot;, &quot;9&quot;, &quot;10&quot;, &quot;12&quot;, &quot;13&quot;, &quot;14&quot;, &quot;15&quot;)) %&gt;% 
+  filter(word2 %in%  &quot;edward&quot;) 
+
+
+#Unite the columns for analysis
+regYears_united &lt;- regYears %&gt;% 
+  unite(bigram, word1, word2, sep = &quot; &quot;)</code></pre>
+<p>Now I have a list of all the regnal years and in the plot below we can see the pattern is similar to the earlier plot but with one clear change. As before, when the data included only offences with a precise date (day, month, year), the majority of offences were said to have taken place in the three years before the trial. However this data, which is only dated to a twelve month period, the preponderance of allegations are in 1338. This discrepancy highlights that when allegations which relate to events more than two years prior the juries or complainants were unable to specify accurate dates. This is unsurprising. More surprising is that complainants or juries were able to give such precise dates for events over a decade prior. It seems likely that many of these are the result of local records, exchequer records, or tallies which gave exact dates. These would likely be the product of tax offences of some other similar activities which relied on record keeping. It’s likely that some of the precise dates were easy to remember. A crime which took place on a feast day, for example, would be relatively easy for a victim to remember even years later. Perhaps, at times, precise dates were also given as approximations.</p>
+<pre class="r"><code>#Count of regnal years
+regYears_count &lt;- regYears_united %&gt;% 
+  count(bigram, sort = TRUE)
+
+#Plot of regnal years sorted chronologically
+
+plotRegnal &lt;- regYears_count %&gt;% mutate(bigram = fct_relevel(bigram, &#39;1 edward&#39;, &#39;2 edward&#39;, &#39;3 edward&#39;, &#39;4 edward&#39;, &#39;5 edward&#39;, &#39;6 edward&#39;, &#39;7 edward&#39;, &#39;8 edward&#39;, &#39;9 edward&#39;, &#39;10 edward&#39;, &#39;11 edward&#39;, &#39;12 edward&#39;, &#39;13 edward&#39;, &#39;14 edward&#39;)) %&gt;%  ggplot(aes(bigram, n)) + geom_col(fill=&quot;#ffd700&quot;, position = &quot;dodge&quot;) + geom_text(aes(label=n), hjust=-0.3, size=3.5) + ggtitle(&quot;Count of regnal years in TNA JUST 1/521&quot;)+ ylab(NULL) + xlab(NULL) + coord_flip() + theme_minimal()
+
+plotRegnal</code></pre>
+<p><img src="/portfolio/2020-08-08-mining-a-medieval-court-roll-2-dating-and-categorisation_files/figure-html/plot%20of%20most%20common%20regnal%20years-1.png" width="672" />
+Next I appended the corpus to tag each allegation with a regnal year and converted them to calendar years.</p>
+<pre class="r"><code>#Convert Regnal Yearls to calendar year
+regYears_converted &lt;-  regYears_united %&gt;% mutate(bigram = case_when(bigram == &quot;1 edward&quot; ~ &quot;1327&quot;, bigram == &quot;2 edward&quot; ~ &quot;1328&quot;, bigram == &quot;3 edward&quot; ~ &quot;1329&quot;, bigram == &quot;4 edward&quot; ~ &quot;1330&quot;, bigram == &quot;5 edward&quot; ~ &quot;1331&quot;, bigram == &quot;6 edward&quot; ~ &quot;1332&quot;, bigram == &quot;7 edward&quot; ~ &quot;1333&quot;, bigram == &quot;8 edward&quot; ~ &quot;1334&quot;, bigram == &quot;9 edward&quot; ~ &quot;1335&quot;, bigram == &quot;10 edward&quot; ~ &quot;1336&quot;, bigram == &quot;11 edward&quot; ~ &quot;1337&quot;, bigram == &quot;12 edward&quot; ~ &quot;1338&quot;, bigram == &quot;13 edward&quot; ~ &quot;1339&quot;, bigram == &quot;14 edward&quot; ~ &quot;1340&quot;))
+
+#Rename column to match for merging
+regYears_converted &lt;- regYears_converted %&gt;% rename(year = bigram)
+
+#Create new column to tag as Regnal date
+regYears_converted &lt;- regYears_converted %&gt;% mutate(regnalYear = !is.na(year))
+
+#Tags each entry with a regnal year
+
+regnalTagged &lt;- full_join(regYears_converted, LincolnshireEvents)</code></pre>
+</div>
+<div id="joining-the-years" class="section level3">
+<h3>Joining the years</h3>
+<p>Now I have converted the regnal dates I can join this table to the earlier table which tagged each allegation according to the calendar year mentioned. The following command ‘full_join()’ merges two tables. If the column name match then they are merged and when they don’t then the surplus columns are added. So before I carry out the merge I need to rename the columns I wish to merge or I will have two columns when I only want one. I do this with the command <code>regnalTagged &lt;- regnalTagged %&gt;% rename(word = bigram)</code>. This takes the column ‘bi-gram’ and renames it ‘word’. Now the two columns, which have a list of years alongside the id of allegations in Lincolnshire will merge.</p>
+<pre class="r"><code>#Merge of the converted regnal years and the calendar years
+yearsCombined&lt;- full_join(years, regnalTagged)</code></pre>
+<p>This is a plot of the count of the merged table, which includes both regnal and calendar years. It shows the preponderance of charges in 1338 which probably relates to the wool levy. This was used to fund the early phases of the war with the French crown which later became known as The Hundred Years War. The small number of mentions in 1341 relate to the business of the court or offences that</p>
+<pre class="r"><code>yearsJoincount %&gt;% ggplot(aes(word, n)) + geom_col(fill=&quot;#ffd700&quot;, position = &quot;dodge&quot;) + geom_text(aes(label=n), hjust=-0.3, size=3.5) + ggtitle(&quot;Frequency of allegations by year in TNA JUST 1/521&quot;)+ ylab(NULL) + xlab(NULL) + coord_flip() + theme_minimal()</code></pre>
+<p><img src="/portfolio/2020-08-08-mining-a-medieval-court-roll-2-dating-and-categorisation_files/figure-html/merged%20plot%20count-1.png" width="672" /></p>
+</div>
+<div id="adding-day-and-month" class="section level3">
+<h3>Adding Day and Month</h3>
+<p>Finally I want to add the month and date to the data. To do this is essentially a repeat of some of the earlier processes with some differences and elaborations. I include the full code here to show the process from start to finish but it is essentially a slight variation of what I have already outlined. Step one is turning the text into three-word observations which will capture instances of day-month-year, this is then split into three columns and filtered to capture months.</p>
+<pre class="r"><code>#Create Trigrams 
+lincs_trigrams &lt;- LincolnshireEvents %&gt;%
+  unnest_tokens(trigram, QUOTE_TRANSCRIPTION, token = &quot;ngrams&quot;, n = 3)
+
+#Count of most common trigrams
+trigrams_count &lt;- lincs_trigrams %&gt;% 
+  count(trigram, sort = TRUE)
+
+#Split into three columns
+trigrams_separated &lt;- lincs_trigrams %&gt;%
+  separate(trigram, c(&quot;word1&quot;, &quot;word2&quot;, &quot;word3&quot;), sep = &quot; &quot;)
+
+#Filter for the months
+fullDates &lt;- trigrams_separated %&gt;% 
+  filter(word2 %in%  c(&quot;january&quot;, &quot;february&quot;, &quot;march&quot;, &quot;april&quot;, &quot;may&quot;, &quot;june&quot;, &quot;july&quot;, &quot;august&quot;, &quot;september&quot;, &quot;october&quot;, &quot;november&quot;, &quot;december&quot;, &quot;jan&quot;, &quot;feb&quot;, &quot;mar&quot;, &quot;apr&quot;, &quot;may&quot;, &quot;jun&quot;, &quot;jul&quot;, &quot;aug&quot;, &quot;sep&quot;, &quot;oct&quot;, &quot;nov&quot;, &quot;dec&quot;, &quot;sept&quot;)) </code></pre>
+<p>This essentially has created a list which includes all the instances of a month being mentioned in either the long or short format. The following looks quite complicated but is rather simple. I have tried to explain the process in the comments accompanying the code. Simply put the following cleans the data by weeding out errors in the original publication, or in the OCR, or in digitising process and then converts the months from text to digits.</p>
+<pre class="r"><code>#This fixes errors which result from the formatting of the original text that had no space between the comma and the digits which refer to a date eg. &#39;1,26&#39; rather than &#39;1, 26&#39;. So when it was separated into trigrams it detected it as a single word rather than two words.
+fullDates$word1[fullDates$word1 == &quot;1,26&quot; ] &lt;- 26 
+fullDates$word1[fullDates$word1 == &quot;186,25&quot; ] &lt;- 25
+fullDates$word1[fullDates$word1 == &quot;536,4&quot; ] &lt;- 04
+
+#These result from the OCR reading 27 as t1 or interpreting the superscript &#39;1&#39; and &#39;2&#39; from footnotes as normal digits.
+fullDates$word1[fullDates$word1 == &quot;t1&quot; ] &lt;- 27
+fullDates$word3[fullDates$word3 == &quot;13401&quot; ] &lt;- 1340
+fullDates$word3[fullDates$word3 == &quot;13402&quot; ] &lt;- 1340
+
+#In these allegations there were multiple dates and these instances were referring back to a prior date. The year was not included as it was inferred from the earlier instance. 
+fullDates$word3[fullDates$word3 == &quot;and&quot; ] &lt;- 1338
+fullDates$word3[fullDates$word3 == &quot;gilbert&quot; ] &lt;- 1338
+fullDates$word3[fullDates$word3 == &quot;to&quot; ] &lt;- 1339
+fullDates$word3[fullDates$word3 == &quot;at&quot; ] &lt;- 1330
+fullDates$word3[fullDates$word3 == &quot;paid&quot; ] &lt;- 1339
+
+#The following two commands remove rows which were incorrectly added as they interpreted personal names as months (&#39;mar&#39; for marshal or the surname &#39;la march&#39;)
+
+fullDates &lt;- fullDates %&gt;% filter(word1 !=  &quot;la&quot;)
+fullDates &lt;- fullDates %&gt;% filter(word3 !=  &quot;shal&quot;)
+
+#This looks complicated but it takes each month which converts it to a digit for calculations
+fullDates &lt;- fullDates %&gt;% mutate(word2 = case_when(word2 == &quot;january&quot; ~ &quot;01&quot;, word2 == &quot;february&quot; ~ &quot;02&quot;, word2 == &quot;march&quot; ~ &quot;03&quot;, word2 == &quot;april&quot; ~ &quot;04&quot;, word2 == &quot;may&quot; ~ &quot;05&quot;, word2 == &quot;june&quot; ~ &quot;06&quot;, word2 == &quot;july&quot; ~ &quot;07&quot;, word2 == &quot;august&quot; ~ &quot;08&quot;, word2 == &quot;september&quot; ~ &quot;09&quot;, word2 == &quot;october&quot; ~ &quot;10&quot;, word2 == &quot;november&quot; ~ &quot;11&quot;, word2 == &quot;december&quot; ~ &quot;12&quot;, word2 == &quot;jan&quot; ~ &quot;01&quot;, word2 == &quot;feb&quot; ~ &quot;02&quot;, word2 == &quot;mar&quot; ~ &quot;03&quot;, word2 == &quot;apr&quot; ~ &quot;04&quot;, word2 == &quot;may&quot; ~ &quot;05&quot;, word2 == &quot;jun&quot; ~ &quot;06&quot;, word2 == &quot;jul&quot; ~ &quot;07&quot;, word2 == &quot;aug&quot; ~ &quot;08&quot;, word2 == &quot;sep&quot; ~ &quot;09&quot;, word2 == &quot;oct&quot; ~ &quot;10&quot;, word2 == &quot;nov&quot; ~ &quot;11&quot;, word2 == &quot;dec&quot; ~ &quot;12&quot;, word2 == &quot;sept&quot; ~ &quot;09&quot;))</code></pre>
+<p>Now the cleaning process is finished I can convert the days into a format which R recognises as a date and then join the tables of exact dates to the text which contains the allegations. This is carried out by merging the data into a single column in the second line of code with <code>mutate(date = make_date(year, month, day))</code>. This takes the columns ‘year, ’month’, ‘day’ and combines them into a single column which is then converted into a date format with the <code>make_date()</code> command and places it into a new column called ‘date’.</p>
+<pre class="r"><code>#Rename columns to year, month, day
+fullDates &lt;- fullDates %&gt;% rename(day = word1, month = word2, year = word3)
+
+#Create new column with date in correct format
+fullDates &lt;- fullDates %&gt;% mutate(date = make_date(year, month, day))
+
+#Merge fullDates table with the original text
+fullDated &lt;- full_join(LincolnshireEvents, fullDates)
+
+#Finally I merge the converted regnal years, the calendar years, and allegations with precise dating to the original data which includes all allegations
+yearsDated &lt;- full_join(yearsCombined, fullDated)
+lincsEventsDated &lt;- full_join(yearsDated, LincolnshireEvents)</code></pre>
+<p>Now I have all allegations from the data set tagged which include some kind of temporal information tagged with a year at minimum and in roughly 600 instances a year, month, and day. Now we can we plot the two graphs side-by-side which shows that those allegations that were only dated by a calendar year tended to be in 1338. Why this occurs will have to wait for a more detailed analysis of the dating.</p>
+<pre class="r"><code>#Plot of regnal years and calendar years side-by-side
+lincsEventsDated %&gt;% filter(!is.na(regnalYear)) %&gt;% filter(year %in%  c(&quot;1327&quot;, &quot;1328&quot;, &quot;1329&quot;, &quot;1330&quot;, &quot;1331&quot;, &quot;1332&quot;, &quot;1333&quot;, &quot;1334&quot;, &quot;1335&quot;, &quot;1336&quot;, &quot;1337&quot;, &quot;1338&quot;, &quot;1339&quot;, &quot;1340&quot;, &quot;1341&quot;)) %&gt;% count(year, regnalYear, sort=TRUE)  %&gt;% ggplot(aes(year, n)) + geom_col(fill=&quot;#ffd700&quot;, position = &quot;dodge&quot;) + geom_text(aes(label=n), hjust=0.3, size=3.5) + ylab(NULL) + xlab(NULL) + facet_wrap(. ~regnalYear) + coord_flip() + theme_minimal()</code></pre>
+<p><img src="/portfolio/2020-08-08-mining-a-medieval-court-roll-2-dating-and-categorisation_files/figure-html/plots%20by%20side-1.png" width="672" />
+We can also plot all allegations which are dated to day, month, and year across the entirety of the court records.</p>
+<pre class="r"><code>#Convert Year into a factor
+lincsEventsDated$year &lt;- factor(lincsEventsDated$year)
+
+#Plot
+lincsEventsDated %&gt;% count(date, year, sort=TRUE) %&gt;% ggplot(aes(date)) + geom_histogram(fill=&quot;#ffd700&quot;, binwidth = 35) + ggtitle(&quot;Dates mentioned in McLane, &#39;The 1341 Royal Inquest in Lincolnshire&#39; c. 1327-1341&quot;)+ ylab(NULL) +xlab(NULL) + theme_minimal()</code></pre>
+<p><img src="/portfolio/2020-08-08-mining-a-medieval-court-roll-2-dating-and-categorisation_files/figure-html/histogram%20plot-1.png" width="672" /></p>
+<pre class="r"><code>#I did have each year labeled on the x axis but I broke it somehow. If you know how to fix it please tell me!</code></pre>
+<p>In this post I have outlined how to work with dates in several formats and add new columns to the data which can act as a tag and reveal trends. I want to point out a few things about the approach I have taken though. One problem is that each allegation might include multiple dates. In those instances I will have created duplicate entries. This isn’t a huge problem as I am interested in the focus of the court. When editing the volume McLane followed the construction of the records by the court clerks. Some individual allegations in fact contain many offences which may have occurred at different times. If I attempted to just assign a single date to each allegation I would have to exclude a lot of information. It does mean however that the data I have shown here only demonstrates the number of times that a particular date is mentioned rather than dating each allegation specifically. I learnt quite a lot and I am sure if I began again I would make some changes to the process I have outlined. I think, at times, I took several steps when only one or two were necessary. The next post will have more analysis of the work carried out here and less coding!</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>If you are interested in reading further the University of Nottingham has a good <a href="https://www.nottingham.ac.uk/manuscriptsandspecialcollections/researchguidance/datingdocuments/regnalyears.aspx">guide on regnal years</a>.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>

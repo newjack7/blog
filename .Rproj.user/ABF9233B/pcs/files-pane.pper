@@ -1,9 +1,9 @@
 {
-    "path" : "~/GitHub/blog/content/portfolio",
-    "sortOrder" : [
+    "path": "~/GitHub/lincsCategories",
+    "sortOrder": [
         {
-            "ascending" : true,
-            "columnIndex" : 2
+            "columnIndex": 2,
+            "ascending": true
         }
     ]
 }

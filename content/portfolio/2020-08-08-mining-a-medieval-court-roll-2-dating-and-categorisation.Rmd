@@ -1,5 +1,5 @@
 ---
-title: 'Mining a medieval court roll 2: Dating and Categorisation'
+title: 'Mining a medieval court roll 2: Dating'
 author: ''
 date: '2020-08-08'
 slug: minins-a-medieval-court-roll-2-dating-and-categorisation
@@ -162,7 +162,7 @@ fullDates <- trigrams_separated %>%
 
 This essentially has created a list which includes all the instances of a month being mentioned in either the long or short format. The following looks quite complicated but is rather simple. I have tried to explain the process in the comments accompanying the code. Simply put the following cleans the data by weeding out errors in the original publication, or in the OCR, or in digitising process and then converts the months from text to digits.
 ```{r cleaning dates, messages=FALSE, message=FALSE, warnings=FALSE, warning=FALSE}
-#This fixes errors which result from the formating of the original text that had no space between the comma and the digits which refer to a date eg. '1,26' rather than '1, 26'. So when it was seperated into trigrams it detected it as a single word rather than two words.
+#This fixes errors which result from the formatting of the original text that had no space between the comma and the digits which refer to a date eg. '1,26' rather than '1, 26'. So when it was separated into trigrams it detected it as a single word rather than two words.
 fullDates$word1[fullDates$word1 == "1,26" ] <- 26 
 fullDates$word1[fullDates$word1 == "186,25" ] <- 25
 fullDates$word1[fullDates$word1 == "536,4" ] <- 04

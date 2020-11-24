@@ -1,0 +1,68 @@
+---
+title: 'Mining a Medieval Court Roll 3: TF-IDF'
+author: "Jack Newman"
+date: "16/11/2020"
+output: html_document
+---
+Term frequency inverse document frequency (TF-IDF) is both a mouthful and a process often carried out as part of the text mining approach. The primary idea behind TF-IDF is to find the words which are most important for the content of each document by decreasing the weight for commonly used words and increasing the weight for words that are not used very much in a collection as a whole. Essentially it tries to find words that are important (i.e, common) in a text but not too common. For example, if there were two identical texts with only a single word difference between the two then a tf-idf approach would isolate that single word as the most important when comparing the two texts.
+
+```{r}
+library(tidyverse)
+library(tidytext)
+```
+
+```{r Term Frequency in JUST 1/521}
+lincs_words <- Lincolnshire_Tokens %>% count(Lincolnshire_ID, word, sort = TRUE)
+
+total_words <- lincs_words %>% group_by(Lincolnshire_ID) %>%  summarize(total = sum(n))
+
+lincs_words <- left_join(lincs_words, total_words)
+
+lincs_words
+```
+
+This creates a table (lincs_words) with one row for each word-allegation combination. `n` is the number of times that work is used in that particular allegation and `total` is the total number of words within that particular allegation. Above you can see the first ten rows from the resulting dataframe.
+
+```{r}
+freq_by_rank <- lincs_words %>%  group_by(Lincolnshire_ID) %>% mutate(rank = row_number(), 'term frequency' = n/total) %>%  ungroup()
+
+freq_by_rank
+```
+
+
+Now I can calculate the frequency of each term across the entire document. This is carried out by dividing `n` - which is the number of times a particular word appears in each allegation - by the total number of times that word appears in the whole court roll. Again, above is a random 10 row selection from the dataframe which results from these calculations. 
+
+```{r bind_tf_idf}
+
+lincs_tf_idf <- lincs_words %>% bind_tf_idf(word, Lincolnshire_ID, n)
+
+lincs_tf_idf
+
+```
+
+The tf_idf will be close to zero for the most common words. These are the words which appear in most allegations. From the first ten rows 'of' and 'the' are the lowest. The highest values will be those words which occur in fewer allegations.
+
+```{r}
+lincs_tf_idf %>%
+  select(-total) %>%
+  arrange(desc(tf_idf))
+
+```
+
+It is unsurprising that almost all of the words which are determined as the most important are place or personal names. A further delving shows that some occupations are also determined as important with 'fletcher' occurring twice and foodstuffs 'pork' and 'poultry'. It may be that the text within each allegation is often too small to adequately characterise using tf-idf. This text is based on a calendared edition. In other words, it has omitted much of the repetitive legalese which predominates in fourteenth century court documents (perhaps all court documents). This aids readability but might hinder analyses such as this one.
+
+```{r stop words}
+#Removes entries containing personal names, place names, digits, and common english words.
+
+stop_tf_idf <- lincs_tf_idf %>% anti_join(lincs_stop_people)
+stop_tf_idf <- stop_tf_idf %>% anti_join(lincs_stop_places)
+stop_tf_idf <- stop_tf_idf %>% filter(grepl('^\\D', word))
+stop_tf_idf <- stop_tf_idf %>% anti_join(stop_words)
+
+stop_tf_idf %>%
+  select(-total) %>%
+  arrange(desc(tf_idf))
+
+
+```
+Removing those words which refer to locations, individuals, or digits (primarily the index create by Bernard McLane the original editor) gives a word list of much more interest. This contains words which indicate a legal process such as 'maintainer' (someone who facilitates lawsuits for third parties to harass others), 'forestaller' (an individual who buys goods in anticipation of rising prices so that they might resell them at a profit.) It also includes words which are indicative of the material involved in the allegations, 'sheep', 'chickens', and professions, 'archer', 'bookbinder', 'oilmaker'. A list like this could be the beginning of a tailored classification which sought to annotate professions, evidence of the posessions of victims of crime, or the prevalence of particular types of judicial processes. I suspect that tf-idf might be even more useful when comparing between larger bodies of text such as between different courts rather than internal comparisons of the sort I have carried out here.

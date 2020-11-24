@@ -1,0 +1,57 @@
+---
+title: 'Mining a Medieval court roll 4: Topic Modelling'
+author: ''
+date: '2020-11-17'
+slug: []
+categories: []
+tags: []
+image: ''
+showonlyimage: no
+---
+
+```{r load packages}
+library(tidyverse)
+library(tidytext)
+library(broom)
+library(reshape2)
+```
+
+
+```{r Create a topic model with 8 topics}
+lincsDTM <- lincsEvents %>% select(word, lincsID, UUID)
+
+lincsEvents <- lincsDTM %>% filter(word(gsub("\\w+", "")))
+
+
+lincsDTM <- lincsDTM %>% 
+  unnest_tokens(word, QUOTE_TRANSCRIPTION) %>% 
+  count(word, lincsID) %>% 
+  cast_dtm(word, lincsID, n)
+
+lincsLDA <- LDA(lincsDTM, k = 8, control = list(seed = 1234))
+```
+
+
+```{r create and view the topic models}
+lincsTopics <- tidy(lincsLDA, matrix = "beta")
+lincsTopics
+```
+
+```{r visualise the topics}
+
+lincs_top_terms <- lincsTopics %>%
+  group_by(topic) %>%
+  top_n(10, beta) %>%
+  ungroup() %>%
+  arrange(topic, -beta)
+
+lincs_top_terms %>%
+  mutate(term = reorder_within(term, beta, topic)) %>%
+  ggplot(aes(beta, term, fill = factor(topic))) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~ topic, scales = "free") +
+  scale_y_reordered()
+
+
+```
+

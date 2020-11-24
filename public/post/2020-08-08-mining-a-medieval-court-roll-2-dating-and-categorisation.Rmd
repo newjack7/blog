@@ -1,5 +1,5 @@
 ---
-title: 'Mining a medieval court roll 2: Dating and Categorisation'
+title: 'Mining a medieval court roll 2: Dating'
 author: ''
 date: '2020-08-08'
 slug: mining-a-medieval-court-roll-2-dating-and-categorisation

@@ -1,0 +1,142 @@
+---
+title: 'Mining a Medieval Court Roll 5: Relationships between words'
+author: ''
+date: '2020-11-18'
+slug: []
+categories: []
+tags: []
+image: ''
+showonlyimage: no
+---
+```{r include=FALSE}
+library(dplyr)
+library(tidyr)
+library(tidytext)
+library(ggplot2)
+library(igraph)
+library(ggraph)
+library(stringr)
+```
+
+
+In this post I want to visualise the connections between words. This will give an indication of the most commonly used phrases. To do this I first need to split the text into bigrams (two word pairings) and trigrams (three word pairings).
+
+```{r include=FALSE}
+
+#These are the functions created in the Tidy Text Textbook for creating bigrams and visualising them.
+count_bigrams <- function(dataset) {
+  dataset %>%
+    unnest_tokens(bigram, text, token = "ngrams", n = 2) %>%
+    separate(bigram, c("word1", "word2"), sep = " ") %>%
+    filter(!word1 %in% stop_words$word,
+           !word2 %in% stop_words$word) %>%
+    count(word1, word2, sort = TRUE)
+}
+
+visualize_bigrams <- function(bigrams) {
+  set.seed(2016)
+  a <- grid::arrow(type = "closed", length = unit(.15, "inches"))
+  
+  bigrams %>%
+    graph_from_data_frame() %>%
+    ggraph(layout = "fr") +
+    geom_edge_link(aes(edge_alpha = n), show.legend = FALSE, arrow = a) +
+    geom_node_point(color = "lightblue", size = 5) +
+    geom_node_text(aes(label = name), vjust = 1, hjust = 1) +
+    theme_void()
+}
+```
+
+Firstly need to create the bigrams.
+
+```{r}
+#Filters out the text so we just have text from the allegations (this column also contains information about people and places)
+lincsEvents <- lincsOCR %>% filter(TYPE == 'EVENT') %>% select(UUID, QUOTE_TRANSCRIPTION)
+
+#Extract the first word from each allegation and places it in a new column called 'lincsID' to act as an index to the original text
+lincsEvents <- lincsEvents %>% mutate(lincsID = (str_extract(QUOTE_TRANSCRIPTION, "\\w+")))
+
+#To check that all details from the volume has arrived properly. This checks that all the words extracted are the digits between 1 to 1230. Any missing values will be returned if there is an error. If all are present and correct then it should return integer(0).
+missingIDS <- setdiff(1:1230, lincsEvents$lincsID)
+missingIDS
+
+#Next to create the bi-grams
+lincsBigrams <- lincsEvents %>% unnest_tokens(bigram, QUOTE_TRANSCRIPTION, token = "ngrams", n = 2)
+
+#Ordered by frequency 
+lincsBigrams %>% count(bigram, sort = TRUE)
+
+#Removal of Stop words
+lincsBigrams <- lincsBigrams %>% separate(bigram, c("word1", "word2"), sep = " ")
+#Filtered for stop words
+lincsBigrams <- lincsBigrams %>%
+  filter(!word1 %in% stop_words$word) %>%
+  filter(!word2 %in% stop_words$word) %>% 
+  filter(!word1 %in% lincs_stop_words$word) %>%
+  filter(!word2 %in% lincs_stop_words$word)
+
+#Remove all digits
+lincsBigrams <- lincsBigrams %>% filter(grepl('^\\D', word1))
+lincsBigrams <- lincsBigrams %>% filter(grepl('^\\D', word2))
+#New counts based on frequency
+lincsBigrams %>% count(word1, word2, sort = TRUE)
+
+#Finally I reunite the two columns for purposes of later analyses
+bigramUnited <- lincsBigrams %>% unite(bigram, word1, word2, sep = " ")
+
+bigramUnited
+
+```
+
+We can visualise this to get an idea of how many two-word pairings there are and how 
+
+```{r}
+bigramCount <- bigramUnited %>% 
+  group_by(bigram)  %>% 
+  count(bigram, sort = TRUE) %>% 
+  summarize(total = sum(n)) 
+
+bigramCount
+
+ggplot(bigramCount, aes(total)) + geom_histogram(fill="#ffd700", binwidth = 0.75, bins = 100) + theme_minimal()
+
+
+```
+
+
+
+Next, I want to create the tri-grams which are three word pairings. The process is basically the same with a few key differences.
+
+```{r}
+#Create tri-grams
+lincsTrigrams <- lincsEvents %>% unnest_tokens(trigram, QUOTE_TRANSCRIPTION, token = "ngrams", n = 3)
+
+# Split the text into three columns based on the spaces between words
+lincsTrigrams <- lincsTrigrams %>% separate(trigram, c("word1", "word2", "word3"), sep = " ")
+
+#Filtered for stop words
+lincsTrigrams <- lincsTrigrams %>%
+  filter(!word1 %in% stop_words$word) %>%
+  filter(!word2 %in% stop_words$word) %>% 
+  filter(!word3 %in% stop_words$word) %>% 
+  filter(!word1 %in% lincs_stop_words$word) %>%
+  filter(!word2 %in% lincs_stop_words$word) %>% 
+  filter(!word3 %in% lincs_stop_words$word) 
+
+#Remove all digits
+lincsTrigrams <- lincsTrigrams %>% filter(grepl('^\\D', word1))
+lincsTrigrams <- lincsTrigrams %>% filter(grepl('^\\D', word2))
+lincsTrigrams <- lincsTrigrams %>% filter(grepl('^\\D', word3))
+
+lincsTrigrams %>% count(word1, word2, word3, sort = TRUE)
+
+#Finally I reunite the two columns for purposes of later analyses
+Trigram_united <- lincsTrigrams %>% unite(Trigram, word1, word2, word3, sep = " ")
+```
+
+Once stop words and digits are removed the most common occurrence is Roger de Woolsthorpe, Henry de Tideswell, and Thomas de Strouston. They were wool collectors who often acted together. If I had split by quad-grams then it would also have included Robert de Assheburne.
+
+```{r}
+lincsTrigrams %>% filter(word1 == "roger", word2 == "henry", word3 == "thomas")
+
+```
