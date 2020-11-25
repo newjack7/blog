@@ -7,6 +7,9 @@ categories: []
 tags: []
 image: ''
 showonlyimage: no
+editor_options: 
+  markdown: 
+    wrap: sentence
 ---
 
 ```{r load packages}
@@ -16,21 +19,22 @@ library(broom)
 library(reshape2)
 ```
 
+This code firstly takes three columns `word`, `lincsID` and `UUID` from the dataframe `lincsEvents` and creates a new dataframe called `lincsDTM`.
+These are columns which contain the text from the Lincoln Records Seociety volume (`word`), the original reference provided by McLane (`lincsID`) and a unique identifier which I created when I annotated the text originally (`UUID`).
+The following code firstly deletes the first word in the column `word`.
+This is because it simply contains the same information as the `lincsID` column.
+I then renamed the column `word` to `allegation` as it is more reflective of the content and then I split the text into one word per row which means I can cast the dataframe into a Document Term Matrix (DTM).
+This is the format which the data must be in for topic modelling.
+The final two sections cast it into a DTM and then create the topic model for six topics.
 
-```{r Create a topic model with 8 topics}
-lincsDTM <- lincsEvents %>% select(word, lincsID, UUID)
-
-lincsEvents <- lincsDTM %>% filter(word(gsub("\\w+", "")))
-
-
-lincsDTM <- lincsDTM %>% 
-  unnest_tokens(word, QUOTE_TRANSCRIPTION) %>% 
+```{r Cast into DTM and then run the topic model}
+lincsDTM <- lincsTotalTidy %>% 
+  select(word, lincsID) %>% 
   count(word, lincsID) %>% 
   cast_dtm(word, lincsID, n)
 
-lincsLDA <- LDA(lincsDTM, k = 8, control = list(seed = 1234))
+lincsLDA <- LDA(lincsDTM, k = 10, control = list(seed = 1234))
 ```
-
 
 ```{r create and view the topic models}
 lincsTopics <- tidy(lincsLDA, matrix = "beta")
@@ -39,12 +43,15 @@ lincsTopics
 
 ```{r visualise the topics}
 
+#Creates List of top terms that belong to each topic
+
 lincs_top_terms <- lincsTopics %>%
   group_by(topic) %>%
   top_n(10, beta) %>%
   ungroup() %>%
   arrange(topic, -beta)
 
+#Visualises the top terms
 lincs_top_terms %>%
   mutate(term = reorder_within(term, beta, topic)) %>%
   ggplot(aes(beta, term, fill = factor(topic))) +
@@ -52,6 +59,125 @@ lincs_top_terms %>%
   facet_wrap(~ topic, scales = "free") +
   scale_y_reordered()
 
+#write.csv(lincs_top_terms, "C:\\Users\\Jack\\Documents\\GitHub\\blog\\Lincolnshire csv Data\\topicModeltop20.csv")
 
 ```
 
+I need to test these terms to see if I agree with the topics and if I need to adjust the number of topics up or down from six.
+So first I will create a new table which contains the topics, the ID from McLane, and the text of the allegations.
+That way I can determine if they belong together.
+
+```{r create variables}
+lincs_top_terms <- lincs_top_terms %>% rename(lincsID = term)
+
+#Create Dataframes for each topic
+topicOne <- lincs_top_terms %>% filter(topic == 1)
+topicTwo <- lincs_top_terms %>% filter(topic == 2)
+topicThree <- lincs_top_terms %>% filter(topic == 3)
+topicFour <- lincs_top_terms %>% filter(topic == 4)
+topicFive <- lincs_top_terms %>% filter(topic == 5)
+topicSix <- lincs_top_terms %>% filter(topic == 6)
+topicSeven <- lincs_top_terms %>% filter(topic == 7)
+topicEight <- lincs_top_terms %>% filter(topic == 8)
+topicNine <- lincs_top_terms %>% filter(topic == 9)
+topicTen <- lincs_top_terms %>% filter(topic == 10)
+
+#Now I want to join all of these to the allegations so I can read them easily in one place
+topicOne <- topicOne %>% inner_join(lincsEvents)
+#Remove the Duplicates
+topicOne <-  topicOne[!duplicated(topicOne$lincsID), ]
+
+#Repeat for each topic
+topicTwo <- topicTwo %>% inner_join(lincsEvents)
+topicTwo <-  topicTwo[!duplicated(topicTwo$lincsID), ]
+
+topicThree <- topicThree %>% inner_join(lincsEvents)
+topicThree <-  topicThree[!duplicated(topicThree$lincsID), ]
+
+topicFour <- topicFour %>% inner_join(lincsEvents)
+topicFour <-  topicFour[!duplicated(topicFour$lincsID), ]
+
+topicFive <- topicFive %>% inner_join(lincsEvents)
+topicFive <-  topicFive[!duplicated(topicFive$lincsID), ]
+
+topicSix <- topicSix %>% inner_join(lincsEvents)
+topicSix <-  topicSix[!duplicated(topicSix$lincsID), ]
+
+topicSeven <- topicSeven %>% inner_join(lincsEvents)
+topicSeven <-  topicSeven[!duplicated(topicSeven$lincsID), ]
+
+
+topicEight <- topicEight %>% inner_join(lincsEvents)
+topicEight <-  topicEight[!duplicated(topicEight$lincsID), ]
+
+topicNine <- topicNine %>% inner_join(lincsEvents)
+topicNine <-  topicNine[!duplicated(topicNine$lincsID), ]
+
+topicTen <- topicTen %>% inner_join(lincsEvents)
+topicTen <-  topicTen[!duplicated(topicTen$lincsID), ]
+
+
+#Join all the dataframes together
+topics <- do.call("rbind", list(topicOne, topicTwo, topicThree, topicFour, topicFive, topicSix, topicSeven, topicEight, topicNine, topicTen))
+  
+  
+#I write the result to CSV so I can read it more easily
+write.csv(topics, "C:\\Users\\Jack\\Documents\\GitHub\\blog\\Lincolnshire csv Data\\topics.csv")
+
+```
+
+**Topic one**
+
+The first topic is entirely related to the theft of foodstuff and one allegation of forestalling.
+A practice common today and known in North America as scalping for some reason.
+
+**Topic two**
+
+The ten most common allegations in topic two relate to the extortion by royal officials.
+Primarily tax collectors there is also one charge against a sequestrator of the bishop of Lincoln and one against the keepers of the king's horses.
+
+**Topic three**
+
+Topic three is particularly morbid and is taken up with assaults, murders, and three charges that coroners failed to do their duty concerning the viewing or burial of bodies.
+
+**Topic four**
+
+The fourth topic is associated with large scale, usually public, violence.
+The first eight charges all relate to allegations of violence against large groups of individuals within Lincoln.
+This is connected with a seeming feud between the town officials and Thomas Carlton an under-sheriff and former clerk of the town who at one point stole the town seal, ejected the mayor, issued his own members for parliament, rescued a friend from captivity by the king, and finally attacked the bailiffs of this same court and stole the list of fines.
+It is satisfying that these crimes were grouped together even though the names, dates, and locations were removed from the analysis.
+
+**Topic five**
+
+This contains four written bills of complaint.
+These were fairly unusual as most complaints made to the court were oral.
+The rest related to crimes of conspiracy or others connected with legal or administrative offences.
+
+**Topic six**
+
+Entirely connected to the crimes of wool collectors.
+
+**Topic seven**
+
+Escheators, archdeacons, vicars, and commissaries are grouped together in topic seven.
+Most of the crimes relate to seizure or theft of items or withholding of services.
+They may have been grouped as the charges tend to be longer and more formulaic.
+The model placed them with the commission which is essentially a long list of officials.
+It may be worthwhile running the model with this charge excluded.
+
+**Topic eight**
+
+Again relates entirely to the crimes of wool collectors.
+Particularly those which state the wool was kept for personal use and did not go to the king or was not paid for.
+The distinction between topic six and topic eight appears to reflect a distinction in scribal practice as many of the charges are consecutive.
+
+**Topic nine**
+
+This selected gaol delivery hearings - essentially the sessions in which the justices decided guilt or innocence and passed sentence.
+It also contains allegations against bailiffs and sheriffs.
+These were likely grouped as the sheriff was responsible for bringing and removing the prisoners during the gaol delivery hearings.
+It seems to be capturing the legal process and complaints about the legal process.
+
+**Topic ten**
+
+These relate entirely to jury decisions

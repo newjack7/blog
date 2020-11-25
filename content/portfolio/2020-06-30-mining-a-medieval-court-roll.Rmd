@@ -30,11 +30,11 @@ I used the text editor to check the automated tagging, which required some corre
 ```{r eval=FALSE}
 #Filters out all non 'Event' data
 
-Lincolnshire_Text <- filter(LincolnshireOCR, TYPE == 'EVENT')
+#lincsEvents <- filter(LincsOCR, TYPE == 'EVENT')
 
 #Tokenizes the text
 
-Lincolnshire_Text %>% unnest_tokens(word, 'QUOTE_TRANSCRIPTION')
+lincsEventsTokens <- lincsEvents %>% unnest_tokens(allegation, allegation)
 
 ```
 
@@ -46,7 +46,7 @@ Luckily Bernard McLane labelled each entry on the court roll with a unique ID. I
 #Unstopped plot
 
 
-Lincolnshire_Tokens %>% count(word, sort = TRUE) %>% filter(n > 200) %>% mutate(word = reorder(word,n)) %>% ggplot(aes(word, n)) + geom_col(fill="#ffd700") + xlab(NULL) + coord_flip() + theme_minimal()
+lincsEventsTokens %>% count(allegation, sort = TRUE) %>% filter(n > 200) %>% mutate(allegation = reorder(allegation, n)) %>% ggplot(aes(allegation, n)) + geom_col(fill="#ffd700") + xlab(NULL) + coord_flip() + theme_minimal()
 
 ```
 
@@ -55,14 +55,16 @@ Lincolnshire_Tokens %>% count(word, sort = TRUE) %>% filter(n > 200) %>% mutate(
 This plot only shows those words with a frequency of 200 or greater. An immediate problem is the prevalence of the most common words. Luckily this is an easy fix. Using the `anti_join(stop_words)` command we can remove these common words. This is a collection of frequently used English words and it was here I found myself particularly grateful that Dr McLane translated the records. There are of course equivalent versions for other languages although none, as far as I am aware, for medieval British Latin. Once these words are removed the plot looks quite different but no more useful.
 
 ```{r eval=FALSE}
+#rename `allegation` to `word` for anti_join
+lincsEventsTokens <- lincsEventsTokens %>% rename(word = allegation)
 #Removing 'stop words' 
-Lincolnshire_Stopped <- Lincolnshire_Tokens %>% anti_join(stop_words)
+lincsStopped <- lincsEventsTokens %>% anti_join(stop_words)
 
 ```
 
 ```{r }
 #Data with stop words removed and plot >200
-Lincolnshire_Stopped %>% count(word, sort = TRUE) %>% filter(n > 200) %>% mutate(word = reorder(word,n)) %>% ggplot(aes(word, n)) + geom_col(fill="#ffd700") + xlab(NULL) + coord_flip() + theme_minimal()
+lincsStopped %>% count(word, sort = TRUE) %>% filter(n > 200) %>% mutate(word = reorder(word,n)) %>% ggplot(aes(word, n)) + geom_col(fill="#ffd700") + xlab(NULL) + coord_flip() + theme_minimal()
 ```
 
 
@@ -70,16 +72,16 @@ Applying the stop_words data takes the count of unique tokens down to 4,472. The
 
 ```{r eval=FALSE}
 #Create a list of Personal names from the original data
-lincs_people <- filter(LincolnshireOCR, TYPE == "PERSON")
+lincs_people <- filter(lincsOCR, TYPE == "PERSON")
 
 #Select desired columns from original text
-lincs_stop_people <- lincs_people %>% select(QUOTE_TRANSCRIPTION, TYPE)
+lincs_stop_people <- lincs_people %>% select(QUOTE_TRANSCRIPTION, TYPE, UUID)
 
 #Unnest Tokens
 lincs_stop_people <- lincs_stop_people %>% unnest_tokens(word, QUOTE_TRANSCRIPTION)
 
 #Removing Personal name using anti_join()
-lincs_people_stopped <- Lincolnshire_Stopped %>% anti_join(lincs_stop_people)
+lincs_people_stopped <- lincsStopped %>% anti_join(lincs_stop_people)
 ```
 
 
