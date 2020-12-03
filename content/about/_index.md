@@ -3,7 +3,7 @@ date: "2020-06-19T22:55:33+00:00"
 title: About
 ---
 
-*All content on this site is in various states progress or abandonment*
+*All content on this site is in various states of progress or abandonment*
 
 ## About me
 
