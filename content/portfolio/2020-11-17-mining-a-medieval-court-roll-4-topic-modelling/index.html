@@ -1,0 +1,172 @@
+---
+title: 'Mining a Medieval court roll 4: Topic Modelling'
+author: 'Jack Newman'
+date: '2020-11-17'
+slug: Text Mining
+categories: Text Mining
+tags:
+- Medieval History
+- Text Mining
+- Local History
+image: ''
+showonlyimage: no
+editor_options: 
+  markdown: 
+    wrap: sentence
+---
+
+<script src="index_files/header-attrs/header-attrs.js"></script>
+<link href="index_files/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="index_files/anchor-sections/anchor-sections.js"></script>
+
+
+<p>This code firstly takes three columns <code>word</code>, <code>lincsID</code> and <code>UUID</code> from the dataframe <code>lincsEvents</code> and creates a new dataframe called <code>lincsDTM</code>.
+These are columns which contain the text from the Lincoln Records Society volume (<code>word</code>), the original reference provided by McLane (<code>lincsID</code>) and a unique identifier which I created when I annotated the text originally (<code>UUID</code>).
+The following code firstly deletes the first word in the column <code>word</code>.
+This is because it simply contains the same information as the <code>lincsID</code> column.
+I then renamed the column <code>word</code> to <code>allegation</code> as it is more reflective of the content and then I split the text into one word per row which means I can cast the dataframe into a Document Term Matrix (DTM).
+This is the format which the data must be in for topic modelling.
+The final two sections cast it into a DTM and then create the topic model for six topics.</p>
+<pre class="r"><code>lincsDTM &lt;- lincsTotalTidy %&gt;% 
+  select(word, lincsID) %&gt;% 
+  count(word, lincsID) %&gt;% 
+  cast_dtm(word, lincsID, n)
+
+lincsLDA &lt;- LDA(lincsDTM, k = 10, control = list(seed = 1234))</code></pre>
+<pre class="r"><code>lincsTopics &lt;- tidy(lincsLDA, matrix = &quot;beta&quot;)
+lincsTopics</code></pre>
+<pre><code>## # A tibble: 12,290 x 3
+##    topic term      beta
+##    &lt;int&gt; &lt;chr&gt;    &lt;dbl&gt;
+##  1     1 1085  2.37e-32
+##  2     2 1085  8.26e-40
+##  3     3 1085  3.37e-32
+##  4     4 1085  1.77e-38
+##  5     5 1085  1.40e-19
+##  6     6 1085  7.14e- 7
+##  7     7 1085  2.82e-22
+##  8     8 1085  1.84e-72
+##  9     9 1085  8.47e-57
+## 10    10 1085  9.03e- 3
+## # ... with 12,280 more rows</code></pre>
+<pre class="r"><code>#Creates List of top terms that belong to each topic
+
+lincs_top_terms &lt;- lincsTopics %&gt;%
+  group_by(topic) %&gt;%
+  top_n(10, beta) %&gt;%
+  ungroup() %&gt;%
+  arrange(topic, -beta)
+
+#Visualises the top terms
+lincs_top_terms %&gt;%
+  mutate(term = reorder_within(term, beta, topic)) %&gt;%
+  ggplot(aes(beta, term, fill = factor(topic))) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~ topic, scales = &quot;free&quot;) +
+  scale_y_reordered()</code></pre>
+<p><img src="index_files/figure-html/visualise%20the%20topics-1.png" width="672" /></p>
+<pre class="r"><code>#write.csv(lincs_top_terms, &quot;C:\\Users\\Jack\\Documents\\GitHub\\blog\\Lincolnshire csv Data\\topicModeltop20.csv&quot;)</code></pre>
+<p>I need to test these terms to see if I agree with the topics and if I need to adjust the number of topics up or down from six.
+So first I will create a new table which contains the topics, the ID from McLane, and the text of the allegations.
+That way I can determine if they belong together.</p>
+<pre class="r"><code>lincs_top_terms &lt;- lincs_top_terms %&gt;% rename(lincsID = term)
+
+#Create Dataframes for each topic
+topicOne &lt;- lincs_top_terms %&gt;% filter(topic == 1)
+topicTwo &lt;- lincs_top_terms %&gt;% filter(topic == 2)
+topicThree &lt;- lincs_top_terms %&gt;% filter(topic == 3)
+topicFour &lt;- lincs_top_terms %&gt;% filter(topic == 4)
+topicFive &lt;- lincs_top_terms %&gt;% filter(topic == 5)
+topicSix &lt;- lincs_top_terms %&gt;% filter(topic == 6)
+topicSeven &lt;- lincs_top_terms %&gt;% filter(topic == 7)
+topicEight &lt;- lincs_top_terms %&gt;% filter(topic == 8)
+topicNine &lt;- lincs_top_terms %&gt;% filter(topic == 9)
+topicTen &lt;- lincs_top_terms %&gt;% filter(topic == 10)
+
+#Now I want to join all of these to the allegations so I can read them easily in one place
+topicOne &lt;- topicOne %&gt;% inner_join(lincsEvents)</code></pre>
+<pre><code>## Joining, by = &quot;lincsID&quot;</code></pre>
+<pre class="r"><code>#Remove the Duplicates
+topicOne &lt;-  topicOne[!duplicated(topicOne$lincsID), ]
+
+#Repeat for each topic
+topicTwo &lt;- topicTwo %&gt;% inner_join(lincsEvents)</code></pre>
+<pre><code>## Joining, by = &quot;lincsID&quot;</code></pre>
+<pre class="r"><code>topicTwo &lt;-  topicTwo[!duplicated(topicTwo$lincsID), ]
+
+topicThree &lt;- topicThree %&gt;% inner_join(lincsEvents)</code></pre>
+<pre><code>## Joining, by = &quot;lincsID&quot;</code></pre>
+<pre class="r"><code>topicThree &lt;-  topicThree[!duplicated(topicThree$lincsID), ]
+
+topicFour &lt;- topicFour %&gt;% inner_join(lincsEvents)</code></pre>
+<pre><code>## Joining, by = &quot;lincsID&quot;</code></pre>
+<pre class="r"><code>topicFour &lt;-  topicFour[!duplicated(topicFour$lincsID), ]
+
+topicFive &lt;- topicFive %&gt;% inner_join(lincsEvents)</code></pre>
+<pre><code>## Joining, by = &quot;lincsID&quot;</code></pre>
+<pre class="r"><code>topicFive &lt;-  topicFive[!duplicated(topicFive$lincsID), ]
+
+topicSix &lt;- topicSix %&gt;% inner_join(lincsEvents)</code></pre>
+<pre><code>## Joining, by = &quot;lincsID&quot;</code></pre>
+<pre class="r"><code>topicSix &lt;-  topicSix[!duplicated(topicSix$lincsID), ]
+
+topicSeven &lt;- topicSeven %&gt;% inner_join(lincsEvents)</code></pre>
+<pre><code>## Joining, by = &quot;lincsID&quot;</code></pre>
+<pre class="r"><code>topicSeven &lt;-  topicSeven[!duplicated(topicSeven$lincsID), ]
+
+
+topicEight &lt;- topicEight %&gt;% inner_join(lincsEvents)</code></pre>
+<pre><code>## Joining, by = &quot;lincsID&quot;</code></pre>
+<pre class="r"><code>topicEight &lt;-  topicEight[!duplicated(topicEight$lincsID), ]
+
+topicNine &lt;- topicNine %&gt;% inner_join(lincsEvents)</code></pre>
+<pre><code>## Joining, by = &quot;lincsID&quot;</code></pre>
+<pre class="r"><code>topicNine &lt;-  topicNine[!duplicated(topicNine$lincsID), ]
+
+topicTen &lt;- topicTen %&gt;% inner_join(lincsEvents)</code></pre>
+<pre><code>## Joining, by = &quot;lincsID&quot;</code></pre>
+<pre class="r"><code>topicTen &lt;-  topicTen[!duplicated(topicTen$lincsID), ]
+
+
+#Join all the dataframes together
+topics &lt;- do.call(&quot;rbind&quot;, list(topicOne, topicTwo, topicThree, topicFour, topicFive, topicSix, topicSeven, topicEight, topicNine, topicTen))
+  
+  
+#I write the result to CSV so I can read it more easily
+write.csv(topics, &quot;C:\\Users\\Jack\\Documents\\GitHub\\blog\\Lincolnshire csv Data\\topics.csv&quot;)</code></pre>
+<p><strong>Topic one</strong></p>
+<p>The first topic is entirely related to the theft of foodstuff and one allegation of forestalling.
+A practice common today and known in North America as scalping for some reason.</p>
+<p><strong>Topic two</strong></p>
+<p>The ten most common allegations in topic two relate to the extortion by royal officials.
+Primarily tax collectors there is also one charge against a sequestrator of the bishop of Lincoln and one against the keepers of the king’s horses.</p>
+<p><strong>Topic three</strong></p>
+<p>Topic three is particularly morbid and is taken up with assaults, murders, and three charges that coroners failed to do their duty concerning the viewing or burial of bodies.</p>
+<p><strong>Topic four</strong></p>
+<p>The fourth topic is associated with large scale, usually public, violence.
+The first eight charges all relate to allegations of violence against large groups of individuals within Lincoln.
+This is connected with a seeming feud between the town officials and Thomas Carlton an under-sheriff and former clerk of the town who at one point stole the town seal, ejected the mayor, issued his own members for parliament, rescued a friend from captivity by the king, and finally attacked the bailiffs of this same court and stole the list of fines.
+It is satisfying that these crimes were grouped together even though the names, dates, and locations were removed from the analysis.</p>
+<p><strong>Topic five</strong></p>
+<p>This contains four written bills of complaint.
+These were fairly unusual as most complaints made to the court were oral.
+The rest related to crimes of conspiracy or others connected with legal or administrative offences.</p>
+<p><strong>Topic six</strong></p>
+<p>Entirely connected to the crimes of wool collectors.</p>
+<p><strong>Topic seven</strong></p>
+<p>Escheators, archdeacons, vicars, and commissaries are grouped together in topic seven.
+Most of the crimes relate to seizure or theft of items or withholding of services.
+They may have been grouped as the charges tend to be longer and more formulaic.
+The model placed them with the commission which is essentially a long list of officials.
+It may be worthwhile running the model with this charge excluded.</p>
+<p><strong>Topic eight</strong></p>
+<p>Again relates entirely to the crimes of wool collectors.
+Particularly those which state the wool was kept for personal use and did not go to the king or was not paid for.
+The distinction between topic six and topic eight appears to reflect a distinction in scribal practice as many of the charges are consecutive.</p>
+<p><strong>Topic nine</strong></p>
+<p>This selected gaol delivery hearings - essentially the sessions in which the justices decided guilt or innocence and passed sentence.
+It also contains allegations against bailiffs and sheriffs.
+These were likely grouped as the sheriff was responsible for bringing and removing the prisoners during the gaol delivery hearings.
+It seems to be capturing the legal process and complaints about the legal process.</p>
+<p><strong>Topic ten</strong></p>
+<p>These relate entirely to jury decisions.</p>

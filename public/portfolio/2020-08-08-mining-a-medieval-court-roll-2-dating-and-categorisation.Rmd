@@ -1,8 +1,8 @@
 ---
 title: 'Mining a medieval court roll 2: Dating'
-author: ''
+author: 'Jack Newman'
 date: '2020-08-08'
-slug: minins-a-medieval-court-roll-2-dating-and-categorisation
+slug: mining-a-medieval-court-roll-2-dating
 categories: []
 tags: []
 image: img/histogram.png
@@ -15,10 +15,8 @@ library(tidyverse)
 library(tidytext)
 library(lubridate)
 
-setwd("C:/Users/Jack/Documents/GitHub/bi-grams")
-load(".Rdata")
 ```
-
+Testing.
 
 The previous post was spent outlining the basics of text mining and exploring some possible avenues for analysis. I learnt a lot in the process and hopefully was able to convey at least some of the potential for digital exploitation of historic texts. In this post I want to label each offence with as precise a date as possible and also assigning some basic categories to the allegations. I can do the first by extracting days, month, or years from the text to new columns and the pairing these with the original text. Essentially this approach breaks the text of the trials into smaller observations which are then filtered according to particular criteria, in this case, dates. This list is then appended to the original text which will give each allegation a modern, machine readable date. 
 
@@ -31,12 +29,20 @@ Initially, assigning years to each allegation is a fairly straightforward proces
 
 #In this command I create a filter which extracts allegations with at least a year mentioned. This creates a table of allegations which include a year.
 
-yearsCount <- Lincolnshire_Tokens %>% 
+yearsCount <- lincsEventsTokens %>% 
   filter(word %in% c("1327", "1328", "1329", "1330", "1331", "1332", "1333", "1334", "1335", "1336", "1337", "1338", "1339", "1340", "1341")) %>% count(word, sort = TRUE)
 
 # This plot shows which years are most commonly mentioned in the allegations
 
-plot1Year <- yearsCount %>% ggplot(aes(word, n)) + geom_col(fill="#ffd700", position = "dodge") + geom_text(aes(label=n), hjust=-0.3, size=3.5) + ggtitle("Frequency of allegations by year in TNA JUST 1/521")+ ylab(NULL) + xlab(NULL) + coord_flip() + theme_minimal()
+plot1Year <- yearsCount %>% 
+  ggplot(aes(word, n)) + 
+  geom_col(fill="#ffd700", position = "dodge") + 
+  geom_text(aes(label=n), hjust=-0.3, size=3.5) + 
+  ggtitle("Frequency of allegations by year in TNA JUST 1/521") + 
+  ylab(NULL) + 
+  xlab(NULL) + 
+  coord_flip() + 
+  theme_minimal()
 
 plot1Year
 
@@ -51,8 +57,8 @@ Firstly, I break the text into two-word pairings (bi-grams) using `unnest_tokens
 ```{r bigrams and filter, messages=FALSE, message=FALSE, warnings=FALSE, warning=FALSE}
 #First I have to break the corpus into bigrams (two word pairings)
 
-lincs_bigrams <- LincolnshireEvents %>%
-  unnest_tokens(bigram, QUOTE_TRANSCRIPTION, token = "ngrams", n = 2)
+lincs_bigrams <- lincsEvents %>%
+  unnest_tokens(bigram, word, token = "ngrams", n = 2)
 
 #In order to extract the regnal years however I need to split this text into two columns which I can filter
 bigrams_separated <- lincs_bigrams %>%
@@ -99,7 +105,16 @@ regYears_count <- regYears_united %>%
 
 #Plot of regnal years sorted chronologically
 
-plotRegnal <- regYears_count %>% mutate(bigram = fct_relevel(bigram, '1 edward', '2 edward', '3 edward', '4 edward', '5 edward', '6 edward', '7 edward', '8 edward', '9 edward', '10 edward', '11 edward', '12 edward', '13 edward', '14 edward')) %>%  ggplot(aes(bigram, n)) + geom_col(fill="#ffd700", position = "dodge") + geom_text(aes(label=n), hjust=-0.3, size=3.5) + ggtitle("Count of regnal years in TNA JUST 1/521")+ ylab(NULL) + xlab(NULL) + coord_flip() + theme_minimal()
+plotRegnal <- regYears_count %>% 
+  mutate(bigram = fct_relevel(bigram, '1 edward', '2 edward', '3 edward', '4 edward', '5 edward', '6 edward', '7 edward', '8 edward', '9 edward', '10 edward', '11 edward', '12 edward', '13 edward', '14 edward')) %>%  
+  ggplot(aes(bigram, n)) + 
+  geom_col(fill="#ffd700", position = "dodge") + 
+  geom_text(aes(label=n), hjust=-0.3, size=3.5) + 
+  ggtitle("Count of regnal years in TNA JUST 1/521") + 
+  ylab(NULL) + 
+  xlab(NULL) + 
+  coord_flip() + 
+  theme_minimal()
 
 plotRegnal
 
@@ -107,7 +122,8 @@ plotRegnal
 Next I appended the corpus to tag each allegation with a regnal year and converted them to calendar years.
 ```{r Converting Regnal Years and appending them to data, messages=FALSE, message=FALSE, warnings=FALSE, warning=FALSE}
 #Convert Regnal Yearls to calendar year
-regYears_converted <-  regYears_united %>% mutate(bigram = case_when(bigram == "1 edward" ~ "1327", bigram == "2 edward" ~ "1328", bigram == "3 edward" ~ "1329", bigram == "4 edward" ~ "1330", bigram == "5 edward" ~ "1331", bigram == "6 edward" ~ "1332", bigram == "7 edward" ~ "1333", bigram == "8 edward" ~ "1334", bigram == "9 edward" ~ "1335", bigram == "10 edward" ~ "1336", bigram == "11 edward" ~ "1337", bigram == "12 edward" ~ "1338", bigram == "13 edward" ~ "1339", bigram == "14 edward" ~ "1340"))
+regYears_converted <-  regYears_united %>% 
+  mutate(bigram = case_when(bigram == "1 edward" ~ "1327", bigram == "2 edward" ~ "1328", bigram == "3 edward" ~ "1329", bigram == "4 edward" ~ "1330", bigram == "5 edward" ~ "1331", bigram == "6 edward" ~ "1332", bigram == "7 edward" ~ "1333", bigram == "8 edward" ~ "1334", bigram == "9 edward" ~ "1335", bigram == "10 edward" ~ "1336", bigram == "11 edward" ~ "1337", bigram == "12 edward" ~ "1338", bigram == "13 edward" ~ "1339", bigram == "14 edward" ~ "1340"))
 
 #Rename column to match for merging
 regYears_converted <- regYears_converted %>% rename(year = bigram)
@@ -130,12 +146,20 @@ Now I have converted the regnal dates I can join this table to the earlier table
 #Merge of the converted regnal years and the calendar years
 yearsCombined<- full_join(years, regnalTagged)
 
+
 ```
 
 This is a plot of the count of the merged table, which includes both regnal and calendar years. It shows the preponderance of charges in 1338 which probably relates to the wool levy. This was used to fund the early phases of the war with the French crown which later became known as The Hundred Years War. The small number of mentions in 1341 relate to the business of the court or offences that 
 
 ```{r merged plot count}
-yearsJoincount %>% ggplot(aes(word, n)) + geom_col(fill="#ffd700", position = "dodge") + geom_text(aes(label=n), hjust=-0.3, size=3.5) + ggtitle("Frequency of allegations by year in TNA JUST 1/521")+ ylab(NULL) + xlab(NULL) + coord_flip() + theme_minimal()
+yearsJoincount %>% ggplot(aes(word, n)) + 
+  geom_col(fill="#ffd700", position = "dodge") + 
+  geom_text(aes(label=n), hjust=-0.3, size=3.5) + 
+  ggtitle("Frequency of allegations by year in TNA JUST 1/521") + 
+  ylab(NULL) + 
+  xlab(NULL) + 
+  coord_flip() + 
+  theme_minimal()
 ```
 
 ### Adding Day and Month
@@ -162,7 +186,7 @@ fullDates <- trigrams_separated %>%
 
 This essentially has created a list which includes all the instances of a month being mentioned in either the long or short format. The following looks quite complicated but is rather simple. I have tried to explain the process in the comments accompanying the code. Simply put the following cleans the data by weeding out errors in the original publication, or in the OCR, or in digitising process and then converts the months from text to digits.
 ```{r cleaning dates, messages=FALSE, message=FALSE, warnings=FALSE, warning=FALSE}
-#This fixes errors which result from the formating of the original text that had no space between the comma and the digits which refer to a date eg. '1,26' rather than '1, 26'. So when it was seperated into trigrams it detected it as a single word rather than two words.
+#This fixes errors which result from the formatting of the original text that had no space between the comma and the digits which refer to a date eg. '1,26' rather than '1, 26'. So when it was separated into trigrams it detected it as a single word rather than two words.
 fullDates$word1[fullDates$word1 == "1,26" ] <- 26 
 fullDates$word1[fullDates$word1 == "186,25" ] <- 25
 fullDates$word1[fullDates$word1 == "536,4" ] <- 04
@@ -185,7 +209,34 @@ fullDates <- fullDates %>% filter(word1 !=  "la")
 fullDates <- fullDates %>% filter(word3 !=  "shal")
 
 #This looks complicated but it takes each month which converts it to a digit for calculations
-fullDates <- fullDates %>% mutate(word2 = case_when(word2 == "january" ~ "01", word2 == "february" ~ "02", word2 == "march" ~ "03", word2 == "april" ~ "04", word2 == "may" ~ "05", word2 == "june" ~ "06", word2 == "july" ~ "07", word2 == "august" ~ "08", word2 == "september" ~ "09", word2 == "october" ~ "10", word2 == "november" ~ "11", word2 == "december" ~ "12", word2 == "jan" ~ "01", word2 == "feb" ~ "02", word2 == "mar" ~ "03", word2 == "apr" ~ "04", word2 == "may" ~ "05", word2 == "jun" ~ "06", word2 == "jul" ~ "07", word2 == "aug" ~ "08", word2 == "sep" ~ "09", word2 == "oct" ~ "10", word2 == "nov" ~ "11", word2 == "dec" ~ "12", word2 == "sept" ~ "09"))
+fullDates <- fullDates %>% 
+  mutate(word2 = case_when(
+          word2 == "january" ~ "01", 
+          word2 == "february" ~ "02", 
+          word2 == "march" ~ "03", 
+          word2 == "april" ~ "04", 
+          word2 == "may" ~ "05", 
+          word2 == "june" ~ "06", 
+          word2 == "july" ~ "07", 
+          word2 == "august" ~ "08", 
+          word2 == "september" ~ "09", 
+          word2 == "october" ~ "10", 
+          word2 == "november" ~ "11",
+          word2 == "december" ~ "12", 
+          word2 == "jan" ~ "01", 
+          word2 == "feb" ~ "02", 
+          word2 == "mar" ~ "03", 
+          word2 == "apr" ~ "04", 
+          word2 == "may" ~ "05", 
+          word2 == "jun" ~ "06", 
+          word2 == "jul" ~ "07", 
+          word2 == "aug" ~ "08", 
+          word2 == "sep" ~ "09", 
+          word2 == "oct" ~ "10", 
+          word2 == "nov" ~ "11", 
+          word2 == "dec" ~ "12", 
+          word2 == "sept" ~ "09"
+          ))
 ```
                                                     
 Now the cleaning process is finished I can convert the days into a format which R recognises as a date and then join the tables of exact dates to the text which contains the allegations. This is carried out by merging the data into a single column in the second line of code with `mutate(date = make_date(year, month, day))`. This takes the columns 'year, 'month', 'day' and combines them into a single column which is then converted into a date format with the `make_date()` command and places it into a new column called 'date'.
@@ -215,7 +266,18 @@ lincsEventsDated <- lincsEventsDated %>% mutate(regnalYear = case_when(regnalYea
 
 ```{r plots by side, messages=FALSE, message=FALSE, warnings=FALSE, warning=FALSE}
 #Plot of regnal years and calendar years side-by-side
-lincsEventsDated %>% filter(!is.na(regnalYear)) %>% filter(year %in%  c("1327", "1328", "1329", "1330", "1331", "1332", "1333", "1334", "1335", "1336", "1337", "1338", "1339", "1340", "1341")) %>% count(year, regnalYear, sort=TRUE)  %>% ggplot(aes(year, n)) + geom_col(fill="#ffd700", position = "dodge") + geom_text(aes(label=n), hjust=0.3, size=3.5) + ylab(NULL) + xlab(NULL) + facet_wrap(. ~regnalYear) + coord_flip() + theme_minimal()
+lincsEventsDated %>% 
+  filter(!is.na(regnalYear)) %>% 
+  filter(year %in%  c("1327", "1328", "1329", "1330", "1331", "1332", "1333", "1334", "1335", "1336", "1337", "1338", "1339", "1340", "1341")) %>% 
+  count(year, regnalYear, sort=TRUE)  %>% 
+  ggplot(aes(year, n)) + 
+    geom_col(fill="#ffd700", position = "dodge") + 
+    geom_text(aes(label=n), hjust=0.3, size=3.5) + 
+    ylab(NULL) + 
+    xlab(NULL) + 
+    facet_wrap(. ~regnalYear) + 
+    coord_flip() + 
+    theme_minimal()
 
 ```
 We can also plot all allegations which are dated to day, month, and year across the entirety of the court records.
@@ -225,9 +287,15 @@ We can also plot all allegations which are dated to day, month, and year across 
 lincsEventsDated$year <- factor(lincsEventsDated$year)
 
 #Plot
-lincsEventsDated %>% count(date, year, sort=TRUE) %>% ggplot(aes(date)) + geom_histogram(fill="#ffd700", binwidth = 35) + ggtitle("Dates mentioned in McLane, 'The 1341 Royal Inquest in Lincolnshire' c. 1327-1341")+ ylab(NULL) +xlab(NULL) + theme_minimal()
+lincsEventsDated %>% count(date, year, sort=TRUE) %>% 
+  ggplot(aes(date)) + 
+  geom_histogram(fill="#ffd700", binwidth = 35) + 
+  ggtitle("Dates mentioned in McLane, 'The 1341 Royal Inquest in Lincolnshire' c. 1327-1341")+ 
+  ylab(NULL) +
+  xlab(NULL) + 
+  theme_minimal()
 
-#I did have each year labeled on the x axis but I broke it somehow. If you know how to fix it please tell me!
+#I did have each year labelled on the x axis but I broke it somehow. If you know how to fix it please tell me!
 ```
 In this post I have outlined how to work with dates in several formats and add new columns to the data which can act as a tag and reveal trends. I want to point out a few things about the approach I have taken though. One problem is that each allegation might include multiple dates. In those instances I will have created duplicate entries. This isn't a huge problem as I am interested in the focus of the court. When editing the volume McLane followed the construction of the records by the court clerks. Some individual allegations in fact contain many offences which may have occurred at different times. If I attempted to just assign a single date to each allegation I would have to exclude a lot of information. It does mean however that the data I have shown here only demonstrates the number of times that a particular date is mentioned rather than dating each allegation specifically. I learnt quite a lot and I am sure if I began again I would make some changes to the process I have outlined. I think, at times, I took several steps when only one or two were necessary. The next post will have more analysis of the work carried out here and less coding!
 

@@ -10,14 +10,15 @@ tags:
 ---
 Term frequency inverse document frequency (TF-IDF) is both a mouthful and a process often carried out as part of the text mining approach. The primary idea behind TF-IDF is to find the words which are most important for the content of each document by decreasing the weight for commonly used words and increasing the weight for words that are not used very much in a collection as a whole. Essentially it tries to find words that are important (i.e, common) in a text but not too common. For example, if there were two identical texts with only a single word difference between the two then a tf-idf approach would isolate that single word as the most important when comparing the two texts.
 
-```{r include=FALSE}
+```{r libraries and working dir, message=FALSE, warning=FALSE, include=FALSE}
 library(tidyverse)
 library(tidytext)
 setwd("C:/Users/Jack/Documents/GitHub/bi-grams")
 load(".Rdata")
 ```
 
-```{r Term Frequency in JUST 1/521}
+
+```{r Term Frequency in JUST 1/521, message=FALSE, warning=FALSE}
 lincs_words <- Lincolnshire_Tokens %>% count(Lincolnshire_ID, word, sort = TRUE)
 
 total_words <- lincs_words %>% group_by(Lincolnshire_ID) %>%  summarize(total = sum(n))
@@ -57,7 +58,7 @@ lincs_tf_idf %>%
 
 It is unsurprising that almost all of the words which are determined as the most important are place or personal names. A further delving shows that some occupations are also determined as important with 'fletcher' occurring twice and foodstuffs 'pork' and 'poultry'. It may be that the text within each allegation is often too small to adequately characterise using tf-idf. This text is based on a calendared edition. In other words, it has omitted much of the repetitive legalese which predominates in fourteenth century court documents (perhaps all court documents). This aids readability but might hinder analyses such as this one.
 
-```{r stop words}
+```{r stop words, message=FALSE, warning=FALSE}
 #Removes entries containing personal names, place names, digits, and common english words.
 
 stop_tf_idf <- lincs_tf_idf %>% anti_join(lincs_stop_people)

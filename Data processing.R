@@ -1,6 +1,11 @@
 #Create `lincsEvents`
+lincsOCR <- read_csv("C:/Users/Jack/Documents/GitHub/blog/Lincolnshire csv Data/lincsOCR.csv")
+#remove any duplicates in lincsOCR
+lincsOCR <-  lincsOCR[!duplicated(lincsOCR$UUID), ]
+
 lincsEvents <- filter(lincsOCR, TYPE == 'EVENT')
-lincsEvents <- lincsEvents %>%   select(QUOTE_TRANSCRIPTION, UUID)
+
+lincsEvents <- lincsEvents %>%  select(QUOTE_TRANSCRIPTION, UUID)
 
 #Create lincsID to act as index to original print book
 lincsEvents <- lincsEvents %>% mutate(lincsID = (str_extract(QUOTE_TRANSCRIPTION, '^\\w+')))

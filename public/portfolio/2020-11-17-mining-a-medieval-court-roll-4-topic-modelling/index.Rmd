@@ -1,13 +1,10 @@
 ---
 title: 'Mining a Medieval court roll 4: Topic Modelling'
-author: 'Jack Newman'
+author: ''
 date: '2020-11-17'
-slug: Text Mining
-categories: Text Mining
-tags:
-- Medieval History
-- Text Mining
-- Local History
+slug: []
+categories: []
+tags: []
 image: ''
 showonlyimage: no
 editor_options: 
@@ -15,45 +12,28 @@ editor_options:
     wrap: sentence
 ---
 
-```{r message=FALSE, warning=FALSE, include=FALSE, messages=FALSE, warnings=FALSE}
+```{r load packages}
 library(tidyverse)
 library(tidytext)
 library(broom)
 library(reshape2)
-library(topicmodels)
-source("C:/Users/Jack/Documents/GitHub/blog/Data processing.R", echo = FALSE)
 ```
 
-This code firstly takes the columns `word` and `UUID` from the data frame `lincsTotalTidy` and creates a new data frame called `lincsDTM`.
-These are columns which contain the text from the Lincoln Records Society volume (`word`) and the original reference provided by McLane (`lincsID`).
-This data has been prepared in a script elsewhere and in accordance with tidy data principles it contains one word per row from the text of the Lincoln Record Society volume.
-It also means that I can cast the data frame into a Document Term Matrix (DTM).
+This code firstly takes three columns `word`, `lincsID` and `UUID` from the dataframe `lincsEvents` and creates a new dataframe called `lincsDTM`.
+These are columns which contain the text from the Lincoln Records Seociety volume (`word`), the original reference provided by McLane (`lincsID`) and a unique identifier which I created when I annotated the text originally (`UUID`).
+The following code firstly deletes the first word in the column `word`.
+This is because it simply contains the same information as the `lincsID` column.
+I then renamed the column `word` to `allegation` as it is more reflective of the content and then I split the text into one word per row which means I can cast the dataframe into a Document Term Matrix (DTM).
 This is the format which the data must be in for topic modelling.
 The final two sections cast it into a DTM and then create the topic model for six topics.
 
-```{r Last minute tidying}
-months <- c("january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december", "jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec", "sept","john", "robert", "william", "thomas", "de", "edward", "richard", "â", "atte", "alan", "kingâ")
+```{r Cast into DTM and then run the topic model}
+lincsDTM <- lincsTotalTidy %>% 
+  select(word, lincsID) %>% 
+  count(word, lincsID) %>% 
+  cast_dtm(word, lincsID, n)
 
-#lincsNames <- c("john", "robert", "william", "thomas", "de", )
-  
-lincsDTM <- filter(lincsOCR, TYPE == 'EVENT')
-lincsDTM <- lincsDTM %>%  select(QUOTE_TRANSCRIPTION, UUID)
-lincsDTM <- lincsDTM %>% rename(word = QUOTE_TRANSCRIPTION)
-lincsDTM <- lincsDTM %>% unnest_tokens(word, word)
-
-lincsDTM <- lincsDTM %>% anti_join(stop_words)
-lincsDTM <- lincsDTM %>% filter(!word %in% months)
-lincsDTM <- lincsDTM %>% filter(grepl('^\\D', word))
-lincsDTM <- lincsDTM %>% anti_join(lincsPeople, by = 'word')
-lincsDTM <- lincsDTM %>% anti_join(lincsPlaces, by = 'word')
-                                   
-#Cast into DTM and run the topic model
-lincsDTM <- lincsDTM %>% 
-  select(word, UUID) %>% 
-  count(word, UUID) %>% 
-  cast_dtm(UUID, word, n)
-
-lincsLDA <- LDA(lincsDTM, k = 12, control = list(seed = 1234))
+lincsLDA <- LDA(lincsDTM, k = 10, control = list(seed = 1234))
 ```
 
 ```{r create and view the topic models}
@@ -65,21 +45,21 @@ lincsTopics
 
 #Creates List of top terms that belong to each topic
 
-lincsTopTerms <- lincsTopics %>%
+lincs_top_terms <- lincsTopics %>%
   group_by(topic) %>%
   top_n(10, beta) %>%
   ungroup() %>%
   arrange(topic, -beta)
 
 #Visualises the top terms
-lincsTopTerms %>%
+lincs_top_terms %>%
   mutate(term = reorder_within(term, beta, topic)) %>%
   ggplot(aes(beta, term, fill = factor(topic))) +
   geom_col(show.legend = FALSE) +
   facet_wrap(~ topic, scales = "free") +
   scale_y_reordered()
 
-#write.csv(lincsTopTerms, "C:\\Users\\Jack\\Documents\\GitHub\\blog\\Lincolnshire csv Data\\topicModeltop20.csv")
+#write.csv(lincs_top_terms, "C:\\Users\\Jack\\Documents\\GitHub\\blog\\Lincolnshire csv Data\\topicModeltop20.csv")
 
 ```
 
@@ -88,19 +68,19 @@ So first I will create a new table which contains the topics, the ID from McLane
 That way I can determine if they belong together.
 
 ```{r create variables}
-lincsTopTerms <- lincsTopTerms %>% rename(lincsID = term)
+lincs_top_terms <- lincs_top_terms %>% rename(lincsID = term)
 
 #Create Dataframes for each topic
-topicOne <- lincsTopTerms %>% filter(topic == 1)
-topicTwo <- lincsTopTerms %>% filter(topic == 2)
-topicThree <- lincsTopTerms %>% filter(topic == 3)
-topicFour <- lincsTopTerms %>% filter(topic == 4)
-topicFive <- lincsTopTerms %>% filter(topic == 5)
-topicSix <- lincsTopTerms %>% filter(topic == 6)
-topicSeven <- lincsTopTerms %>% filter(topic == 7)
-topicEight <- lincsTopTerms %>% filter(topic == 8)
-topicNine <- lincsTopTerms %>% filter(topic == 9)
-topicTen <- lincsTopTerms %>% filter(topic == 10)
+topicOne <- lincs_top_terms %>% filter(topic == 1)
+topicTwo <- lincs_top_terms %>% filter(topic == 2)
+topicThree <- lincs_top_terms %>% filter(topic == 3)
+topicFour <- lincs_top_terms %>% filter(topic == 4)
+topicFive <- lincs_top_terms %>% filter(topic == 5)
+topicSix <- lincs_top_terms %>% filter(topic == 6)
+topicSeven <- lincs_top_terms %>% filter(topic == 7)
+topicEight <- lincs_top_terms %>% filter(topic == 8)
+topicNine <- lincs_top_terms %>% filter(topic == 9)
+topicTen <- lincs_top_terms %>% filter(topic == 10)
 
 #Now I want to join all of these to the allegations so I can read them easily in one place
 topicOne <- topicOne %>% inner_join(lincsEvents)
@@ -201,25 +181,3 @@ It seems to be capturing the legal process and complaints about the legal proces
 **Topic ten**
 
 These relate entirely to jury decisions.
-
-```{r}
-#Remove digits from the topic term list
-#lincsTopicDigitFree <- lincsTopics
-#lincsTopicDigitFree <- lincsTopics[-grep('^\\d+$', lincsTopics$term),]
-#Creates List of top terms that belong to each topic
-
-#lincsTopDigitFree <- lincsTopicDigitFree %>%
-#  group_by(topic) %>%
-#  top_n(10, beta) %>%
-#  ungroup() %>%
-#  arrange(topic, -beta)
-
-#Visualises the top terms
-#lincsTopDigitFree %>%
- # mutate(term = reorder_within(term, beta, topic)) %>%
-  #ggplot(aes(beta, term, fill = factor(topic))) +
-  #geom_col(show.legend = FALSE) +
-  #facet_wrap(~ topic, scales = "free") +
-  #scale_y_reordered()
-
-```

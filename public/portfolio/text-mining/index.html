@@ -108,25 +108,13 @@
 
 
 <p>Term frequency inverse document frequency (TF-IDF) is both a mouthful and a process often carried out as part of the text mining approach. The primary idea behind TF-IDF is to find the words which are most important for the content of each document by decreasing the weight for commonly used words and increasing the weight for words that are not used very much in a collection as a whole. Essentially it tries to find words that are important (i.e, common) in a text but not too common. For example, if there were two identical texts with only a single word difference between the two then a tf-idf approach would isolate that single word as the most important when comparing the two texts.</p>
-<pre class="r"><code>library(tidyverse)</code></pre>
-<pre><code>## -- Attaching packages --------------------------------------- tidyverse 1.3.0 --</code></pre>
-<pre><code>## v ggplot2 3.3.2     v purrr   0.3.4
-## v tibble  3.0.3     v dplyr   1.0.2
-## v tidyr   1.1.2     v stringr 1.4.0
-## v readr   1.4.0     v forcats 0.5.0</code></pre>
-<pre><code>## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
-## x dplyr::filter() masks stats::filter()
-## x dplyr::lag()    masks stats::lag()</code></pre>
-<pre class="r"><code>library(tidytext)
-setwd(&quot;C:/Users/Jack/Documents/GitHub/bi-grams&quot;)
-load(&quot;.Rdata&quot;)</code></pre>
 <pre class="r"><code>lincs_words &lt;- Lincolnshire_Tokens %&gt;% count(Lincolnshire_ID, word, sort = TRUE)
 
-total_words &lt;- lincs_words %&gt;% group_by(Lincolnshire_ID) %&gt;%  summarize(total = sum(n))</code></pre>
-<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
-<pre class="r"><code>lincs_words &lt;- left_join(lincs_words, total_words)</code></pre>
-<pre><code>## Joining, by = &quot;Lincolnshire_ID&quot;</code></pre>
-<pre class="r"><code>lincs_words</code></pre>
+total_words &lt;- lincs_words %&gt;% group_by(Lincolnshire_ID) %&gt;%  summarize(total = sum(n))
+
+lincs_words &lt;- left_join(lincs_words, total_words)
+
+lincs_words</code></pre>
 <pre><code>## # A tibble: 38,788 x 4
 ##    Lincolnshire_ID word       n total
 ##    &lt;chr&gt;           &lt;chr&gt;  &lt;int&gt; &lt;int&gt;
@@ -198,14 +186,12 @@ lincs_tf_idf</code></pre>
 <p>It is unsurprising that almost all of the words which are determined as the most important are place or personal names. A further delving shows that some occupations are also determined as important with ‘fletcher’ occurring twice and foodstuffs ‘pork’ and ‘poultry’. It may be that the text within each allegation is often too small to adequately characterise using tf-idf. This text is based on a calendared edition. In other words, it has omitted much of the repetitive legalese which predominates in fourteenth century court documents (perhaps all court documents). This aids readability but might hinder analyses such as this one.</p>
 <pre class="r"><code>#Removes entries containing personal names, place names, digits, and common english words.
 
-stop_tf_idf &lt;- lincs_tf_idf %&gt;% anti_join(lincs_stop_people)</code></pre>
-<pre><code>## Joining, by = &quot;word&quot;</code></pre>
-<pre class="r"><code>stop_tf_idf &lt;- stop_tf_idf %&gt;% anti_join(lincs_stop_places)</code></pre>
-<pre><code>## Joining, by = &quot;word&quot;</code></pre>
-<pre class="r"><code>stop_tf_idf &lt;- stop_tf_idf %&gt;% filter(grepl(&#39;^\\D&#39;, word))
-stop_tf_idf &lt;- stop_tf_idf %&gt;% anti_join(stop_words)</code></pre>
-<pre><code>## Joining, by = &quot;word&quot;</code></pre>
-<pre class="r"><code>stop_tf_idf %&gt;%
+stop_tf_idf &lt;- lincs_tf_idf %&gt;% anti_join(lincs_stop_people)
+stop_tf_idf &lt;- stop_tf_idf %&gt;% anti_join(lincs_stop_places)
+stop_tf_idf &lt;- stop_tf_idf %&gt;% filter(grepl(&#39;^\\D&#39;, word))
+stop_tf_idf &lt;- stop_tf_idf %&gt;% anti_join(stop_words)
+
+stop_tf_idf %&gt;%
   select(-total) %&gt;%
   arrange(desc(tf_idf))</code></pre>
 <pre><code>## # A tibble: 9,702 x 6
