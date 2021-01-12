@@ -49,3 +49,4 @@ lincsTotalTidy <- lincsEventsTokens %>% anti_join(stop_words)
 lincsTotalTidy <- lincsTotalTidy %>% filter(grepl('^\\D', word))
 lincsTotalTidy <- lincsTotalTidy %>% anti_join(lincsPeople, by = 'word')
 lincsTotalTidy <- lincsTotalTidy %>% anti_join(lincsPlaces, by = 'word')
+

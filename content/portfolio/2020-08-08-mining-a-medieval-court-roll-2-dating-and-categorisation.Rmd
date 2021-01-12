@@ -18,7 +18,7 @@ library(tidytext)
 library(lubridate)
         
 #Create `lincsEvents`
-lincsOCR <- read_csv("C:/Users/Jack/Documents/GitHub/blog/Lincolnshire csv Data/lincsOCR.csv")
+#lincsOCR <- read_csv("C:/Users/Jack/Documents/GitHub/blog/Lincolnshire csv Data/lincsOCR.csv")
 #remove any duplicates in lincsOCR
 lincsOCR <-  lincsOCR[!duplicated(lincsOCR$UUID), ]
 
@@ -113,7 +113,7 @@ years <- years %>% rename(year = word)
 
 ```
 
-Now I have a list of all the regnal years and in the plot below we can see the pattern is similar to the earlier plot but with one clear change. As before, when the data included only offences with a precise date (day, month, year), the majority of offences were said to have taken place in the three years before the trial. However this data, which is only dated to a twelve month period, the preponderance of allegations are in 1338. This discrepancy highlights that when allegations which relate to events more than two years prior the juries or complainants were unable to specify accurate dates. This is unsurprising. More surprising is that complainants or juries were able to give such precise dates for events over a decade prior. It seems likely that many of these are the result of local records, exchequer records, or tallies which gave exact dates. These would likely be the product of tax offences of some other similar activities which relied on record keeping. It's likely that some of the precise dates were easy to remember. A crime which took place on a feast day, for example, would be relatively easy for a victim to remember even years later. Perhaps, at times, precise dates were also given as approximations.
+Now I have a list of all the regnal years and in the plot below is similar to the previous graph with one clear difference. As before, when the data included only offences with a precise date (day, month, year), the majority of offences were said to have taken place in the three years before the trial. However this data, which is only dated to a twelve month period, the preponderance of allegations are in 1338. This discrepancy highlights that when allegations which relate to events more than two years prior the juries or complainants were unable to specify accurate dates. This is unsurprising. More surprising is that complainants or juries were able to give such precise dates for events over a decade prior. It seems likely that many of these are the result of local records, exchequer records, or tallies which gave exact dates. These would likely be the product of tax offences of some other similar activities which relied on record keeping. It's likely that some of the precise dates were easy to remember. A crime which took place on a feast day, for example, would be relatively easy for a victim to remember even years later. Perhaps, at times, precise dates were also given as approximations.
 
 ```{r plot of most common regnal years, messages=FALSE, message=FALSE, warnings=FALSE, warning=FALSE}
 
@@ -167,7 +167,7 @@ Now I have converted the regnal dates I can join this table to the earlier table
 #Merge of the converted regnal years and the calendar years
 yearsCombined<- full_join(years, regnalTagged)
 
-yearsCombined <- left_join(yearsCombined, lincsEvents)
+yearsCombined <- left_join(lincsEvents, yearsCombined, by = "UUID")
 
 ```
 
@@ -231,6 +231,7 @@ fullDates$word3[fullDates$word3 == "paid" ] <- 1339
 
 fullDates <- fullDates %>% filter(word1 !=  "la")
 fullDates <- fullDates %>% filter(word3 !=  "shal")
+fullDates <- fullDates %>% filter(word3 !=  "shalâ")
 
 #This looks complicated but it takes each month which converts it to a digit for calculations
 fullDates <- fullDates %>% 
@@ -267,39 +268,46 @@ Now the cleaning process is finished I can convert the days into a format which 
 
 ```{r date formatting in lubridate, messages=FALSE, message=FALSE, warnings=FALSE, warning=FALSE}
 #Rename columns to year, month, day
-fullDates <- fullDates %>% rename(day = word1, month = word2, year = word3)
+#fullDates <- fullDates %>% rename(day = word1, month = word2, year = word3)
 
 #Create new column with date in correct format
-fullDates <- fullDates %>% mutate(date = make_date(year, month, day))
+#fullDates <- fullDates %>% mutate(date = make_date(year, month, day))
 
 #Merge fullDates table with the original text
-fullDated <- full_join(lincsEvents, fullDates)
+fullDated <- left_join(lincsEvents, fullDates, by = "UUID")
 
 #Finally I merge the converted regnal years, the calendar years, and allegations with precise dating to the original data which includes all allegations
 yearsDated <- full_join(yearsCombined, fullDated)
-lincsEventsDated <- full_join(yearsDated, lincsEvents)
 
+lincsEventsDated <- left_join(yearsDated, lincsEvents, by = "UUID")
+
+lincsEventsDated <- lincsEventsDated %>% select('UUID', 'lincsID', 'word.x', 'day', 'month', 'year', 'date', 'regnalYear')
+
+lincsEventsDated <- lincsEventsDated %>% rename(word = word.x)
 ```
 
 Now I have all allegations from the data set tagged which include some kind of temporal information tagged with a year at minimum and in roughly 600 instances a year, month, and day. Now we can we plot the two graphs side-by-side which shows that those allegations that were only dated by a calendar year tended to be in 1338. Why this occurs will have to wait for a more detailed analysis of the dating.
 
 ```{r echo=FALSE}
-#mutate regnal years to regnal or calendar
-lincsEventsDated <- lincsEventsDated %>% mutate(regnalYear = case_when(regnalYear == TRUE ~ "regnal", regnalYear == FALSE ~ "calendar"))
+#mutate(change) regnal years to reflect whether the given date was regnal or specific.
+lincsEventsDated <- lincsEventsDated %>% mutate(regnalYear = case_when(regnalYear == TRUE ~ "regnal", regnalYear == FALSE ~ "specific"))
+
+lincsEventsDated <- lincsEventsDated %>% rename(dateType = regnalYear)
 ```
 
 ```{r plots by side, messages=FALSE, message=FALSE, warnings=FALSE, warning=FALSE}
 #Plot of regnal years and calendar years side-by-side
 lincsEventsDated %>% 
-  filter(!is.na(regnalYear)) %>% 
+  filter(!is.na(dateType)) %>% 
   filter(year %in%  c("1327", "1328", "1329", "1330", "1331", "1332", "1333", "1334", "1335", "1336", "1337", "1338", "1339", "1340", "1341")) %>% 
-  count(year, regnalYear, sort=TRUE)  %>% 
+  count(year, dateType, sort=TRUE)  %>% 
   ggplot(aes(year, n)) + 
     geom_col(fill="#ffd700", position = "dodge") + 
     geom_text(aes(label=n), hjust=0.3, size=3.5) + 
+    ggtitle("Dating Type in 'The 1341 Royal Inquest in Lincolnshire' c. 1327-1341") +
     ylab(NULL) + 
     xlab(NULL) + 
-    facet_wrap(. ~regnalYear) + 
+    facet_wrap(. ~dateType) + 
     coord_flip() + 
     theme_minimal()
 

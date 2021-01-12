@@ -46,7 +46,7 @@ Luckily Bernard McLane labelled each entry on the court roll with a unique ID. I
 #Unstopped plot
 
 
-lincsEventsTokens %>% count(allegation, sort = TRUE) %>% filter(n > 200) %>% mutate(allegation = reorder(allegation, n)) %>% ggplot(aes(allegation, n)) + geom_col(fill="#ffd700") + xlab(NULL) + coord_flip() + theme_minimal()
+lincsEventsTokens %>% count(word, sort = TRUE) %>% filter(n > 200) %>% mutate(word = reorder(word, n)) %>% ggplot(aes(word, n)) + geom_col(fill="#ffd700") + xlab(NULL) + coord_flip() + theme_minimal()
 
 ```
 

@@ -8,7 +8,7 @@ tags:
 - Medieval History
 - Text Mining
 ---
-Term frequency inverse document frequency (TF-IDF) is both a mouthful and a process often carried out as part of the text mining approach. The primary idea behind TF-IDF is to find the words which are most important for the content of each document by decreasing the weight for commonly used words and increasing the weight for words that are not used very much in a collection as a whole. Essentially it tries to find words that are important (i.e, common) in a text but not too common. For example, if there were two identical texts with only a single word difference between the two then a tf-idf approach would isolate that single word as the most important when comparing the two texts.
+Term frequency inverse document frequency (TF-IDF) is both a mouthful and a process often carried out as part of the text mining approach. The primary idea behind TF-IDF is to find the words which are most important for the content of each document by decreasing the weight for commonly used words and increasing the weight for words that are not used very much in a collection as a whole. Essentially it tries to find words that are important (i.e, common) in a text but not ubiquitous. For example, if there were two identical texts with only a single word difference between the two then a tf-idf approach would isolate that single word as the most important when comparing the two texts.
 
 ```{r libraries and working dir, message=FALSE, warning=FALSE, include=FALSE}
 library(tidyverse)
@@ -52,6 +52,7 @@ The tf_idf will be close to zero for the most common words. These are the words 
 ```{r}
 lincs_tf_idf %>%
   select(-total) %>%
+  filter(n>10) %>% 
   arrange(desc(tf_idf))
 
 ```
@@ -67,9 +68,64 @@ stop_tf_idf <- stop_tf_idf %>% filter(grepl('^\\D', word))
 stop_tf_idf <- stop_tf_idf %>% anti_join(stop_words)
 
 stop_tf_idf %>%
-  select(-total) %>%
-  arrange(desc(tf_idf))
+  filter(n>3) %>% 
+  arrange(desc(tf))
 
 
 ```
-Removing those words which refer to locations, individuals, or digits (primarily the index create by Bernard McLane the original editor) gives a word list of much more interest. This contains words which indicate a legal process such as 'maintainer' (someone who facilitates lawsuits for third parties to harass others), 'forestaller' (an individual who buys goods in anticipation of rising prices so that they might resell them at a profit.) It also includes words which are indicative of the material involved in the allegations, 'sheep', 'chickens', and professions, 'archer', 'bookbinder', 'oilmaker'. A list like this could be the beginning of a tailored classification which sought to annotate professions, evidence of the posessions of victims of crime, or the prevalence of particular types of judicial processes. I suspect that tf-idf might be even more useful when comparing between larger bodies of text such as between different courts rather than internal comparisons of the sort I have carried out here.
+Removing those words which refer to locations, individuals, or digits (primarily the index create by Bernard McLane the original editor) gives a word list of much more interest. This contains words which indicate a legal process such as 'maintainer' (someone who facilitates lawsuits for third parties to harass others), 'forestaller' (an individual who buys goods in anticipation of rising prices so that they might resell them at a profit.) It also includes words which are indicative of the material involved in the allegations, 'sheep', 'chickens', and professions, 'archer', 'bookbinder', 'oilmaker'. A list like this could be the beginning of a tailored classification which sought to annotate professions, evidence of the possessions of victims of crime, or the prevalence of particular types of judicial processes. I suspect that tf-idf might be even more useful when comparing between larger bodies of text such as between different courts rather than internal comparisons of the sort I have carried out here.
+
+
+```{r Term Frequency by year in JUST 1/521, message=FALSE, warning=FALSE}
+lincsYearWords <- full_join(lincsTotalTidy, fullDated, by = 'UUID')
+
+lincsYearWords <- lincsYearWords %>% select(UUID, lincsID, word, day, month, year, date)
+
+lincsYearWords <- lincsYearWords %>% count(year, word, sort = TRUE)
+
+lincsTotalYearWords <- lincsYearWords %>% group_by(year) %>%  summarize(total = sum(n))
+
+lincsTotalYearWords <- left_join(lincsYearWords, lincsTotalYearWords)
+#Remove all rows without a year
+lincsTotalYearWords <- lincsTotalYearWords %>%  na.omit()
+
+lincsTotalYearWords
+```
+
+From this we can see, for example, that more felonies were reported in 1340 than in 1338 or that wool was mentioned more often in 1338 than in other years. Not particularly informative so far. Again `n` is the number of occurences of a word within a year and `total` is the over number of words within each year.
+
+```{r}
+yearFreqRank <- lincsTotalYearWords %>%  group_by(year) %>% mutate(rank = row_number(), 'term frequency' = n/total) %>%  ungroup()
+
+yearFreqRank
+
+lincsYearTFIDF <- lincsTotalYearWords %>% bind_tf_idf(word, year, n)
+
+lincsYearTFIDF %>%
+  filter(n>8) %>% 
+  arrange(desc(tf_idf))
+```
+
+
+
+
+How many words in total? 4063 distinct words.
+
+```{r}
+#Number of occurrences of each distinct word once names and sums of money are removed
+wordCounts <- lincsTotalTidy %>% count(word, sort = TRUE)
+
+wordCounts <- wordCounts %>% rename('allegation' = 'word')
+lincsYearTFIDF <- lincsYearTFIDF %>% rename('allegation' = word)
+
+TFIDFCounts <- left_join(lincsYearTFIDF, wordCounts)
+```
+
+```{r}
+TFIDFCounts %>%
+  filter(totalDistinct>20) %>% 
+  filter(!(allegation %in% monthOrder)) %>% 
+  arrange(desc(tf_idf))
+
+```
+
