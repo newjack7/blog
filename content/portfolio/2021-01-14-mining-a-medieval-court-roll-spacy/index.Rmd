@@ -1,0 +1,116 @@
+---
+title: 'Mining a Medieval Court Roll: spaCy'
+author: ''
+date: '2021-01-14'
+slug: []
+categories:
+  - Text Mining
+  - Python
+  - NER
+tags:
+  - Local History
+  - Medieval History
+  - Text Mining
+image: ''
+showonlyimage: no
+---
+
+```{r include=FALSE}
+library(tidyverse)
+library(tidytext)
+library(lubridate)
+library(spacyr)
+library(tif)
+library(reticulate)
+#library(quanteda)
+spacy_initialize()
+```
+
+What data structure does spacyr take? TIF. What does Spacy do? Parse, Tokenise, tag.
+
+
+```{r}
+#Create the TIF (Text Interchange Format) data structure which spacy needs as an input
+
+txt <- data.frame(doc_id = lincsEvents$UUID, text = lincsEvents$word)
+
+#Check if the format is correct
+tif_is_corpus_df(txt)
+
+
+#Parse the text through Spacy
+parsedTxt <- spacy_parse(txt)
+
+slice(parsedTxt, 500:510)
+
+```
+
+Parse the text and include detailed part of speech tag. Not sure if this makes much difference but I will try it and see.
+
+```{r}
+detailTag <- spacy_parse(txt, tag = TRUE)
+
+verbDetails <- detailTag %>% filter(pos == 'VERB')
+
+
+
+```
+
+Now I need to join this to the ID from the original volume so I can cross-check the references and work out what analysis I can carry out with it.
+
+```{r}
+lincsIDS <- lincsEvents %>% select(lincsID, UUID, word)
+#verbDetails <- verbDetails %>% rename(UUID = doc_id)
+verbDetails <- verbDetails %>% inner_join(lincsIDS)
+```
+
+Now I have all the verbs from the document and their tense, mood, and number assigned to the ID from the original volume which is easier to read the the UUID. Now I will do some counts to see the most prevalent types of verb and then another to see the most common verbs.
+
+```{r}
+library('scales')
+verbDetails <-  verbDetails %>% 
+  mutate(tag = case_when(tag == "VBD" ~ "Past Tense", tag == "VB" ~ "Inf.", tag == "VBN" ~ "Past Ptp", tag == "VBG" ~ "Gerund/Pres Ptp", tag == "MD" ~ "Aux", tag == "VBP" ~ "Pres.non3P", tag == "VBZ" ~ "Pres.3rdPer"))
+
+
+
+verbDetails %>% count(tag, sort = TRUE) %>% mutate(tag = reorder(tag,n)) %>% ggplot(aes(tag, n)) + geom_col(fill="#ffd700") + scale_x_discrete(labels = label_wrap(4)) + xlab(NULL) + coord_flip() + theme_minimal()
+```
+
+
+Now I will count the most common verbs.
+
+```{r}
+verbDetails %>% count(lemma, sort = TRUE) %>% filter(n > 40) %>% mutate(lemma = reorder(lemma,n)) %>% ggplot(aes(lemma, n)) + geom_col(fill="#ffd700") + xlab(NULL) + coord_flip() + theme_minimal()
+```
+
+There are a few interesting verbs here. A couple require some further exploration. To look at the text alongside the verbs I will append the two together for easy reference. I want to specifically look at the word 'see'. This occupies such a high position as it is used by the original editor Bernard McLane to draw links between allegations. For example McLane would refer to other similar crimes by the same perpetrator. If that was always the case then it might be possible to automate these linkages.
+
+```{r}
+links <- verbDetails %>% filter(lemma == 'see')
+
+links
+```
+
+
+Another verb of interest is take. Spacy takes the text and parses it out by assigning a part of speech to each word. As part of this process it also lemmatises each verb. This means that words like 'take', 'taken', or 'took' will all be returned as 'take' for reasons of analysis. However it is still possible to see the original word and the tag presents the type of verb ('infinitive', past tense', etc).
+
+```{r}
+taken <- verbDetails %>% filter (lemma == 'take', tag == 'Inf.')
+taken
+```
+
+What is interesting is that it seems that each time the infinitive is used in this text it represents an accusation that an official has received a bribe not to take goods or some other service on behalf of the king.
+
+```{r}
+#I used this to confirm that I had constructed the filter correctly. In each instance it returns 37 values.
+sum(str_count(taken$word, "not to take"))
+
+#This takes the same results and passes them to a new variable `toTake`
+toTake <- taken %>%  filter(grepl('not to take', word))
+
+#This prints the value of a specific allegation as an indication of the type of charge
+print(toTake[23,10])
+```
+
+
+

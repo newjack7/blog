@@ -9,7 +9,7 @@ lincsEvents <- lincsEvents %>%  select(QUOTE_TRANSCRIPTION, UUID)
 
 #Create lincsID to act as index to original print book
 lincsEvents <- lincsEvents %>% mutate(lincsID = (str_extract(QUOTE_TRANSCRIPTION, '^\\w+')))
-#rename column to allegation for future analysis
+#rename column to word for future analysis
 lincsEvents <- lincsEvents %>% rename(word = QUOTE_TRANSCRIPTION)
 #Delete the first digit from the allegation column. This removes McLane's index.
 lincsEvents <- lincsEvents %>% mutate(word = (str_replace(word, '^\\d+', "")))
