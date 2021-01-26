@@ -8,6 +8,8 @@ tags:
 - Medieval History
 - Text Mining
 ---
+**This post is a work in progress.**
+
 Term frequency inverse document frequency (TF-IDF) is both a mouthful and a process often carried out as part of the text mining approach. The primary idea behind TF-IDF is to find the words which are most important for the content of each document by decreasing the weight for commonly used words and increasing the weight for words that are not used very much in a collection as a whole. Essentially it tries to find words that are important (i.e, common) in a text but not ubiquitous. For example, if there were two identical texts with only a single word difference between the two then a tf-idf approach would isolate that single word as the most important when comparing the two texts.
 
 ```{r libraries and working dir, message=FALSE, warning=FALSE, include=FALSE}

@@ -1,0 +1,263 @@
+---
+title: "Gilbert Ledred"
+author: "Jack Newman"
+date: "20/01/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(tidytext)
+```
+
+## Create Gilbert and associate Vectors
+
+```{r}
+gilbert <- c(433, 437:443, 449, 451, 452, 454, 455, 457, 462, 464:470, 477, 481, 488, 489, 512, 558, 575, 576, 578, 580, 583, 584, 597:599, 723, 724, 742, 743, 749, 768, 769, 772:774, 796, 798, 819, 821, 834:840, 843, 859, 896, 897,899,900,907,912,919:922,946,975:978,985:988,994, 1005, 1038, 1047:1052, 1085, 1094:1098,1130,1133:1139, 1144, 1147, 1153, 1156)
+
+gilbertBailiffs <- c(1174, 836, 837, 1134)
+
+gilbertClerks <- c(49, 148, 154, 156, 354, 464, 558, 577, 841, 996,997, 1095, 1130)
+
+gilbertDeputies <- c(146, 365)
+
+gilbertFellowReceiversWool <- c(433,437:443,449,451,452,454,455,457)
+
+gilbertGroomsKeepersCustomsHouse <- c(843)
+
+gilbertMinisters <- c(1139)
+
+gilbertSubescheator <- c(152, 290)
+
+```
+
+## Create a single Gilbert Vector
+```{r}
+gilbertTotal <- c(gilbert, gilbertBailiffs, gilbertClerks, gilbertDeputies, gilbertFellowReceiversWool, gilbertGroomsKeepersCustomsHouse, gilbertMinisters)
+
+gilbertTotal
+```
+
+
+
+
+Filter the master data frame, lincsEvents, which has all the text attached to the id from the original volume.
+
+```{r}
+#Create Gilbert data frame using the vector which is constructed from the index
+gilbertDF <-  lincsEvents %>% 
+  group_by(lincsID) %>% 
+  filter(all(lincsID %in% gilbertTotal))
+
+#semi_join fullDated to gilbertDF to make a dated data frame of just Gilbert's offences
+
+gilbertDF <- semi_join(lincsEventsDated, gilbertDF, by = 'lincsID')
+
+#add column as tag for Henry allegations
+gilbertDF <- gilbertDF %>% mutate(person = "Gilbert Leatherhead")
+
+
+#plot of Gilbert data frame
+gilbertDF %>% 
+#filter(!is.na(dateType)) %>% 
+  filter(year %in%  c("1327", "1328", "1329", "1330", "1331", "1332", "1333", "1334", "1335", "1336", "1337", "1338", "1339", "1340", "1341")) %>% 
+  count(year, sort=TRUE)  %>% 
+  ggplot(aes(year, n)) + 
+    geom_col(fill="#ffd700", position = "dodge") + 
+    geom_text(aes(label=n), hjust=0.3, size=3.5) + 
+    ggtitle("Dateable Allegations against Gilbert Ledred c. 1327-1341")+ 
+    ylab(NULL) + 
+    xlab(NULL) + 
+    coord_flip() + 
+    theme_minimal()
+    
+
+
+
+```
+
+
+```{r Henry Tichwell}
+#All text from the index relating to Henry Tichwell
+Tichwell <- c('Tichwell, Thichewell, Tichewell, Tiddeswell, Tideswell, Tychewell, Tyddeswell, Tyddewell, Tydeswell, Tydswell, Tydwell Henry de, of Stamford, collector and receiver of the tenth and fifteenth in Lincolnshire, wool collector in Lincolnshire, wool receiver, and deputy of Adam de Limber', 462, 499, 542, 580, 610:638, 650, 651, 654-60, 709, 749, 757, 777, 811, 821, 843, 873, 881, 882, 891:893, 895, 923, 925, 928, 929, 932, 941, 949, 954, 992, 1015, 1053:57, 1076:1079, 1098, 'deputies, named of', 610, 1060, 1061, 'fellows and ministers of', 1098, 'grooms and keepers of the customs houses', 843)
+
+#Tichwell IDS
+tichwellIDS <- c(462, 499, 542, 580, 610:638, 650, 651, 654:660, 709, 749, 757, 777, 811, 821, 843, 873, 881, 882, 891:893, 895, 923, 925, 928, 929, 932, 941, 949, 954, 992, 1015, 1053:1057, 1060, 1061, 1076:1079, 1098)
+
+#Create Tichwell dara frame from the vector of IDs
+tichwellDF <-  lincsEvents %>% 
+  group_by(lincsID) %>% 
+  filter(all(lincsID %in% tichwellIDS))
+
+#semi_join fullDated to gilbertDF to make a dated data frame of just Gilbert's offences
+
+tichwellDF <- semi_join(lincsEventsDated, tichwellDF, by = 'lincsID')
+
+tichwellDFTest <- tichwellDF
+#tichwellDFTest <-  tichwellDFTest[!duplicated(tichwellDFTest$UUID), ]
+
+#Fix Henry Dates
+tichwellDFTest[6:18,7] <- ymd("1337-09-12")
+tichwellDFTest[20:33,7] <- ymd("1337-08-04")
+tichwellDFTest[35,7] <- ymd("1338-09-09")
+tichwellDFTest[37:39,7] <- ymd("1337-07-25")
+tichwellDFTest[41,7] <- ymd("1337-07-20")
+tichwellDFTest[59, 7] <- ymd("1336-08-30")
+tichwellDFTest[76:78,7] <- ymd("1337-08-18")
+tichwellDFTest[81:84,7] <- ymd("1337-08-29")
+
+tichwellDFTest[6:18,6] <- "1337"
+tichwellDFTest[20:33,6] <- "1337"
+tichwellDFTest[35,6] <- "1338"
+tichwellDFTest[37:39,6] <- "1337"
+tichwellDFTest[41,6] <- "1337"
+tichwellDFTest[59,6] <- "1336"
+tichwellDFTest[76:78,6] <- "1337"
+tichwellDFTest[81:84,6] <- "1337"
+
+
+#add column as tag for Henry allegations
+tichwellDFTest <- tichwellDFTest %>% mutate(person = "Henry Tichwell")
+
+#plot of Tichwell data frame
+tichwellDFTest %>% 
+#filter(!is.na(dateType)) %>% 
+  filter(year %in%  c("1327", "1328", "1329", "1330", "1331", "1332", "1333", "1334", "1335", "1336", "1337", "1338", "1339", "1340", "1341")) %>% 
+  count(year, sort=TRUE)  %>% 
+  ggplot(aes(year, n)) + 
+    geom_col(fill="#ffd700", position = "dodge") + 
+    geom_text(aes(label=n), hjust=0.3, size=3.5) + 
+    ggtitle("Dateable Allegations against Henry Tichwell c. 1327-1341")+ 
+    ylab(NULL) + 
+    xlab(NULL) + 
+    coord_flip() + 
+    theme_minimal()
+
+
+```
+
+#Roger Woolsthorpe
+
+```{r}
+woolsthorpeVector <- "Woolsthorpe (Wolesthorp, Wollesthorp, Wollesthorpe, Wolsthorp, Wulfthorp) [near Corby], 1016; Roger de, of Grantham, chief taxer and receiver of the tenth and fifteenth in Kesteven, wool collector in Lincolnshire, receiver of the fifteenth of wool in Lindsey and Kesteven and deputy of Henry de Tichwell, 431, 433, 437, 451, 452, 462, 542, 580, 587, 610-38, 640-53, 658-62, 749, 757, 758, 777, 810, 811, 999-1002, 1006-14, 1016-18, 1037, 1060, 1061, 1098; deputies (named) of, 610, 716, 875, 1006, 1017; fellows and ministers of, 1098; servant {named) of, 639"
+
+woolsthorpeIDS <- c(1016, 431, 433, 437, 451, 452, 462, 542, 580, 587, 610:638, 640:653, 658:662, 749, 757, 758, 777, 810, 811, 999:1002, 1006:1014, 1016:1018, 1037, 1060, 1061, 1098, 610, 716, 875, 1006, 1017, 1098, 639)
+
+#Create Woolthorpe data frame from the vector of IDs
+woolsthorpeDF <-  lincsEventsDated %>% 
+  group_by(lincsID) %>% 
+  filter(all(lincsID %in% woolsthorpeIDS))
+
+woolsthorpeDF <- semi_join(lincsEventsDated, woolsthorpeDF, by = 'UUID')
+
+woolsthorpeDFTest <- woolsthorpeDF
+
+
+woolsthorpeDFTest[1:5,6] <- "1339"
+woolsthorpeDFTest[11:23,7] <- ymd("1337-09-12")
+woolsthorpeDFTest[11:23,6] <- "1337"
+woolsthorpeDFTest[25:38,7] <- ymd("1337-08-04")
+woolsthorpeDFTest[25:38,6] <- "1337"
+woolsthorpeDFTest[41:49,7] <- ymd("1338-06-29")
+woolsthorpeDFTest[41:49,6] <- "1338"
+woolsthorpeDFTest[51,7] <- ymd("1338-09-09")
+woolsthorpeDFTest[51,6] <- "1338"
+woolsthorpeDFTest[53,7] <- ymd("1338-07-28")
+woolsthorpeDFTest[53,6] <- "1338"
+woolsthorpeDFTest[55,7] <- ymd("1337-07-20")
+woolsthorpeDFTest[55,6] <- "1337"
+woolsthorpeDFTest[68:71,6] <- "1333"
+woolsthorpeDFTest[74:80,6] <- "1338"
+woolsthorpeDFTest[82:83,6] <- "1339"
+woolsthorpeDFTest[86,6] <- "1338"
+woolsthorpeDFTest[89,6] <- "1338"
+woolsthorpeDFTest[90,6] <- "1334"
+
+
+#plot of Tichwell data frame
+woolsthorpeDFTest %>% 
+#filter(!is.na(dateType)) %>% 
+  filter(year %in%  c("1327", "1328", "1329", "1330", "1331", "1332", "1333", "1334", "1335", "1336", "1337", "1338", "1339", "1340", "1341")) %>% 
+  count(year, sort=TRUE)  %>% 
+  ggplot(aes(year, n)) + 
+    geom_col(fill="#ffd700", position = "dodge") + 
+    geom_text(aes(label=n), hjust=0.3, size=3.5) + 
+    ggtitle("Dateable Allegations against Roger Woolsthorpe c. 1327-1341")+ 
+    ylab(NULL) + 
+    xlab(NULL) + 
+    coord_flip() + 
+    theme_minimal()
+
+woolsthorpeDFTest <- woolsthorpeDFTest %>% mutate(person = "Roger Woolsthorpe")
+```
+
+```{r}
+dunstapleV <- c("Dunstable (Dunstapel, Dunstapil, Dunstaple), Thomas de, brother and deputy of William de Dunstable and victualler, xii, 8, 10, 11, 18, 19, 32, 46, 83, 84, 86, 185, 207, 214, 216, 221, 226, 229, 243, 248,251, 264,265, 269,292,294, 309,317, 318, 356-58, 360, 379, 380, 388-97, 909; deputies (named) of, 21, 32, 128, 320, 413, 415, 423, 459, 461, 472, 869, 902, 903, 924 Dunstable (Dunstapel, Dunstapil, Dunstaple), William de, brother of Thomas de Dunstable and victualler, 8, 46, 83; deputies (named) of, 8, 46, 84, 85, 189, 292, 307, 308, 356, 379, 670, 672, 679, 868, 945, 961, 962, 995, 1019, 1020")
+
+dunstapleIDS <- c(8, 10, 11, 18, 19, 32, 46, 83, 84, 86, 185, 207, 214, 216, 221, 226, 229, 243, 248,251, 264,265, 269,292,294, 309,317, 318, 356:358, 360, 379, 380, 388:397, 909, 21, 32, 128, 320, 413, 415, 423, 459, 461, 472, 869, 902, 903, 924)
+
+#Create dunstable data frame from the vector of IDs
+dunstableDF <-  lincsEventsDated %>% 
+  group_by(lincsID) %>% 
+  filter(all(lincsID %in% dunstapleIDS))
+
+dunstableDF <- semi_join(lincsEventsDated, dunstableDF, by = 'UUID')
+
+dunstableDFTest <- dunstableDF
+
+dunstableDFTest[4:5,6] <- "1338"
+dunstableDFTest[13:16,6] <- "1337"
+dunstableDFTest[18:19,6] <- "1337"
+dunstableDFTest[28,6] <- "1338"
+dunstableDFTest[30,6] <- "1338"
+dunstableDFTest[32:36,6] <- "1337"
+dunstableDFTest[67,6] <- "1338"
+dunstableDFTest[70,6] <- "1339"
+dunstableDFTest[74:75,6] <- "1337"
+dunstableDFTest[77:85,6] <- "1338"
+
+dunstableDFTest <- dunstableDFTest[-c(38:65), ]
+#dunstableDFTest[11:23,7] <- ymd("1337-09-12")
+
+dunstableDFTest %>% 
+#filter(!is.na(dateType)) %>% 
+  filter(year %in%  c("1327", "1328", "1329", "1330", "1331", "1332", "1333", "1334", "1335", "1336", "1337", "1338", "1339", "1340", "1341")) %>% 
+  count(year, sort=TRUE)  %>% 
+  ggplot(aes(year, n)) + 
+    geom_col(fill="#ffd700", position = "dodge") + 
+    geom_text(aes(label=n), hjust=0.3, size=3.5) + 
+    ggtitle("Dateable Allegations against Thomas Dunstaple c. 1327-1341")+ 
+    ylab(NULL) + 
+    xlab(NULL) + 
+    coord_flip() + 
+    theme_minimal()
+
+dunstableDFTest <- dunstableDFTest %>% mutate(person = "Thomas Dunstaple")
+
+```
+
+```{r}
+#Join all tables together
+
+table1 <- full_join(gilbertDF, tichwellDFTest)
+table2 <- full_join(dunstableDFTest, woolsthorpeDFTest) 
+gangOfFourFinal <- full_join(table1, table2)
+
+
+gangOfFourFinal %>% 
+#filter(!is.na(dateType)) %>% 
+  filter(year %in%  c("1327", "1328", "1329", "1330", "1331", "1332", "1333", "1334", "1335", "1336", "1337", "1338", "1339", "1340", "1341")) %>% 
+  count(year, person, sort=TRUE)  %>% 
+  ggplot(aes(year, n)) + 
+    geom_col(fill="#ffd700", position = "dodge") + 
+    geom_text(aes(label=n), hjust=0.3, size=3.5) + 
+    ggtitle("Dateable Allegations against select offenders c. 1327-1341")+ 
+    ylab(NULL) + 
+    xlab(NULL) + 
+    facet_wrap(. ~person)+
+    coord_flip() + 
+    theme_minimal()
+```
+
+

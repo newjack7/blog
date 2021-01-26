@@ -24,6 +24,8 @@ library(topicmodels)
 source("C:/Users/Jack/Documents/GitHub/blog/Data processing.R", echo = FALSE)
 ```
 
+**This post is a work in progress and looks at topic modelling in R. This is a statistical process that seeks to categorise text.**
+
 This code firstly takes the columns `word` and `UUID` from the data frame `lincsTotalTidy` and creates a new data frame called `lincsDTM`.
 These are columns which contain the text from the Lincoln Records Society volume (`word`) and the original reference provided by McLane (`lincsID`).
 This data has been prepared in a script elsewhere and in accordance with tidy data principles it contains one word per row from the text of the Lincoln Record Society volume.

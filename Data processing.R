@@ -1,3 +1,6 @@
+library(tidyverse)
+library(tidytext)
+
 #Create `lincsEvents`
 lincsOCR <- read_csv("C:/Users/Jack/Documents/GitHub/blog/Lincolnshire csv Data/lincsOCR.csv")
 #remove any duplicates in lincsOCR
@@ -13,6 +16,8 @@ lincsEvents <- lincsEvents %>% mutate(lincsID = (str_extract(QUOTE_TRANSCRIPTION
 lincsEvents <- lincsEvents %>% rename(word = QUOTE_TRANSCRIPTION)
 #Delete the first digit from the allegation column. This removes McLane's index.
 lincsEvents <- lincsEvents %>% mutate(word = (str_replace(word, '^\\d+', "")))
+#Convert lincsID to numeric column
+lincsEvents[, c(3)] <- sapply(lincsEvents[, c(3)], as.numeric)
 #un-nest lincsEvents
 lincsEventsTokens <- lincsEvents %>% unnest_tokens(word, word)
 

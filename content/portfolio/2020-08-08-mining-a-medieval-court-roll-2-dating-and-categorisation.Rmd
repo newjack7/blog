@@ -17,21 +17,6 @@ library(tidyverse)
 library(tidytext)
 library(lubridate)
         
-#Create `lincsEvents`
-#lincsOCR <- read_csv("C:/Users/Jack/Documents/GitHub/blog/Lincolnshire csv Data/lincsOCR.csv")
-#remove any duplicates in lincsOCR
-lincsOCR <-  lincsOCR[!duplicated(lincsOCR$UUID), ]
-
-lincsEvents <- filter(lincsOCR, TYPE == 'EVENT')
-
-lincsEvents <- lincsEvents %>%   select(QUOTE_TRANSCRIPTION, UUID)
-
-#Create lincsID to act as index to original print book
-lincsEvents <- lincsEvents %>% mutate(lincsID = (str_extract(QUOTE_TRANSCRIPTION, '^\\w+')))
-#rename column to allegation for future analysis
-lincsEvents <- lincsEvents %>% rename(word = QUOTE_TRANSCRIPTION)
-#Delete the first digit from the allegation column. This removes McLane's index.
-lincsEvents <- lincsEvents %>% mutate(word = (str_replace(word, '^\\d+', "")))
 #un-nest lincsEvents
 lincsEventsTokens <- lincsEvents %>% unnest_tokens(word, word)
 
@@ -79,12 +64,12 @@ lincs_bigrams <- lincsEvents %>%
 #regYears <- lincs_bigrams %>% filter(bigram %in% c("edward 1", "edward 2","edward 3","edward 4","edward 5","edward 6","edward 7","edward 7","edward 8","edward 9","edward 10","edward 11","edward 12","edward 13","edward 14","edward 15"))
 
 #In order to extract the regnal years however I need to split this text into two columns which I can filter
-bigrams_separated <- lincs_bigrams %>%
+lincs_bigrams <- lincs_bigrams %>%
   separate(bigram, c("word1", "word2"), sep = " ")
 
 
 #Filter for the regnal years
-regYears <- bigrams_separated %>% 
+regYears <- lincs_bigrams %>% 
    filter(word1 %in% c("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "12", "13", "14", "15")) %>% 
    filter(word2 %in%  "edward") 
 
@@ -95,10 +80,11 @@ regYears_united <- regYears %>%
 
 ```
 
+This creates a list of all occurrences of years from 1327 to 1341.
 
 ```{r echo=FALSE}
 #Create table of all years mentioned in the text
-yearsTag <- lincsEventsTokens %>% filter(word %in% c("1327", "1328", "1329", "1330", "1331", "1332", "1333", "1334", "1335", "1336", "1337", "1338", "1339", "1340", "1341", "1342", "1343", "1344", "1345"))
+yearsTag <- lincsEventsTokens %>% filter(word %in% c("1327", "1328", "1329", "1330", "1331", "1332", "1333", "1334", "1335", "1336", "1337", "1338", "1339", "1340", "1341"))
 
 #Merge all years mentioned with the text
 years <- left_join(yearsTag, lincsEvents)
@@ -141,7 +127,22 @@ Next I appended the corpus to tag each allegation with a regnal year and convert
 ```{r Converting Regnal Years and appending them to data, messages=FALSE, message=FALSE, warnings=FALSE, warning=FALSE}
 #Convert Regnal Yearls to calendar year
 regYears_converted <-  regYears_united %>% 
-  mutate(bigram = case_when(bigram == "1 edward" ~ "1327", bigram == "2 edward" ~ "1328", bigram == "3 edward" ~ "1329", bigram == "4 edward" ~ "1330", bigram == "5 edward" ~ "1331", bigram == "6 edward" ~ "1332", bigram == "7 edward" ~ "1333", bigram == "8 edward" ~ "1334", bigram == "9 edward" ~ "1335", bigram == "10 edward" ~ "1336", bigram == "11 edward" ~ "1337", bigram == "12 edward" ~ "1338", bigram == "13 edward" ~ "1339", bigram == "14 edward" ~ "1340"))
+  mutate(bigram = case_when(
+    bigram == "1 edward" ~ "1327",
+    bigram == "2 edward" ~ "1328", 
+    bigram == "3 edward" ~ "1329", 
+    bigram == "4 edward" ~ "1330", 
+    bigram == "5 edward" ~ "1331", 
+    bigram == "6 edward" ~ "1332", 
+    bigram == "7 edward" ~ "1333", 
+    bigram == "8 edward" ~ "1334", 
+    bigram == "9 edward" ~ "1335",
+    bigram == "10 edward" ~ "1336", 
+    bigram == "11 edward" ~ "1337", 
+    bigram == "12 edward" ~ "1338", 
+    bigram == "13 edward" ~ "1339", 
+    bigram == "14 edward" ~ "1340"
+    ))
 
 #Rename column to match for merging
 regYears_converted <- regYears_converted %>% rename(year = bigram)
@@ -268,10 +269,10 @@ Now the cleaning process is finished I can convert the days into a format which 
 
 ```{r date formatting in lubridate, messages=FALSE, message=FALSE, warnings=FALSE, warning=FALSE}
 #Rename columns to year, month, day
-#fullDates <- fullDates %>% rename(day = word1, month = word2, year = word3)
+fullDates <- fullDates %>% rename(day = word1, month = word2, year = word3)
 
 #Create new column with date in correct format
-#fullDates <- fullDates %>% mutate(date = make_date(year, month, day))
+fullDates <- fullDates %>% mutate(date = make_date(year, month, day))
 
 #Merge fullDates table with the original text
 fullDated <- left_join(lincsEvents, fullDates, by = "UUID")
@@ -314,6 +315,23 @@ lincsEventsDated %>%
 ```
 We can also plot all allegations which are dated to day, month, and year across the entirety of the court records.
 
+```{r}
+#Plot of regnal years and calendar years side-by-side
+lincsEventsDated %>% 
+  filter(!is.na(dateType)) %>% 
+  filter(year %in%  c("1327", "1328", "1329", "1330", "1331", "1332", "1333", "1334", "1335", "1336", "1337", "1338", "1339", "1340")) %>% 
+  count(year, sort=TRUE)  %>% 
+  ggplot(aes(year, n)) + 
+    geom_col(fill="#ffd700", position = "dodge") + 
+    geom_text(aes(label=n), hjust=0.3, size=3.5) + 
+    ggtitle("The 1341 Lincolnshire Royal Inquest, c. 1327-1341: allegations per year") +
+    ylab(NULL) + 
+    xlab(NULL) + 
+    #coord_flip() + 
+    theme_minimal()
+```
+
+
 ``` {r histogram plot, messages=FALSE, message=FALSE, warnings=FALSE, warning=FALSE}
 #Convert Year into a factor
 lincsEventsDated$year <- factor(lincsEventsDated$year)
@@ -335,4 +353,11 @@ In this post I have outlined how to work with dates in several formats and add n
 
 [^1]: If you are interested in reading further the University of Nottingham has a good [guide on regnal years](https://www.nottingham.ac.uk/manuscriptsandspecialcollections/researchguidance/datingdocuments/regnalyears.aspx).
 
+```{r}
+lincsEventsDated %>% 
+  filter(!word %in% "Notice that") %>%
+  filter(!is.na(dateType)) %>% 
+  filter(year %in%  c("1327", "1328", "1329", "1330", "1331", "1332", "1333", "1334", "1335", "1336", "1337", "1338", "1339", "1340")) %>% 
+  count(year, sort=TRUE) 
+```
 

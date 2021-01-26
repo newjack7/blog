@@ -1,0 +1,89 @@
+---
+title: "Index Comparison"
+author: "Jack Newman"
+date: "22/01/2021"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+library(tidytext)
+```
+
+Import both texts and tokenise them.
+
+```{r}
+inquestIndex <- McLane_index
+registerIndex <- burghersh_vol1_index
+
+
+inquestIndex <- inquestIndex %>% rename(word = X1)
+registerIndex <- registerIndex %>% rename(word = X1)
+#make custom stop words
+custom_stop <- tribble(~word, ~lexicon, 
+                       "q.v", "CUSTOM", 
+                       "de", "CUSTOM",
+                       "wife", "CUSTOM",
+                       "daughter", "CUSTOM",
+                       "son", "CUSTOM",
+                       )
+custom_stop <- stop_words %>% bind_rows(custom_stop)
+
+#Unnest inquest index to bigrams and clean for digits and stop words
+inquestStopped <- inquestIndex %>%  
+  unnest_tokens(bigram, word,"ngrams", n = 2) %>% 
+  separate(bigram, c("word1", "word2"), sep = " ") %>%
+  filter(grepl('^\\D', word1)) %>% 
+  filter(grepl('^\\D', word2)) %>% 
+  filter(!word1 %in% custom_stop$word, !word2 %in% custom_stop$word)
+ 
+#Unnest inquest index to bigrams and clean for digits and stop words
+registerStopped <- registerIndex %>%  
+  unnest_tokens(bigram, word,"ngrams", n = 2) %>% 
+  separate(bigram, c("word1", "word2"), sep = " ") %>%
+  filter(grepl('^\\D', word1)) %>% 
+  filter(grepl('^\\D', word2)) %>% 
+  filter(!word1 %in% custom_stop$word, !word2 %in% custom_stop$word)
+
+
+joint <- inner_join(registerStopped, inquestStopped)
+
+joinCount <- joint %>%  count(word1, word2, sort =TRUE)
+```
+
+Once tokenised remove the stop words like 'de' and then compare?
+
+
+```{r spacy test index}
+#add column to each index
+tifInquestInd <- inquestIndex %>% mutate(doc_id = seq.int(nrow(tifInquestInd)))
+tifRegisterInd <-  registerIndex %>%  mutate(doc_id = seq.int(nrow(tifRegisterInd)))
+#Create the TIF (Text Interchange Format) data structure which spacy needs as an input
+tifInquestInd <- data.frame(doc_id = tifInquestInd$doc_id, text = tifInquestInd$text)
+tifRegisterInd <- data.frame(doc_id = tifRegisterInd$doc_id, text = tifRegisterInd$text)
+#Check if the format is correct
+tif_is_corpus_df(tifInquestInd)
+tif_is_corpus_df(tifRegisterInd)
+
+#Parse the text through Spacy
+parsedInquestInd <- spacy_parse(tifInquestInd)
+parsedRegisterInd <- spacy_parse(tifRegisterInd)
+
+slice(parsedInquestInd, 500:510)
+slice(parsedRegisterInd, 500:510)
+```
+
+
+
+Filter for the people.
+
+```{r}
+inquestPeople <- parsedInquestInd %>% filter(str_detect(entity, "PERSON_"))
+registerPeople
+
+
+burghersh_register_vol_3 <- burghersh_register_vol_3 %>% filter(!is.na(X1))
+
+```
+
+

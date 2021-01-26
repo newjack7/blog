@@ -1,0 +1,59 @@
+---
+title: "Burghersh vol 3"
+author: "Jack Newman"
+date: "25/01/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(tidytext)
+```
+
+Import and format the data
+
+```{r}
+#import from csv
+burghershRegisterVol3 <- read_csv("Lincolnshire csv Data/burghersh register vol 3.csv")
+#extract strings which are a digit followed immediately but a full stop.
+burghershVol3Filter <- burghershRegisterVol3 %>% mutate(ID1 = (str_extract(ID, "[\\d]+\\.")))
+#filter out the NAs
+burghershVol3Filter <- burghershVol3Filter %>% filter(!is.na(ID1))
+#Select the correct columns
+burghershVol3Filter <- burghershVol3Filter %>% select(ID1, text)
+#remove the last character from column ID1 (full stops)
+burghershVol3Filter$ID1 = substr(burghershVol3Filter$ID1,1,nchar(burghershVol3Filter$ID1)-1)
+#check to see if any entries are missing or duplicated
+setdiff(1:5007, burghershVol3Filter$ID1)
+#Turn ID1 column into a sortable numeric column
+burghershVol3Filter <- transform(burghershVol3Filter, ID1 = as.numeric(ID1))
+
+
+```
+
+```{r}
+#Load the packages for spacy parsing
+library(lubridate)
+library(spacyr)
+library(tif)
+library(reticulate)
+spacy_initialize()
+```
+
+```{r}
+#Create the TIF (Text Interchange Format) data structure which spacy needs as an input
+
+burghVol3TIF <- data.frame(doc_id = burghershVol3Filter$ID1, text = burghershVol3Filter$text)
+
+#Check if the format is correct
+tif_is_corpus_df(burghVol3TIF)
+#This always seems to say FALSE but it still works in spacy?
+
+#Parse the text through Spacy
+burghVol3parsed <- spacy_parse(burghVol3TIF)
+
+slice(burghVol3parsed, 500:510)
+
+```
+

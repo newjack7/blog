@@ -1,0 +1,568 @@
+"","QUOTE_TRANSCRIPTION","n"
+"1","Lincoln",412
+"2","Boston",106
+"3","Lincolnshire",76
+"4","Stamford",50
+"5","Grantham",39
+"6","Grimsby",39
+"7","Louth",34
+"8","Barton upon Humber",27
+"9","Holland",26
+"10","Lindsey",23
+"11","Swineshead",22
+"12","Whaplode",21
+"13","Kesteven",19
+"14","Long Sutton",18
+"15","Sleaford",18
+"16","Spalding",18
+"17","Gainsborough",17
+"18","Bardney",15
+"19","Bicker",15
+"20","Donington in Holland",15
+"21","Bourne",14
+"22","Skirbeck",14
+"23","Holbeach",13
+"24","Tathwell",13
+"25","Washingborough",12
+"26","Donington",11
+"27","Horbling",11
+"28","Scothem",11
+"29","Denton",10
+"30","Fishtoft",10
+"31","Friskney",10
+"32","Harmston",10
+"33","Honington",10
+"34","Morton by Bourne",10
+"35","Perth",10
+"36","Spanby",10
+"37","Sutterton",10
+"38","Market Deeping",9
+"39","Searby",9
+"40","Wrangle",9
+"41","Fiskerton",8
+"42","Gosberton",8
+"43","Leake",8
+"44","Long Bennington",8
+"45","Quadring",8
+"46","Tydd St Mary",8
+"47","Ulceby",8
+"48","Wigtoft",8
+"49","Binbrook",7
+"50","Brauncewell",7
+"51","Corby",7
+"52","Pinchbeck",7
+"53","Rauceby",7
+"54","Richmond",7
+"55","Sibsey",7
+"56","Swaton",7
+"57","Torksey",7
+"58","Waddington",7
+"59","Aveland",6
+"60","Bassingham",6
+"61","Baston",6
+"62","Belton",6
+"63","Burton on Stather",6
+"64","Dunholme",6
+"65","Frampton",6
+"66","Great or Little Hale",6
+"67","Haconby",6
+"68","Kirkstead",6
+"69","London",6
+"70","Mablethorpe",6
+"71","Rippingale",6
+"72","Scotland",6
+"73","Scottlethorpe",6
+"74","Surfleet",6
+"75","Amice",5
+"76","Belchford",5
+"77","Burton",5
+"78","Caistor",5
+"79","Crowle",5
+"80","Ewerby",5
+"81","Fleet",5
+"82","Great Limber",5
+"83","Great or Little Limber",5
+"84","Keddington",5
+"85","Orby",5
+"86","Partney",5
+"87","Ropsley",5
+"88","Saltfleet Haven",5
+"89","South Ormsby",5
+"90","Welby",5
+"91","Wilsford",5
+"92","Wyberton",5
+"93","Billingborough",4
+"94","Bridgend",4
+"95","Burton ?Coggles",4
+"96","Canwick",4
+"97","Claythorpe",4
+"98","Corringham",4
+"99","Edenham",4
+"100","Garthorpe",4
+"101","Gedney",4
+"102","Grayingham",4
+"103","Great Ponton",4
+"104","Greatford",4
+"105","Grimsthorpe",4
+"106","Hainton",4
+"107","Kirton",4
+"108","Langtoft",4
+"109","Leasingham",4
+"110","Leverton",4
+"111","LINCOLN",4
+"112","Moulton",4
+"113","Pilham",4
+"114","Roxby",4
+"115","Ruskington",4
+"116","Saxilby",4
+"117","Stainton le Vale",4
+"118","Stow St Mary",4
+"119","Sturton",4
+"120","Swayfield",4
+"121","Wainfleet",4
+"122","West Riding",4
+"123","Anwick",3
+"124","Aslackby",3
+"125","Beelsby",3
+"126","Belvoir",3
+"127","Blankney",3
+"128","Blyton",3
+"129","Bullington",3
+"130","Burwell",3
+"131","Caenby",3
+"132","Dordrecht",3
+"133","Dorrington",3
+"134","Dunsby",3
+"135","East Barkwith",3
+"136","Elsham",3
+"137","England",3
+"138","Farlesthorpe",3
+"139","Fordington",3
+"140","Frieston",3
+"141","Fulbeck",3
+"142","Gonerby",3
+"143","Harpswell",3
+"144","Haverholme",3
+"145","Homcastle",3
+"146","Ingleby",3
+"147","Kirton in Holland",3
+"148","Laughterton",3
+"149","Linwood [near Market Rasen]",3
+"150","Little Limber",3
+"151","Londonthorpe",3
+"152","Louthesk",3
+"153","Martin",3
+"154","Marton",3
+"155","Mere",3
+"156","Ness",3
+"157","Newark",3
+"158","Newport",3
+"159","Newton by Toft",3
+"160","Northorpe",3
+"161","Nottingham",3
+"162","Scothern",3
+"163","Scredington",3
+"164","Sedgebrook",3
+"165","Somercotes",3
+"166","South Riding",3
+"167","Stoke Rochford",3
+"168","Waddingham",3
+"169","Wellingore",3
+"170","Westminster",3
+"171","Wisbech",3
+"172","Woolsthorpe",3
+"173","Wootton",3
+"174","?South Stoke",2
+"175","Aisby",2
+"176","Aisthorpe",2
+"177","Allington",2
+"178","Amcotts",2
+"179","Asgarby",2
+"180","Aswarby",2
+"181","Authorpe",2
+"182","Barkston",2
+"183","Barlings",2
+"184","Barrowby",2
+"185","Beesby",2
+"186","Beltisloe",2
+"187","Benniworth",2
+"188","Bilsby",2
+"189","Boothby Pagnell",2
+"190","Brampton",2
+"191","Branston",2
+"192","Burton ?Pedwardine",2
+"193","Burton Coggles",2
+"194","Cabourn",2
+"195","Cadney",2
+"196","Calcethorpe",2
+"197","Carlby",2
+"198","Cherry Willingham",2
+"199","Colsterworth",2
+"200","Covenham",2
+"201","Cranwell",2
+"202","Cumberworth",2
+"203","Digby",2
+"204","Dowsby",2
+"205","East Stockwith",2
+"206","Eastgate in the suburb of Lincoln",2
+"207","Fen",2
+"208","Fillingham",2
+"209","Flaxwell",2
+"210","France",2
+"211","Glentham",2
+"212","Glentworth",2
+"213","Great Carlton",2
+"214","Great Hale",2
+"215","Great or Little Cotes",2
+"216","Halstead",2
+"217","Halton",2
+"218","Hannah",2
+"219","Harlaxton",2
+"220","Hatton",2
+"221","Hawerby",2
+"222","Heapham",2
+"223","Hemingby",2
+"224","Hemswell",2
+"225","Holy Trinity parish, Lincoln",2
+"226","Hougham",2
+"227","Howell",2
+"228","Huttoft",2
+"229","Ingoldsby",2
+"230","Jordan",2
+"231","Keelby",2
+"232","Kelstem",2
+"233","Killingholme",2
+"234","Kirkby Laythorpe",2
+"235","Kirton in Lindsey",2
+"236","Lancaster",2
+"237","Langton",2
+"238","Legsby",2
+"239","Leicester",2
+"240","Lenton",2
+"241","Little Ponton",2
+"242","Louth Park",2
+"243","Manley",2
+"244","Markby",2
+"245","Marketcross",2
+"246","Mumby",2
+"247","Normanby",2
+"248","North Kelsey",2
+"249","Old Sleaford",2
+"250","Oseby",2
+"251","Ouseby",2
+"252","Owston",2
+"253","Saltfleetby",2
+"254","Silk Willoughby",2
+"255","Skegness",2
+"256","Sloothby",2
+"257","Somerby",2
+"258","South Owersby",2
+"259","South Stoke",2
+"260","Spilsby",2
+"261","Springthorpe",2
+"262","St Augustine’s parish, Lincoln",2
+"263","St Martin’s parish, Lincoln",2
+"264","Stainfield [near Haconby]",2
+"265","Stickford",2
+"266","Stow",2
+"267","Stragglethorpe",2
+"268","Stubton",2
+"269","Swinderby",2
+"270","Syston",2
+"271","Tallington",2
+"272","Thurlby [near Bourne]",2
+"273","Usselby",2
+"274","Walpole",2
+"275","West Deeping",2
+"276","Wilsthorpe",2
+"277","Winteringham",2
+"278","Winthorpe",2
+"279","Witham",2
+"280","Wold Newton",2
+"281","Worlaby",2
+"282","Wragby",2
+"283","?King’s Lynn",1
+"284","?Silk Willoughby",1
+"285","?West Deeping",1
+"286","[North] Willingham",1
+"287","‘Pokemylne’ by Grantham",1
+"288","‘Yorkeswald’",1
+"289","Agnes",1
+"290","Alford",1
+"291","Algarkirk",1
+"292","Alice",1
+"293","Alston",1
+"294","Amabel",1
+"295","Ancaster",1
+"296","Ashby",1
+"297","Asserby",1
+"298","Aswardhurn",1
+"299","at the priory",1
+"300","Auboum",1
+"301","Aunsby",1
+"302","Ayste",1
+"303","Barkham",1
+"304","Barnetby le Wold",1
+"305","Barnoldby le Beck",1
+"306","Barrow upon Humber",1
+"307","Barton upon Humber,",1
+"308","Beatrice",1
+"309","Beaumont",1
+"310","Bedfordshire",1
+"311","Benni worth",1
+"312","Berwick",1
+"313","Billingborough by Brigg",1
+"314","Bitchfield",1
+"315","Bitchfield Beccoyne",1
+"316","Bloxholm",1
+"317","Blyborough",1
+"318","Bolingbroke",1
+"319","Bonby",1
+"320","Boothby Graffoe",1
+"321","Bordeaux",1
+"322","Boultham",1
+"323","Braceborough",1
+"324","Bracebridge",1
+"325","Bradley",1
+"326","Brigg",1
+"327","Brughton",1
+"328","Bucknall",1
+"329","Burgh ?le Marsh",1
+"330","Burgh on Bain",1
+"331","Burringham",1
+"332","Burton [Pedwardine]",1
+"333","Burton PCoggles",1
+"334","Burton Pedwardine",1
+"335","Butterwick [near Boston]",1
+"336","Bytham",1
+"337","Callerton",1
+"338","Calreton",1
+"339","Candleshoe",1
+"340","Canterbury",1
+"341","Canwick by Lincoln",1
+"342","Carleton",1
+"343","Carlton",1
+"344","Castle Bytham",1
+"345","Chancery",1
+"346","Cheshire",1
+"347","Chester",1
+"348","Clasketgate",1
+"349","Claypole",1
+"350","Clayworth",1
+"351","Cockerington",1
+"352","Cold or Potter Han worth",1
+"353","Cold or Potter Hanworth",1
+"354","Coleby",1
+"355","Coningsby",1
+"356","Conisholme",1
+"357","Cor ringham",1
+"358","Cornwall",1
+"359","Counthorpe",1
+"360","Croft",1
+"361","Crowland",1
+"362","Croxton",1
+"363","DE",1
+"364","Deeping",1
+"365","Deeping ?St James",1
+"366","Deeping St James",1
+"367","Dembleby",1
+"368","Deopham",1
+"369","Derby",1
+"370","Doddington Pigot",1
+"371","Dove",1
+"372","Dunston",1
+"373","Eagle",1
+"374","East Kirkby by Bolingbroke",1
+"375","East Markham",1
+"376","East Stamford",1
+"377","East Torrington",1
+"378","Eastgate",1
+"379","Elloe",1
+"380","Empingham",1
+"381","Essington",1
+"382","Eudes Ward of Wainfleet",1
+"383","Evedon",1
+"384","Folkingham",1
+"385","Fotherby",1
+"386","Frieston [near Boston]",1
+"387","Fulstow",1
+"388","Gaskryk",1
+"389","Gate Burton",1
+"390","Gayton ?le Wold",1
+"391","Goxhill",1
+"392","Grainthorpe",1
+"393","Great Grimsby",1
+"394","Grimoldby",1
+"395","Hasculf",1
+"396","Haugham",1
+"397","Haydor",1
+"398","Heckington",1
+"399","Heighington",1
+"400","Helpringham",1
+"401","High Toynton",1
+"402","Hinton",1
+"403","Holbeach Hum",1
+"404","Holme",1
+"405","Holme Spinney by Sudbrooke",1
+"406","Holme Spinney by Sudbrooke [near Lincoln]",1
+"407","Holywell",1
+"408","Horncastle",1
+"409","Hough on the Hill",1
+"410","Houghton",1
+"411","Howsham",1
+"412","Humber river",1
+"413","Hundon",1
+"414","Hykeham",1
+"415","Ingham",1
+"416","Ingoldmells",1
+"417","Kettlethorpe",1
+"418","King’s Lynn",1
+"419","Kingthorpe",1
+"420","Kinnard’s Ferry",1
+"421","Kirkby",1
+"422","Kirton [near Boston]",1
+"423","Kyrkyat",1
+"424","Laceby",1
+"425","Langoe",1
+"426","Langton by Wragby",1
+"427","Langworth",1
+"428","Lawrence",1
+"429","Lawress",1
+"430","Leadenham",1
+"431","Lee",1
+"432","Legboume",1
+"433","Lin wood",1
+"434","Lincoln castle",1
+"435","Little Bytham",1
+"436","Little Carlton",1
+"437","Lothend",1
+"438","Ludborough",1
+"439","Ludford",1
+"440","Maltby le Marsh",1
+"441","Manby",1
+"442","manor of William Ermyn",1
+"443","Manthorpe",1
+"444","Mareham",1
+"445","Market Rasen",1
+"446","Market Stainton",1
+"447","Markham Clinton",1
+"448","marsh of Lea",1
+"449","Martinmas",1
+"450","Maud",1
+"451","Mendham",1
+"452","Metheringham",1
+"453","Middle Rasen",1
+"454","Moorby",1
+"455","Morton [near Gainsborough]",1
+"456","Morton by Lincoln",1
+"457","Navenby",1
+"458","Nettleham",1
+"459","Newland",1
+"460","Newton",1
+"461","Newton le Wold",1
+"462","Nocton",1
+"463","North",1
+"464","North or South Catesby",1
+"465","North Riding",1
+"466","North Thoresby",1
+"467","Norton Disney",1
+"468","Osboumby",1
+"469","Osbournby",1
+"470","Osgodby",1
+"471","Owmby",1
+"472","Oxford",1
+"473","Panton",1
+"474","Pembroke",1
+"475","Pentecost",1
+"476","Peterborough",1
+"477","Pickworth",1
+"478","Pointon",1
+"479","Potter Hanworth",1
+"480","Pouchere",1
+"481","Pykhale",1
+"482","Quarrington",1
+"483","Raithby",1
+"484","Rasen",1
+"485","Reepham",1
+"486","Retford",1
+"487","Revesby",1
+"488","Robert de Silkeston",1
+"489","Rowston",1
+"490","Sapperton",1
+"491","Scampton",1
+"492","Scartho",1
+"493","Scawby",1
+"494","Scodand",1
+"495","Scopwick",1
+"496","Scroop",1
+"497","Scyrtes of Glentham",1
+"498","Shelford",1
+"499","Skellingthorpe",1
+"500","Skendleby",1
+"501","Sleaford Castle",1
+"502","Snarford",1
+"503","Somerby [near Bridgend] by Caistor",1
+"504","South Hykeham",1
+"505","South Kyme",1
+"506","Southorpe",1
+"507","St",1
+"508","St Augustine",1
+"509","St Benedict",1
+"510","St John’s, Newport, Lincoln",1
+"511","St John’s, Stamford",1
+"512","St Lawrence’s parish",1
+"513","St Lawrence’s parish, Lincoln",1
+"514","St Mary’s parish, Wigford, Lincoln",1
+"515","St Peter",1
+"516","St Swithin",1
+"517","St Swithin’s parish, Lincoln.",1
+"518","Stainton",1
+"519","Stainton ?by Langworth",1
+"520","Stainton by Langworth",1
+"521","Stallingborough",1
+"522","Stapleford",1
+"523","Stow Park",1
+"524","Stow St 1 Damages and fees struck through. 2 Damages struck through. 121 Mary",1
+"525","Sturton by Stow St Mary",1
+"526","Sudbrooke",1
+"527","Swaby",1
+"528","Swallow",1
+"529","Swinstead",1
+"530","Tailington",1
+"531","Tealby",1
+"532","Temple Bruer",1
+"533","Tetford",1
+"534","the church of St Peter’s at Gowt’s {‘Lincoln’') bridge",1
+"535","the grange of Huberdhayth [in Scopwick]",1
+"536","the Humber river",1
+"537","Thealby",1
+"538","Thorpe on the Hill",1
+"539","Thurlby",1
+"540","Thurlby [near Lincoln]",1
+"541","Timberland",1
+"542","Uffington",1
+"543","Ulceby [near Barton upon Humber] by Croxton",1
+"544","Utterby",1
+"545","Valence",1
+"546","Walesby",1
+"547","Walmsgate",1
+"548","Waltham",1
+"549","Welbourn",1
+"550","Welton le Marsh",1
+"551","Welton le Wold",1
+"552","West Barkwith",1
+"553","West Rasen",1
+"554","West Wykeham",1
+"555","Westborough",1
+"556","Westfen",1
+"557","Weston",1
+"558","Whitton by Burton on Stathe",1
+"559","Wickenby",1
+"560","Willoughby",1
+"561","Woltoftishill",1
+"562","Wyham",1
+"563","Wymondham",1
+"564","Wytham",1
+"565","Yarburgh",1
+"566","Yarmouth",1
+"567","York",1

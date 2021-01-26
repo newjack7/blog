@@ -14,10 +14,12 @@ tags:
 image: ''
 showonlyimage: no
 ---
+**This post is a work in progress and will look at working with a wrapper in R which is essentially an R package that allows the user to utilise the spacyNLP package from Python. **
 
 ```{r include=FALSE}
+#setwd("C:/Users/Jack/Documents/GitHub/blog")
+#load(".Rdata")
 library(tidyverse)
-library(tidytext)
 library(lubridate)
 library(spacyr)
 library(tif)
@@ -60,7 +62,7 @@ Now I need to join this to the ID from the original volume so I can cross-check 
 
 ```{r}
 lincsIDS <- lincsEvents %>% select(lincsID, UUID, word)
-#verbDetails <- verbDetails %>% rename(UUID = doc_id)
+verbDetails <- verbDetails %>% rename(UUID = doc_id)
 verbDetails <- verbDetails %>% inner_join(lincsIDS)
 ```
 
@@ -110,6 +112,46 @@ toTake <- taken %>%  filter(grepl('not to take', word))
 
 #This prints the value of a specific allegation as an indication of the type of charge
 print(toTake[23,10])
+```
+
+```{r}
+monthsCount %>% count(word) %>% 
+  ggplot(aes(x = factor(word, level = monthOrder), y = n)) + 
+  geom_col(fill="#ffd700", position = "dodge") +
+  geom_text(aes(label=n), hjust=-0.3, size=3.5) +
+  ggtitle("The 1341 Lincolnshire Royal Inquest, c. 1327-1341: allegations by month") +
+  xlab(NULL) +
+  ylab(NULL) +
+  #coord_flip() +
+  theme_minimal()
+```
+
+```{r}
+#Create the TIF (Text Interchange Format) data structure which spacy needs as an input
+
+txt <- data.frame(doc_id = lincsEvents$UUID, text = lincsEvents$word)
+
+#Check if the format is correct
+tif_is_corpus_df(txt)
+
+
+#Parse the text through Spacy
+parsedTxt <- spacy_parse(txt)
+
+slice(parsedTxt, 500:510)
+
+```
+
+
+Parse the text and include detailed part of speech tag. Not sure if this makes much difference but I will try it and see.
+
+```{r}
+detailTag <- spacy_parse(txt, tag = TRUE)
+
+verbDetails <- detailTag %>% filter(pos == 'VERB')
+
+
+
 ```
 
 

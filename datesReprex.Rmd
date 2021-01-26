@@ -1,0 +1,28 @@
+---
+title: "reprex date problem"
+author: "Jack Newman"
+date: "21/01/2021"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+library(lubridate)
+library(reprex)
+```
+
+Create reprex of the date problem.
+
+
+```{r}
+ids <- c(1,2,3,4,5)
+year <- c(1337, NA, NA, 1337, NA)
+dates <- ymd(c("1337-09-12", NA, NA, "1337-07-23", NA))
+text <- c("Roger de Wollesthorp on 12 Sept. 1337 extorted 4 stones 316 lbs of wool.", 
+          "The same Roger on the same day extorted 5 stones 2 lbs of wool from John Ewerby", 
+          "The same Roger on the same day extorted 12d for acquittance from the vills of Howell and Asgarby", 
+          "Roger de Wollesthorpe on 29 June 1338 extorted 1 stone of wool from John Golian and Alan Couper, both of Denton.", 
+          "The same Roger on the same day extorted 4 lbs of wool from the vill of Sedgebrook.")
+rogerDF <- data.frame(ids, year, dates, text)
+```
+

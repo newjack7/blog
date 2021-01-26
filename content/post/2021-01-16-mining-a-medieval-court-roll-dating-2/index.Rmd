@@ -1,0 +1,91 @@
+---
+title: 'Mining a Medieval Court Roll: Dating 2'
+author: ''
+date: '2021-01-16'
+slug: []
+categories: []
+tags: []
+---
+
+```{r}
+library(tidyverse)
+
+```
+
+
+The previous post which looked at dating attempted to apply temporal data to each allegation based on information contained within the charge itself. This post is concerned with the process of the court itself. That is when and how the court heard certain offences. This information is supplied by the documents themselves. Each membrane is headed with the date and location of the hearing. A membrane is essentially akin to a page but is called membrane since it is made from treated animal skin.
+
+As I have previously assigned each allegation an ID based on those created by McLane in his edition I can simply create a list of dates on which each allegation was heard. Based on McLane allegation 8 to allegation 1129 were heard on the 16th of January 1341. Allegation 1130 to 1139 were bills (written complaints) which were put before the court on the 10th of January 1341. 1140 to 1148 were jury decisions heard on the 19th of February 1341 and 1149 to 1161 were judgements held on the 24th of February. 1162 to 1230 were Gaol Delivery hearings on the 28th of February. All were held at Lincoln rather than in locations across the county. Entries 1 to 7 were administrative business regarding empanelling jurors or appointing justices.
+
+0001      10/12/1340 Original Commission
+0002:0003 08/01/1341 Assembly of Jurors and Public Proclamation
+0004      16/12/1340 Expanded Commission
+0005      13/01/1341 Expanded Commission
+0006:0007 16/01/1341 Assembly of Jurors
+0008:1129 16/01/1341 Jury presentments
+1130:1139 10/01/1341 Bills
+1140:1148 19/02/1341 Jury decisions
+1149:1161 24/02/1341 Jury decisions 
+1162:1230 28/02/1341 Gaol Delivery 
+
+
+```{r}
+
+#Converts the lincsID column to numeric so it works with logical operators better and then adds a new column using mutate() and adds text based on logical formulas in case_when().
+
+lincsEvents <- transform(lincsEvents, lincsID = as.numeric(lincsID))
+
+dateHeard <- lincsEvents %>%  mutate(hearingDate = case_when(
+                        lincsID  == 1 ~ '10/12/1340',
+                        lincsID == 2 | lincsID ==3   ~ '08/01/1341',
+                        lincsID  == 4 ~ '16/12/1340',
+                        lincsID  == 5  ~ '13/01/1341',
+                        lincsID  == 6| lincsID == 7 ~ '16/01/1341',
+                        lincsID >= 8 & lincsID <= 1129  ~ '16/01/1341',
+                        lincsID >= 1130 & lincsID < 1140  ~ '10/01/1341',
+                        lincsID >= 1140 & lincsID< 1149  ~ '19/02/1341',
+                        lincsID >= 1149 & lincsID< 1162  ~ '24/02/1341',
+                        lincsID >= 1162 & lincsID< 1231  ~ '28/02/1341'
+                        ) )
+
+dateHeard$hearingDate <-  dmy(dateHeard$hearingDate)
+
+```
+
+
+This takes the table `lincsEvents` and converts the column `lincsID` to a numeric column (it was a character column i.e. plain text) with `as.numeric()`. It then creates a new column called `hearingDate` which has values based on the value of `lincsID`. The values in `hearingDate` are created using logical operators. For example `lincsID  == 6| lincsID == 7 ~ '16/01/1341'`  states that if the value in lincsID is exactly equal to 6 OR 7 then place the value '16/01/1341' in `hearingDate`.
+
+Now I want to join these dates to the dates I have already added and the text of the trials.
+
+```{r}
+#This takes the `hearingDate` column from the `dateHeard` data frame and attaches it to the `combinedDates` data frame. It uses the `UUID` column to match the correct dates to the corresponding `UUID.` This guarantees that the right hearing date is attached to the right `UUID` and `lincsID.`
+
+combinedDates <- lincsEventsDated %>% mutate(hearingDate = dateHeard$hearingDate[match(UUID, dateHeard$UUID)])
+```
+
+
+Now I can work out the difference between the earliest and the latest date in the trial and compare this to other similar trials. 
+
+```{r}
+combinedDates %>%  summarise(min = min(hearingDate),
+            max = max(hearingDate))
+
+#Calculate the difference between the earliest and latest dates
+
+as.double(difftime(ymd("1340-12-10"),
+                   ymd("1341-04-23"),
+                   units = "days"))
+```
+
+These dates were determined from the dates given at the head of each membrane. The court clerk presumably recorded these dates at the beginning of each sitting. However, the justices continued to hear business related to this court much later. Much of this communications from the Sheriff of Lincoln concerning non-appearance of plaintiffs charged by the inquest at the county court. The latest date which indicates this particular court sat on the 23rd of April 1341: 'Notice that the justices ordered jurors to be at Lincoln on 23 April 1341.' At this hearing a number of individuals were acquitted by the assembled jurors. There are then 134 days between the earliest sitting and the last.
+
+This length of trial is in contrast with those in the 1310s which took on average 454 days (526+218+596+477) those in 1320s which took on average 89 days (108+49+38+25+17+85+182+218+82) and 1330s which took 124 days (228+180+48+39) and the others in the 1340s which took 197 days (80+88+57+730+78+199+50+33+240+455+321+336+168+54+63).
+
+```{r}
+
+```
+
+
+
+
+
