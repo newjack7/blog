@@ -6,10 +6,29 @@
     <description>Recent content in Text Mining on Jack Newman</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Mon, 16 Nov 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 14 Jan 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://jack-newman.com/tags/text-mining/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Mining a Medieval Court Roll: spaCy</title>
+      <link>https://jack-newman.com/portfolio/2021-01-14-mining-a-medieval-court-roll-spacy/</link>
+      <pubDate>Thu, 14 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://jack-newman.com/portfolio/2021-01-14-mining-a-medieval-court-roll-spacy/</guid>
+      <description>What data structure does spacyr take? TIF. What does Spacy do? Parse, Tokenise, tag.
+#Create the TIF (Text Interchange Format) data structure which spacy needs as an inputtxt &amp;lt;- data.frame(doc_id = lincsEvents$UUID, text = lincsEvents$word)#Check if the format is correcttif_is_corpus_df(txt)## [1] TRUE#Parse the text through SpacyparsedTxt &amp;lt;- spacy_parse(txt)slice(parsedTxt, 500:510)## doc_id sentence_id token_id token lemma## 1 51fcb885-19c1-408e-b77c-6c7f73464c53 1 43 .</description>
+    </item>
+    
+    <item>
+      <title>Mining a Medieval court roll 4: Topic Modelling</title>
+      <link>https://jack-newman.com/portfolio/text-mining/</link>
+      <pubDate>Tue, 17 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://jack-newman.com/portfolio/text-mining/</guid>
+      <description>This code firstly takes three columns word, lincsID and UUID from the dataframe lincsEvents and creates a new dataframe called lincsDTM.These are columns which contain the text from the Lincoln Records Society volume (word), the original reference provided by McLane (lincsID) and a unique identifier which I created when I annotated the text originally (UUID).The following code firstly deletes the first word in the column word.</description>
+    </item>
     
     <item>
       <title>Mining a Medieval Court Roll 3: TF-IDF</title>

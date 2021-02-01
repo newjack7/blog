@@ -134,7 +134,7 @@ monthsCount <- monthsCount %>% mutate(word = case_when(
 ```{r }
 #Plot of months
 
-monthsCount %>% count(word) %>% ggplot(aes(x = factor(word, level = monthsReversed), y = n)) + geom_col(fill="#ffd700") + xlab(NULL) + coord_flip() + theme_minimal()
+monthsCount %>% count(word) %>% ggplot(aes(x = factor(word, level = monthsReversed), y = n)) + geom_col(fill="#ffd700") + xlab(NULL) + theme_minimal()
 
 
 ```

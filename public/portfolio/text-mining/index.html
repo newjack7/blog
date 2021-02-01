@@ -2,7 +2,7 @@
 <html lang="en-gb">
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Mining a Medieval Court Roll 3: TF-IDF</title>
+<title>Mining a Medieval court roll 4: Topic Modelling</title>
 <meta name="description" content="Portfolio">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="all,follow">
@@ -29,6 +29,17 @@
 <link href="https://jack-newman.com/css/custom.css" rel="stylesheet">
 <link rel="shortcut icon" href="https://jack-newman.com/img/favicon.png">
 
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'G-QTKBYE63RH', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 </head>
 <body>
@@ -100,115 +111,163 @@
   <div class="row">
     <div class="col-lg-8">
       <div class="content-column-content">
-         <h1>Mining a Medieval Court Roll 3: TF-IDF</h1>
+         <h1>Mining a Medieval court roll 4: Topic Modelling</h1>
          
 <script src="index_files/header-attrs/header-attrs.js"></script>
 <link href="index_files/anchor-sections/anchor-sections.css" rel="stylesheet" />
 <script src="index_files/anchor-sections/anchor-sections.js"></script>
 
 
-<p>Term frequency inverse document frequency (TF-IDF) is both a mouthful and a process often carried out as part of the text mining approach. The primary idea behind TF-IDF is to find the words which are most important for the content of each document by decreasing the weight for commonly used words and increasing the weight for words that are not used very much in a collection as a whole. Essentially it tries to find words that are important (i.e, common) in a text but not too common. For example, if there were two identical texts with only a single word difference between the two then a tf-idf approach would isolate that single word as the most important when comparing the two texts.</p>
-<pre class="r"><code>lincs_words &lt;- Lincolnshire_Tokens %&gt;% count(Lincolnshire_ID, word, sort = TRUE)
+<p>This code firstly takes three columns <code>word</code>, <code>lincsID</code> and <code>UUID</code> from the dataframe <code>lincsEvents</code> and creates a new dataframe called <code>lincsDTM</code>.
+These are columns which contain the text from the Lincoln Records Society volume (<code>word</code>), the original reference provided by McLane (<code>lincsID</code>) and a unique identifier which I created when I annotated the text originally (<code>UUID</code>).
+The following code firstly deletes the first word in the column <code>word</code>.
+This is because it simply contains the same information as the <code>lincsID</code> column.
+I then renamed the column <code>word</code> to <code>allegation</code> as it is more reflective of the content and then I split the text into one word per row which means I can cast the dataframe into a Document Term Matrix (DTM).
+This is the format which the data must be in for topic modelling.
+The final two sections cast it into a DTM and then create the topic model for six topics.</p>
+<pre class="r"><code>lincsDTM &lt;- lincsTotalTidy %&gt;% 
+  select(word, lincsID) %&gt;% 
+  count(word, lincsID) %&gt;% 
+  cast_dtm(word, lincsID, n)
 
-total_words &lt;- lincs_words %&gt;% group_by(Lincolnshire_ID) %&gt;%  summarize(total = sum(n))
+lincsLDA &lt;- LDA(lincsDTM, k = 10, control = list(seed = 1234))</code></pre>
+<pre class="r"><code>lincsTopics &lt;- tidy(lincsLDA, matrix = &quot;beta&quot;)
+lincsTopics</code></pre>
+<pre><code>## # A tibble: 12,290 x 3
+##    topic term      beta
+##    &lt;int&gt; &lt;chr&gt;    &lt;dbl&gt;
+##  1     1 1085  2.37e-32
+##  2     2 1085  8.26e-40
+##  3     3 1085  3.37e-32
+##  4     4 1085  1.77e-38
+##  5     5 1085  1.40e-19
+##  6     6 1085  7.14e- 7
+##  7     7 1085  2.82e-22
+##  8     8 1085  1.84e-72
+##  9     9 1085  8.47e-57
+## 10    10 1085  9.03e- 3
+## # ... with 12,280 more rows</code></pre>
+<pre class="r"><code>#Creates List of top terms that belong to each topic
 
-lincs_words &lt;- left_join(lincs_words, total_words)
+lincs_top_terms &lt;- lincsTopics %&gt;%
+  group_by(topic) %&gt;%
+  top_n(10, beta) %&gt;%
+  ungroup() %&gt;%
+  arrange(topic, -beta)
 
-lincs_words</code></pre>
-<pre><code>## # A tibble: 38,788 x 4
-##    Lincolnshire_ID word       n total
-##    &lt;chr&gt;           &lt;chr&gt;  &lt;int&gt; &lt;int&gt;
-##  1 1016            of       131   657
-##  2 1016            from      66   657
-##  3 1016            the       66   657
-##  4 1016            wool      66   657
-##  5 1016            vill      61   657
-##  6 1016            stones    46   657
-##  7 1130            the       46   490
-##  8 1142            and       29   462
-##  9 1044            of        28   245
-## 10 1133            the       27   254
-## # ... with 38,778 more rows</code></pre>
-<p>This creates a table (lincs_words) with one row for each word-allegation combination. <code>n</code> is the number of times that work is used in that particular allegation and <code>total</code> is the total number of words within that particular allegation. Above you can see the first ten rows from the resulting dataframe.</p>
-<pre class="r"><code>freq_by_rank &lt;- lincs_words %&gt;%  group_by(Lincolnshire_ID) %&gt;% mutate(rank = row_number(), &#39;term frequency&#39; = n/total) %&gt;%  ungroup()
+#Visualises the top terms
+lincs_top_terms %&gt;%
+  mutate(term = reorder_within(term, beta, topic)) %&gt;%
+  ggplot(aes(beta, term, fill = factor(topic))) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~ topic, scales = &quot;free&quot;) +
+  scale_y_reordered()</code></pre>
+<p><img src="index_files/figure-html/visualise%20the%20topics-1.png" width="672" /></p>
+<pre class="r"><code>#write.csv(lincs_top_terms, &quot;C:\\Users\\Jack\\Documents\\GitHub\\blog\\Lincolnshire csv Data\\topicModeltop20.csv&quot;)</code></pre>
+<p>I need to test these terms to see if I agree with the topics and if I need to adjust the number of topics up or down from six.
+So first I will create a new table which contains the topics, the ID from McLane, and the text of the allegations.
+That way I can determine if they belong together.</p>
+<pre class="r"><code>lincs_top_terms &lt;- lincs_top_terms %&gt;% rename(lincsID = term)
 
-freq_by_rank</code></pre>
-<pre><code>## # A tibble: 38,788 x 6
-##    Lincolnshire_ID word       n total  rank `term frequency`
-##    &lt;chr&gt;           &lt;chr&gt;  &lt;int&gt; &lt;int&gt; &lt;int&gt;            &lt;dbl&gt;
-##  1 1016            of       131   657     1           0.199 
-##  2 1016            from      66   657     2           0.100 
-##  3 1016            the       66   657     3           0.100 
-##  4 1016            wool      66   657     4           0.100 
-##  5 1016            vill      61   657     5           0.0928
-##  6 1016            stones    46   657     6           0.0700
-##  7 1130            the       46   490     1           0.0939
-##  8 1142            and       29   462     1           0.0628
-##  9 1044            of        28   245     1           0.114 
-## 10 1133            the       27   254     1           0.106 
-## # ... with 38,778 more rows</code></pre>
-<p>Now I can calculate the frequency of each term across the entire document. This is carried out by dividing <code>n</code> - which is the number of times a particular word appears in each allegation - by the total number of times that word appears in the whole court roll. Again, above is a random 10 row selection from the dataframe which results from these calculations.</p>
-<pre class="r"><code>lincs_tf_idf &lt;- lincs_words %&gt;% bind_tf_idf(word, Lincolnshire_ID, n)
+#Create Dataframes for each topic
+topicOne &lt;- lincs_top_terms %&gt;% filter(topic == 1)
+topicTwo &lt;- lincs_top_terms %&gt;% filter(topic == 2)
+topicThree &lt;- lincs_top_terms %&gt;% filter(topic == 3)
+topicFour &lt;- lincs_top_terms %&gt;% filter(topic == 4)
+topicFive &lt;- lincs_top_terms %&gt;% filter(topic == 5)
+topicSix &lt;- lincs_top_terms %&gt;% filter(topic == 6)
+topicSeven &lt;- lincs_top_terms %&gt;% filter(topic == 7)
+topicEight &lt;- lincs_top_terms %&gt;% filter(topic == 8)
+topicNine &lt;- lincs_top_terms %&gt;% filter(topic == 9)
+topicTen &lt;- lincs_top_terms %&gt;% filter(topic == 10)
 
-lincs_tf_idf</code></pre>
-<pre><code>## # A tibble: 38,788 x 7
-##    Lincolnshire_ID word       n total     tf    idf  tf_idf
-##    &lt;chr&gt;           &lt;chr&gt;  &lt;int&gt; &lt;int&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
-##  1 1016            of       131   657 0.199  0.0572 0.0114 
-##  2 1016            from      66   657 0.100  0.486  0.0488 
-##  3 1016            the       66   657 0.100  0.285  0.0286 
-##  4 1016            wool      66   657 0.100  1.78   0.179  
-##  5 1016            vill      61   657 0.0928 1.39   0.129  
-##  6 1016            stones    46   657 0.0700 2.41   0.168  
-##  7 1130            the       46   490 0.0939 0.285  0.0267 
-##  8 1142            and       29   462 0.0628 0.332  0.0208 
-##  9 1044            of        28   245 0.114  0.0572 0.00654
-## 10 1133            the       27   254 0.106  0.285  0.0303 
-## # ... with 38,778 more rows</code></pre>
-<p>The tf_idf will be close to zero for the most common words. These are the words which appear in most allegations. From the first ten rows ‘of’ and ‘the’ are the lowest. The highest values will be those words which occur in fewer allegations.</p>
-<pre class="r"><code>lincs_tf_idf %&gt;%
-  select(-total) %&gt;%
-  arrange(desc(tf_idf))</code></pre>
-<pre><code>## # A tibble: 38,788 x 6
-##    Lincolnshire_ID word               n    tf   idf tf_idf
-##    &lt;chr&gt;           &lt;chr&gt;          &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
-##  1 141             glentham           3 0.158  7.08  1.12 
-##  2 1045            1045               1 0.125  7.08  0.885
-##  3 1045            maintainer         1 0.125  7.08  0.885
-##  4 124             waddington         3 0.167  5.13  0.856
-##  5 376             briselaunce        2 0.118  7.08  0.833
-##  6 1189            scothem            3 0.158  5.13  0.811
-##  7 74              stragglethorpe     2 0.111  7.08  0.787
-##  8 787             beesby             2 0.111  7.08  0.787
-##  9 787             hawerby            2 0.111  7.08  0.787
-## 10 35              mablethorpe        2 0.133  5.69  0.759
-## # ... with 38,778 more rows</code></pre>
-<p>It is unsurprising that almost all of the words which are determined as the most important are place or personal names. A further delving shows that some occupations are also determined as important with ‘fletcher’ occurring twice and foodstuffs ‘pork’ and ‘poultry’. It may be that the text within each allegation is often too small to adequately characterise using tf-idf. This text is based on a calendared edition. In other words, it has omitted much of the repetitive legalese which predominates in fourteenth century court documents (perhaps all court documents). This aids readability but might hinder analyses such as this one.</p>
-<pre class="r"><code>#Removes entries containing personal names, place names, digits, and common english words.
+#Now I want to join all of these to the allegations so I can read them easily in one place
+topicOne &lt;- topicOne %&gt;% inner_join(lincsEvents)</code></pre>
+<pre><code>## Joining, by = &quot;lincsID&quot;</code></pre>
+<pre class="r"><code>#Remove the Duplicates
+topicOne &lt;-  topicOne[!duplicated(topicOne$lincsID), ]
 
-stop_tf_idf &lt;- lincs_tf_idf %&gt;% anti_join(lincs_stop_people)
-stop_tf_idf &lt;- stop_tf_idf %&gt;% anti_join(lincs_stop_places)
-stop_tf_idf &lt;- stop_tf_idf %&gt;% filter(grepl(&#39;^\\D&#39;, word))
-stop_tf_idf &lt;- stop_tf_idf %&gt;% anti_join(stop_words)
+#Repeat for each topic
+topicTwo &lt;- topicTwo %&gt;% inner_join(lincsEvents)</code></pre>
+<pre><code>## Joining, by = &quot;lincsID&quot;</code></pre>
+<pre class="r"><code>topicTwo &lt;-  topicTwo[!duplicated(topicTwo$lincsID), ]
 
-stop_tf_idf %&gt;%
-  select(-total) %&gt;%
-  arrange(desc(tf_idf))</code></pre>
-<pre><code>## # A tibble: 9,702 x 6
-##    Lincolnshire_ID word            n     tf   idf tf_idf
-##    &lt;chr&gt;           &lt;chr&gt;       &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
-##  1 1045            maintainer      1 0.125   7.08  0.885
-##  2 348             fletcher        2 0.125   5.98  0.748
-##  3 251             vilk            1 0.0909  7.08  0.644
-##  4 889             pork            1 0.0769  7.08  0.545
-##  5 889             poultry         1 0.0769  7.08  0.545
-##  6 889             forestaller     1 0.0769  5.98  0.460
-##  7 791             pnorth          1 0.0625  7.08  0.442
-##  8 994             perpetrated     1 0.0625  7.08  0.442
-##  9 267             hog             2 0.0606  7.08  0.429
-## 10 835             farms           2 0.0588  7.08  0.416
-## # ... with 9,692 more rows</code></pre>
-<p>Removing those words which refer to locations, individuals, or digits (primarily the index create by Bernard McLane the original editor) gives a word list of much more interest. This contains words which indicate a legal process such as ‘maintainer’ (someone who facilitates lawsuits for third parties to harass others), ‘forestaller’ (an individual who buys goods in anticipation of rising prices so that they might resell them at a profit.) It also includes words which are indicative of the material involved in the allegations, ‘sheep’, ‘chickens’, and professions, ‘archer’, ‘bookbinder’, ‘oilmaker’. A list like this could be the beginning of a tailored classification which sought to annotate professions, evidence of the posessions of victims of crime, or the prevalence of particular types of judicial processes. I suspect that tf-idf might be even more useful when comparing between larger bodies of text such as between different courts rather than internal comparisons of the sort I have carried out here.</p>
+topicThree &lt;- topicThree %&gt;% inner_join(lincsEvents)</code></pre>
+<pre><code>## Joining, by = &quot;lincsID&quot;</code></pre>
+<pre class="r"><code>topicThree &lt;-  topicThree[!duplicated(topicThree$lincsID), ]
+
+topicFour &lt;- topicFour %&gt;% inner_join(lincsEvents)</code></pre>
+<pre><code>## Joining, by = &quot;lincsID&quot;</code></pre>
+<pre class="r"><code>topicFour &lt;-  topicFour[!duplicated(topicFour$lincsID), ]
+
+topicFive &lt;- topicFive %&gt;% inner_join(lincsEvents)</code></pre>
+<pre><code>## Joining, by = &quot;lincsID&quot;</code></pre>
+<pre class="r"><code>topicFive &lt;-  topicFive[!duplicated(topicFive$lincsID), ]
+
+topicSix &lt;- topicSix %&gt;% inner_join(lincsEvents)</code></pre>
+<pre><code>## Joining, by = &quot;lincsID&quot;</code></pre>
+<pre class="r"><code>topicSix &lt;-  topicSix[!duplicated(topicSix$lincsID), ]
+
+topicSeven &lt;- topicSeven %&gt;% inner_join(lincsEvents)</code></pre>
+<pre><code>## Joining, by = &quot;lincsID&quot;</code></pre>
+<pre class="r"><code>topicSeven &lt;-  topicSeven[!duplicated(topicSeven$lincsID), ]
+
+
+topicEight &lt;- topicEight %&gt;% inner_join(lincsEvents)</code></pre>
+<pre><code>## Joining, by = &quot;lincsID&quot;</code></pre>
+<pre class="r"><code>topicEight &lt;-  topicEight[!duplicated(topicEight$lincsID), ]
+
+topicNine &lt;- topicNine %&gt;% inner_join(lincsEvents)</code></pre>
+<pre><code>## Joining, by = &quot;lincsID&quot;</code></pre>
+<pre class="r"><code>topicNine &lt;-  topicNine[!duplicated(topicNine$lincsID), ]
+
+topicTen &lt;- topicTen %&gt;% inner_join(lincsEvents)</code></pre>
+<pre><code>## Joining, by = &quot;lincsID&quot;</code></pre>
+<pre class="r"><code>topicTen &lt;-  topicTen[!duplicated(topicTen$lincsID), ]
+
+
+#Join all the dataframes together
+topics &lt;- do.call(&quot;rbind&quot;, list(topicOne, topicTwo, topicThree, topicFour, topicFive, topicSix, topicSeven, topicEight, topicNine, topicTen))
+  
+  
+#I write the result to CSV so I can read it more easily
+write.csv(topics, &quot;C:\\Users\\Jack\\Documents\\GitHub\\blog\\Lincolnshire csv Data\\topics.csv&quot;)</code></pre>
+<p><strong>Topic one</strong></p>
+<p>The first topic is entirely related to the theft of foodstuff and one allegation of forestalling.
+A practice common today and known in North America as scalping for some reason.</p>
+<p><strong>Topic two</strong></p>
+<p>The ten most common allegations in topic two relate to the extortion by royal officials.
+Primarily tax collectors there is also one charge against a sequestrator of the bishop of Lincoln and one against the keepers of the king’s horses.</p>
+<p><strong>Topic three</strong></p>
+<p>Topic three is particularly morbid and is taken up with assaults, murders, and three charges that coroners failed to do their duty concerning the viewing or burial of bodies.</p>
+<p><strong>Topic four</strong></p>
+<p>The fourth topic is associated with large scale, usually public, violence.
+The first eight charges all relate to allegations of violence against large groups of individuals within Lincoln.
+This is connected with a seeming feud between the town officials and Thomas Carlton an under-sheriff and former clerk of the town who at one point stole the town seal, ejected the mayor, issued his own members for parliament, rescued a friend from captivity by the king, and finally attacked the bailiffs of this same court and stole the list of fines.
+It is satisfying that these crimes were grouped together even though the names, dates, and locations were removed from the analysis.</p>
+<p><strong>Topic five</strong></p>
+<p>This contains four written bills of complaint.
+These were fairly unusual as most complaints made to the court were oral.
+The rest related to crimes of conspiracy or others connected with legal or administrative offences.</p>
+<p><strong>Topic six</strong></p>
+<p>Entirely connected to the crimes of wool collectors.</p>
+<p><strong>Topic seven</strong></p>
+<p>Escheators, archdeacons, vicars, and commissaries are grouped together in topic seven.
+Most of the crimes relate to seizure or theft of items or withholding of services.
+They may have been grouped as the charges tend to be longer and more formulaic.
+The model placed them with the commission which is essentially a long list of officials.
+It may be worthwhile running the model with this charge excluded.</p>
+<p><strong>Topic eight</strong></p>
+<p>Again relates entirely to the crimes of wool collectors.
+Particularly those which state the wool was kept for personal use and did not go to the king or was not paid for.
+The distinction between topic six and topic eight appears to reflect a distinction in scribal practice as many of the charges are consecutive.</p>
+<p><strong>Topic nine</strong></p>
+<p>This selected gaol delivery hearings - essentially the sessions in which the justices decided guilt or innocence and passed sentence.
+It also contains allegations against bailiffs and sheriffs.
+These were likely grouped as the sheriff was responsible for bringing and removing the prisoners during the gaol delivery hearings.
+It seems to be capturing the legal process and complaints about the legal process.</p>
+<p><strong>Topic ten</strong></p>
+<p>These relate entirely to jury decisions.</p>
 
          
       </div>

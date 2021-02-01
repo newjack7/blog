@@ -14,7 +14,7 @@ tags:
 image: ''
 showonlyimage: no
 ---
-**This post is a work in progress and will look at working with a wrapper in R which is essentially an R package that allows the user to utilise the spacyNLP package from Python. **
+**This post is a work in progress and will look at working with a wrapper in R which is essentially an R package that allows the user to utilise the spacyNLP package from Python.**
 
 ```{r include=FALSE}
 #setwd("C:/Users/Jack/Documents/GitHub/blog")
@@ -33,6 +33,8 @@ What data structure does spacyr take? TIF. What does Spacy do? Parse, Tokenise, 
 
 ```{r}
 #Create the TIF (Text Interchange Format) data structure which spacy needs as an input
+lincsEvents <- select(lincsEvents, UUID, word)
+
 
 txt <- data.frame(doc_id = lincsEvents$UUID, text = lincsEvents$word)
 

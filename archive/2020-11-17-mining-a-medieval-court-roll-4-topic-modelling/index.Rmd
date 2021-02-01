@@ -2,8 +2,8 @@
 title: 'Mining a Medieval court roll 4: Topic Modelling'
 author: 'Jack Newman'
 date: '2020-11-17'
-slug: Text Mining
-categories: Text Mining
+slug: 
+categories:
 tags:
 - Medieval History
 - Text Mining

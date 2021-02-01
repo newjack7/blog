@@ -8,19 +8,23 @@ tags:
 - Medieval History
 - Text Mining
 ---
-Term frequency inverse document frequency (TF-IDF) is both a mouthful and a process often carried out as part of the text mining approach. The primary idea behind TF-IDF is to find the words which are most important for the content of each document by decreasing the weight for commonly used words and increasing the weight for words that are not used very much in a collection as a whole. Essentially it tries to find words that are important (i.e, common) in a text but not too common. For example, if there were two identical texts with only a single word difference between the two then a tf-idf approach would isolate that single word as the most important when comparing the two texts.
 
-```{r}
+**This post is a work in progress.**
+
+Term frequency inverse document frequency (TF-IDF) is both a mouthful and a process often carried out as part of the text mining approach. The primary idea behind TF-IDF is to find the words which are most important for the content of each document by decreasing the weight for commonly used words and increasing the weight for words that are not used very much in a collection as a whole. Essentially it tries to find words that are important (i.e, common) in a text but not ubiquitous. For example, if there were two identical texts with only a single word difference between the two then a tf-idf approach would isolate that single word as the most important when comparing the two texts.
+
+```{r libraries and working dir, message=FALSE, warning=FALSE, include=FALSE}
 library(tidyverse)
 library(tidytext)
-setwd("C:/Users/Jack/Documents/GitHub/bi-grams")
+setwd("C:/Users/Jack/Documents/GitHub/blog")
 load(".Rdata")
 ```
 
-```{r Term Frequency in JUST 1/521}
-lincs_words <- Lincolnshire_Tokens %>% count(Lincolnshire_ID, word, sort = TRUE)
 
-total_words <- lincs_words %>% group_by(Lincolnshire_ID) %>%  summarize(total = sum(n))
+```{r Term Frequency in JUST 1/521, message=FALSE, warning=FALSE}
+lincs_words <- lincsEventsTokens %>% count(lincsID, word, sort = TRUE)
+
+total_words <- lincs_words %>% group_by(lincsID) %>%  summarize(total = sum(n))
 
 lincs_words <- left_join(lincs_words, total_words)
 
@@ -30,7 +34,7 @@ lincs_words
 This creates a table (lincs_words) with one row for each word-allegation combination. `n` is the number of times that work is used in that particular allegation and `total` is the total number of words within that particular allegation. Above you can see the first ten rows from the resulting dataframe.
 
 ```{r}
-freq_by_rank <- lincs_words %>%  group_by(Lincolnshire_ID) %>% mutate(rank = row_number(), 'term frequency' = n/total) %>%  ungroup()
+freq_by_rank <- lincs_words %>%  group_by(lincsID) %>% mutate(rank = row_number(), 'term frequency' = n/total) %>%  ungroup()
 
 freq_by_rank
 ```
@@ -40,7 +44,7 @@ Now I can calculate the frequency of each term across the entire document. This 
 
 ```{r bind_tf_idf}
 
-lincs_tf_idf <- lincs_words %>% bind_tf_idf(word, Lincolnshire_ID, n)
+lincs_tf_idf <- lincs_words %>% bind_tf_idf(word, lincsID, n)
 
 lincs_tf_idf
 
@@ -51,13 +55,14 @@ The tf_idf will be close to zero for the most common words. These are the words 
 ```{r}
 lincs_tf_idf %>%
   select(-total) %>%
+  filter(n>10) %>% 
   arrange(desc(tf_idf))
 
 ```
 
 It is unsurprising that almost all of the words which are determined as the most important are place or personal names. A further delving shows that some occupations are also determined as important with 'fletcher' occurring twice and foodstuffs 'pork' and 'poultry'. It may be that the text within each allegation is often too small to adequately characterise using tf-idf. This text is based on a calendared edition. In other words, it has omitted much of the repetitive legalese which predominates in fourteenth century court documents (perhaps all court documents). This aids readability but might hinder analyses such as this one.
 
-```{r stop words}
+```{r stop words, message=FALSE, warning=FALSE}
 #Removes entries containing personal names, place names, digits, and common english words.
 
 stop_tf_idf <- lincs_tf_idf %>% anti_join(lincs_stop_people)
@@ -66,9 +71,66 @@ stop_tf_idf <- stop_tf_idf %>% filter(grepl('^\\D', word))
 stop_tf_idf <- stop_tf_idf %>% anti_join(stop_words)
 
 stop_tf_idf %>%
-  select(-total) %>%
-  arrange(desc(tf_idf))
+  filter(n>3) %>% 
+  arrange(desc(tf))
 
 
 ```
-Removing those words which refer to locations, individuals, or digits (primarily the index create by Bernard McLane the original editor) gives a word list of much more interest. This contains words which indicate a legal process such as 'maintainer' (someone who facilitates lawsuits for third parties to harass others), 'forestaller' (an individual who buys goods in anticipation of rising prices so that they might resell them at a profit.) It also includes words which are indicative of the material involved in the allegations, 'sheep', 'chickens', and professions, 'archer', 'bookbinder', 'oilmaker'. A list like this could be the beginning of a tailored classification which sought to annotate professions, evidence of the posessions of victims of crime, or the prevalence of particular types of judicial processes. I suspect that tf-idf might be even more useful when comparing between larger bodies of text such as between different courts rather than internal comparisons of the sort I have carried out here.
+Removing those words which refer to locations, individuals, or digits (primarily the index create by Bernard McLane the original editor) gives a word list of much more interest. This contains words which indicate a legal process such as 'maintainer' (someone who facilitates lawsuits for third parties to harass others), 'forestaller' (an individual who buys goods in anticipation of rising prices so that they might resell them at a profit.) It also includes words which are indicative of the material involved in the allegations, 'sheep', 'chickens', and professions, 'archer', 'bookbinder', 'oilmaker'. A list like this could be the beginning of a tailored classification which sought to annotate professions, evidence of the possessions of victims of crime, or the prevalence of particular types of judicial processes. I suspect that tf-idf might be even more useful when comparing between larger bodies of text such as between different courts rather than internal comparisons of the sort I have carried out here.
+
+
+```{r Term Frequency by year in JUST 1/521, message=FALSE, warning=FALSE}
+  lincsYearWords <- full_join(lincsTotalTidy, fullDated, by = 'UUID')
+
+  lincsYearWords <- lincsYearWords %>% select(UUID, lincsID, word, day, month, year, date)
+
+  lincsYearWords <- lincsYearWords %>% count(year, word, sort = TRUE)
+
+  #incsTotalYearWords <- lincsYearWords %>% group_by(year) %>%  summarize(total = sum(n))
+
+  lincsTotalYearWords <- left_join(lincsYearWords, lincsTotalYearWords)
+
+#Remove all rows without a year
+
+  lincsTotalYearWords <- lincsTotalYearWords %>%  na.omit()
+
+lincsTotalYearWords
+```
+
+From this we can see, for example, that more felonies were reported in 1340 than in 1338 or that wool was mentioned more often in 1338 than in other years. Not particularly informative so far. Again `n` is the number of occurences of a word within a year and `total` is the over number of words within each year.
+
+```{r}
+yearFreqRank <- lincsTotalYearWords %>%  group_by(year) %>% mutate(rank = row_number(), 'term frequency' = n/total) %>%  ungroup()
+
+yearFreqRank
+
+lincsYearTFIDF <- lincsTotalYearWords %>% bind_tf_idf(word, year, n)
+
+lincsYearTFIDF %>%
+  filter(n>8) %>% 
+  arrange(desc(tf_idf))
+```
+
+
+
+
+How many words in total? 4063 distinct words.
+
+```{r}
+#Number of occurrences of each distinct word once names and sums of money are removed
+wordCounts <- lincsTotalTidy %>% count(word, sort = TRUE)
+
+wordCounts <- wordCounts %>% rename('allegation' = 'word')
+lincsYearTFIDF <- lincsYearTFIDF %>% rename('allegation' = word)
+
+TFIDFCounts <- left_join(lincsYearTFIDF, wordCounts)
+```
+
+```{r}
+#TFIDFCounts %>%
+ # filter(totalDistinct>20) %>% 
+  #filter(!(allegation %in% monthOrder)) %>% 
+  #arrange(desc(tf_idf))
+
+```
+

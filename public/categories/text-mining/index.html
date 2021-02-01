@@ -32,6 +32,17 @@
   <link href="https://jack-newman.com/categories/text-mining/index.xml" rel="alternate" type="application/rss+xml" title="Jack Newman" />
 
 
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'G-QTKBYE63RH', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
 </head>
 <body>
   <div id="all">
@@ -101,6 +112,43 @@
 
     <div class="grid">
         <div class="row">
+          
+              <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 masonry-item">
+                  <div class="box-masonry">
+                      
+                      
+                      <div class="box-masonry-text">
+                      
+                          <h4><a href="https://jack-newman.com/portfolio/2021-01-14-mining-a-medieval-court-roll-spacy/">Mining a Medieval Court Roll: spaCy</a></h4>
+                          <div class="box-masonry-description">
+                            <p>
+                                
+                                  What data structure does spacyr take? TIF. What does Spacy do? Parse, Tokenise, tag.
+#Create the TIF (Text Interchange Format) data structure which spacy needs as an inputtxt &lt;- data.frame(doc_id = lincsEvents$UUID, text = lincsEvents$word)#Check if the format is correcttif_is_corpus_df(txt)## [1] TRUE#Parse the text through SpacyparsedTxt &lt;- spacy_parse(txt)slice(parsedTxt, 500:510)## doc_id sentence_id token_id token lemma## 1 51fcb885-19c1-408e-b77c-6c7f73464c53 1 43 .
+                                
+                            </p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          
+              <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 masonry-item">
+                  <div class="box-masonry">
+                      
+                      
+                      <div class="box-masonry-text">
+                      
+                          <h4><a href="https://jack-newman.com/portfolio/text-mining/">Mining a Medieval court roll 4: Topic Modelling</a></h4>
+                          <div class="box-masonry-description">
+                            <p>
+                                
+                                  This code firstly takes three columns word, lincsID and UUID from the dataframe lincsEvents and creates a new dataframe called lincsDTM.These are columns which contain the text from the Lincoln Records Society volume (word), the original reference provided by McLane (lincsID) and a unique identifier which I created when I annotated the text originally (UUID).The following code firstly deletes the first word in the column word.
+                                
+                            </p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
           
               <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 masonry-item">
                   <div class="box-masonry">

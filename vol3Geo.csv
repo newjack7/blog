@@ -1,0 +1,1314 @@
+"","city","n","country","lat","long"
+"1","England",1800,"United Kingdom",52.5934191,-0.2491985
+"2","Lincoln",535,"United Kingdom",53.2336301,-0.5392172
+"3","York",333,"United Kingdom",53.9590555,-1.0815361
+"4","London",173,"United Kingdom",51.5073219,-0.1276474
+"5","Northampton",124,"United Kingdom",52.2381355,-0.8963907
+"6","Liddington",66,"United Kingdom",51.5318295,-1.7026625
+"7","Stamford",66,"United Kingdom",52.6520552,-0.4804363
+"8","Banbury",64,"United Kingdom",52.0601807,-1.3402795
+"9","Leicester",63,"United Kingdom",52.6361398,-1.1330789
+"10","Oxford",49,"United Kingdom",51.7520131,-1.2578499
+"11","Sleaford",48,"United Kingdom",52.9984193,-0.4094529
+"12","Stow Park",45,"United Kingdom",51.5818053,-3.0079146
+"13","Nottingham",40,"United Kingdom",52.9534193,-1.1496461
+"14","Huntingdon",36,"United Kingdom",52.3314292,-0.1847723
+"15","Nettleham",34,"United Kingdom",53.2661301,-0.4861549
+"16","Woodstock",34,"United Kingdom",51.8474887,-1.3545343
+"17","Warwick",28,"United Kingdom",52.2814519,-1.5815742
+"18","Grantham",25,"United Kingdom",52.9133829,-0.6426582
+"19","Newark",25,"United Kingdom",53.0761693,-0.8092339
+"20","Peterborough",20,"United Kingdom",52.5725769,-0.2427336
+"21","Ely",19,"United Kingdom",52.40187845,0.283857419474175
+"22","Gloucester",18,"United Kingdom",51.8653705,-2.2458192
+"23","Homcastle",18,"United Kingdom",NA,NA
+"24","Bermondsey",17,"United Kingdom",51.4970125,-0.063268
+"25","Holland",16,"United Kingdom",51.2380723,0.0074004
+"26","Islip",16,"United Kingdom",51.8231826,-1.2364036
+"27","Grimsby",15,"United Kingdom",53.5677371,-0.0736289
+"28","Bedford",14,"United Kingdom",52.1363806,-0.4675041
+"29","Boston",14,"United Kingdom",52.9770408,-0.0239836
+"30","Elstow",14,"United Kingdom",52.1153339,-0.4681274
+"31","Fiskerton",14,"United Kingdom",53.235737,-0.4279668
+"32","Fulford",14,"United Kingdom",53.9373984,-1.0721171
+"33","Richmond",14,"United Kingdom",51.4613531,-0.3032767
+"34","Rome",14,"United Kingdom",56.7862763,-2.7832537
+"35","Buckingham",13,"United Kingdom",51.9983175,-0.9786725
+"36","Leverton",13,"United Kingdom",53.0069137,0.0840916
+"37","Spalding",13,"United Kingdom",52.7874935,-0.1516271
+"38","Tottenham Court",13,"United Kingdom",51.5976955,-0.0672892
+"39","Hereford",12,"United Kingdom",52.0553813,-2.7151735
+"40","Kensington",12,"United Kingdom",51.4989948,-0.1991229
+"41","South Luffenham",12,"United Kingdom",52.60507645,-0.606018680507261
+"42","Worcester",12,"United Kingdom",52.1911849,-2.2206585
+"43","Barrowden",11,"United Kingdom",52.5914986,-0.604697125650911
+"44","Berkhamsted",11,"United Kingdom",51.75514375,-0.555768102390267
+"45","Canterbury",11,"United Kingdom",51.2800275,1.0802533
+"46","Churchill",11,"United Kingdom",52.4126915,-2.1787828
+"47","Cornwall",11,"United Kingdom",NA,NA
+"48","Hertford",11,"United Kingdom",51.7957409,-0.078521
+"49","Kenilworth",11,"United Kingdom",52.3450526,-1.5816028
+"50","Kent",11,"United Kingdom",NA,NA
+"51","Kirtlington",11,"United Kingdom",51.8735333,-1.2749964
+"52","Stoke Newington",11,"United Kingdom",51.5576971,-0.0772816
+"53","Tackley",11,"United Kingdom",51.8825433,-1.3027918
+"54","Yarburgh",11,"United Kingdom",53.4170967,0.0306739
+"55","Bath",10,"United Kingdom",51.3813864,-2.3596963
+"56","Dorchester",10,"United Kingdom",50.7132064,-2.4371229
+"57","Durham",10,"United Kingdom",54.7764152,-1.5758539
+"58","Eynsham",10,"United Kingdom",51.7841161,-1.3755251
+"59","Highbury",10,"United Kingdom",51.5457996,-0.1027127
+"60","Winchester",10,"United Kingdom",51.0612766,-1.3131692
+"61","Aisthorpe",9,"United Kingdom",53.31097,-0.5795434
+"62","Baldock",9,"United Kingdom",51.9889973,-0.1882079
+"63","Baldok",9,"United Kingdom",NA,NA
+"64","Broughton",9,"United Kingdom",53.1650183,-2.9875151
+"65","Buckden",9,"United Kingdom",52.2949897,-0.2513765
+"66","Cambridge",9,"United Kingdom",52.19758465,0.139153737368744
+"67","Dunstable",9,"United Kingdom",51.8861316,-0.5209341
+"68","Waltham",9,"United Kingdom",51.1981586,1.0165175
+"69","Wells",9,"United Kingdom",51.2094511,-2.6451203
+"70","Aylesbury",8,"United Kingdom",51.8161412,-0.8130383
+"71","Buchan",8,"United Kingdom",NA,NA
+"72","Chipping Norton",8,"United Kingdom",51.9418212,-1.5455303
+"73","Grimoldby",8,"United Kingdom",53.3719357,0.0901237
+"74","Irchester",8,"United Kingdom",52.2817403,-0.6467662
+"75","Newnham",8,"United Kingdom",52.0209937,-0.1853037
+"76","Skirbeck",8,"United Kingdom",52.9691289,-0.0084822
+"77","Algarkirk",7,"United Kingdom",52.8997182,-0.0795578
+"78","Barwell",7,"United Kingdom",52.5677249,-1.3457679
+"79","Belchford",7,"United Kingdom",53.2607735,-0.0628264
+"80","Bicester",7,"United Kingdom",51.8988832,-1.1518287
+"81","Cotesbach",7,"United Kingdom",52.4360394,-1.2137515
+"82","Fringford",7,"United Kingdom",51.9544798,-1.1228092
+"83","Kibworth Beauchamp",7,"United Kingdom",52.53311805,-0.983089559339941
+"84","Linwood",7,"United Kingdom",55.8471992,-4.502098
+"85","Miningsby",7,"United Kingdom",53.1579759,-0.0241439
+"86","Navenby",7,"United Kingdom",53.1066184,-0.5239171
+"87","Old Temple",7,"United Kingdom",50.5305721,-4.6176108
+"88","Orton Longueville",7,"United Kingdom",52.5551094,-0.2759303
+"89","Spilsby",7,"United Kingdom",53.1734361,0.094623
+"90","Stow",7,"United Kingdom",55.6928223,-2.8627517
+"91","Sutterby",7,"United Kingdom",53.2302402,0.0742681
+"92","Thimbleby",7,"United Kingdom",54.3523425,-1.3092338
+"93","Tothill",7,"United Kingdom",53.311123,0.1261786
+"94","Wendover",7,"United Kingdom",51.7676884,-0.7443215
+"95","Willoughby",7,"United Kingdom",53.2246381,0.2007866
+"96","Yaxley",7,"United Kingdom",52.511405,-0.241230992882527
+"97","Bourne",6,"United Kingdom",52.7682148,-0.3771217
+"98","Coventry",6,"United Kingdom",52.4081812,-1.510477
+"99","Drayton",6,"United Kingdom",52.0727328,-1.375292
+"100","East Kirkby",6,"United Kingdom",53.1401714,-0.0044193
+"101","Friesthorpe",6,"United Kingdom",53.3368513,-0.3909358
+"102","Hambleton",6,"United Kingdom",54.25045835,-1.43687830444286
+"103","Hatfield",6,"United Kingdom",51.7634675,-0.2258741
+"104","Helpringham",6,"United Kingdom",52.9516942,-0.3062884
+"105","Ibstock",6,"United Kingdom",52.6883907,-1.3987871
+"106","Kencott",6,"United Kingdom",NA,NA
+"107","Kimbolton",6,"United Kingdom",52.2979227,-0.3882587
+"108","Lafford",6,"United Kingdom",NA,NA
+"109","Lancaster",6,"United Kingdom",54.0484068,-2.7990345
+"110","Lichfield",6,"United Kingdom",52.6843696,-1.8275286
+"111","Louth",6,"United Kingdom",53.3675163,-0.0022381
+"112","Meppershall",6,"United Kingdom",52.012321,-0.3452561
+"113","North Thoresby",6,"United Kingdom",53.4670883,-0.0554188
+"114","Peatling Parva",6,"United Kingdom",52.5005734,-1.1338805
+"115","Pembroke",6,"United Kingdom",51.6754422,-4.9144858
+"116","Penn",6,"United Kingdom",52.5633067,-2.1612661
+"117","Rushton",6,"United Kingdom",52.4393998,-0.7656317
+"118","Salisbury",6,"United Kingdom",51.0690613,-1.7954134
+"119","Shillington",6,"United Kingdom",51.9934511,-0.3595323
+"120","South Kelsey",6,"United Kingdom",53.4707387,-0.4310635
+"121","the Roman Curia",6,"United Kingdom",NA,NA
+"122","Tickencote",6,"United Kingdom",52.67736545,-0.551259094572976
+"123","Torksey",6,"United Kingdom",53.3002756,-0.7448882
+"124","Warboys",6,"United Kingdom",52.4041489,-0.0793559
+"125","Willingham",6,"United Kingdom",52.3140025,0.0592055
+"126","Witney",6,"United Kingdom",51.7838848,-1.4852861
+"127","All Saints",5,"United Kingdom",50.805436,-2.9875049
+"128","Amersham",5,"United Kingdom",51.676685,-0.607692
+"129","Ashby",5,"United Kingdom",52.7471344,-1.4712148
+"130","Austin",5,"United Kingdom",50.3966529,-4.1054331
+"131","Bamoldby",5,"United Kingdom",NA,NA
+"132","Bampton",5,"United Kingdom",54.5571655,-2.7501703
+"133","Barrowby",5,"United Kingdom",52.9161674,-0.6887849
+"134","Belton",5,"United Kingdom",52.7829529,-1.3387918
+"135","Benniworth",5,"United Kingdom",53.3199512,-0.1872422
+"136","Billingborough",5,"United Kingdom",52.8938586,-0.3409855
+"137","Bolingbroke",5,"United Kingdom",53.1651295,0.0188986
+"138","Chester",5,"United Kingdom",53.1908873,-2.8908955
+"139","Cottered",5,"United Kingdom",51.9464234,-0.0813596
+"140","Cuxham",5,"United Kingdom",51.6524151,-1.0375868
+"141","Ellington",5,"United Kingdom",55.2211076,-1.5676437
+"142","Fleet",5,"United Kingdom",51.2828601,-0.831633447197901
+"143","Fleet Marston",5,"United Kingdom",51.8352619,-0.8718345
+"144","Gartree",5,"United Kingdom",52.4955139,-0.9658565
+"145","Gayton le Marsh",5,"United Kingdom",53.3363907,0.1411162
+"146","Glooston",5,"United Kingdom",52.5561591,-0.8955218
+"147","Great Gaddesden",5,"United Kingdom",51.790242,-0.5103564
+"148","Great Gransden",5,"United Kingdom",52.1862759,-0.1432049
+"149","Great Houghton",5,"United Kingdom",53.5524609,-1.3476042
+"150","Great Limber",5,"United Kingdom",53.5621956,-0.2900625
+"151","Great Staughton",5,"United Kingdom",52.2685602,-0.3444957
+"152","Hanslope",5,"United Kingdom",52.1145931,-0.8269439
+"153","Harby",5,"United Kingdom",52.8720176,-0.8928483
+"154","Helmdon",5,"United Kingdom",52.0866108,-1.12133254810404
+"155","Hinton",5,"United Kingdom",52.170237,-1.2174175
+"156","Hinxworth",5,"United Kingdom",52.049146,-0.1998206
+"157","Holbeach",5,"United Kingdom",52.80421,0.0180043
+"158","Ingoldmells",5,"United Kingdom",53.1932406,0.3346566
+"159","Irby",5,"United Kingdom",53.3519359,-3.1181304
+"160","Langton",5,"United Kingdom",54.0948273,-0.7836789
+"161","Leire",5,"United Kingdom",52.5057202,-1.2281823
+"162","Lenton",5,"United Kingdom",52.9471534,-1.1775589
+"163","Loddington",5,"United Kingdom",52.6134771,-0.8360801
+"164","Louthesk",5,"United Kingdom",NA,NA
+"165","Lydell",5,"United Kingdom",NA,NA
+"166","Mablethorpe",5,"United Kingdom",53.3408271,0.2606772
+"167","Melchboume",5,"United Kingdom",NA,NA
+"168","Muston",5,"United Kingdom",54.2006563,-0.3200698
+"169","North Stoke",5,"United Kingdom",51.5723252,-1.1214708
+"170","Offord Darcy",5,"United Kingdom",52.2822224,-0.2136807
+"171","Peakirk",5,"United Kingdom",52.6447229,-0.2735216
+"172","Pinchbeck",5,"United Kingdom",52.8136925,-0.1626841
+"173","Pitstone",5,"United Kingdom",51.8339237,-0.6417767
+"174","Redmile",5,"United Kingdom",52.9111841,-0.8139462
+"175","Rutland",5,"United Kingdom",52.6031205,-0.7956845
+"176","Somersham",5,"United Kingdom",52.3831577,-0.0007129
+"177","St Peter",5,"United Kingdom",52.4128833,1.4323995
+"178","Stevenage",5,"United Kingdom",51.9035099,-0.2013368
+"179","Stickney",5,"United Kingdom",53.0924582,0.0036003
+"180","Stroxton",5,"United Kingdom",52.8700106,-0.6564741
+"181","Syresham",5,"United Kingdom",52.0705629,-1.0806424
+"182","Thoresway",5,"United Kingdom",53.454297,-0.2424248
+"183","Tusmore",5,"United Kingdom",51.96733025,-1.1653955010529
+"184","Waddesdon",5,"United Kingdom",51.8456176,-0.9267193
+"185","West Allington",5,"United Kingdom",51.2878034,0.5000993
+"186","Whitchurch",5,"United Kingdom",52.9704092,-2.6852137
+"187","Wymondham",5,"United Kingdom",52.5740252,1.12320289297682
+"188","Aswarby",4,"United Kingdom",52.945766,-0.4144227
+"189","Barton le Clay",4,"United Kingdom",51.9673954,-0.4256503
+"190","Bottesford",4,"United Kingdom",52.94032455,-0.795814217555616
+"191","Boultham",4,"United Kingdom",53.2139125,-0.5554491
+"192","Brigsley",4,"United Kingdom",53.4986919,-0.1115367
+"193","Broxholme",4,"United Kingdom",53.2915387,-0.6340114
+"194","Bruntingthorpe",4,"United Kingdom",52.5034437,-1.113488
+"195","Bucknall",4,"United Kingdom",53.2043098,-0.2477085
+"196","Calcewaith",4,"United Kingdom",NA,NA
+"197","Caldecote",4,"United Kingdom",52.1908063,-0.0306102
+"198","Candlesby",4,"United Kingdom",53.1840374,0.1760178
+"199","Candleshoe",4,"United Kingdom",NA,NA
+"200","Carlisle",4,"United Kingdom",54.8948478,-2.9362311
+"201","Carlton Curlieu",4,"United Kingdom",52.5677391,-0.975465
+"202","Charlton",4,"United Kingdom",51.4826053,0.0365359
+"203","Cosgrove",4,"United Kingdom",52.0764673,-0.8477531
+"204","Covenham St Mary",4,"United Kingdom",53.4288994,0.0157257
+"205","Daventry",4,"United Kingdom",52.2578681,-1.1626569
+"206","Doncaster",4,"United Kingdom",53.5227681,-1.1335312
+"207","Dunsby",4,"United Kingdom",52.8279012,-0.3593942
+"208","East Halton",4,"United Kingdom",53.6642736,-0.279186066280936
+"209","Edgcott",4,"United Kingdom",51.8988652,-1.0164222
+"210","Elmesthorpe",4,"United Kingdom",52.5604483,-1.3089464
+"211","Elnestowe",4,"United Kingdom",NA,NA
+"212","Elsham",4,"United Kingdom",53.596952,-0.4378228
+"213","Fishtoft",4,"United Kingdom",52.9618836,0.0269015
+"214","Fordington",4,"United Kingdom",50.7141096,-2.4288775
+"215","Frampton",4,"United Kingdom",51.4199339,-3.4800131
+"216","Fulbeck",4,"United Kingdom",53.0417943,-0.5874992
+"217","Galby",4,"United Kingdom",NA,NA
+"218","Glaston",4,"United Kingdom",52.5954597,-0.667980226073807
+"219","Grafham",4,"United Kingdom",52.3085604,-0.2975581
+"220","Great Ponton",4,"United Kingdom",52.8630742,-0.6261511
+"221","Haddon",4,"United Kingdom",52.520518,-0.3292857
+"222","Hampslap",4,"United Kingdom",NA,NA
+"223","Hethe",4,"United Kingdom",51.9601353,-1.1391588
+"224","Hitcham",4,"United Kingdom",52.1232138,0.8950481
+"225","Ivinghoe",4,"United Kingdom",51.8364034,-0.6298887
+"226","Knaith",4,"United Kingdom",53.3533332,-0.7549729
+"227","Knaptoft",4,"United Kingdom",52.5006699,-1.0788681
+"228","Lea",4,"United Kingdom",53.3710883,-0.7542752
+"229","Leadenham",4,"United Kingdom",53.0589415,-0.5819982
+"230","Little Casterton",4,"United Kingdom",52.67986905,-0.490638010484623
+"231","Loughborough",4,"United Kingdom",52.7723859,-1.2077985
+"232","Ludgershall",4,"United Kingdom",51.256957,-1.6233744
+"233","Manton",4,"United Kingdom",51.4152229,-1.755158
+"234","Market Deeping",4,"United Kingdom",52.6769366,-0.3149877
+"235","Newport",4,"United Kingdom",51.5882332,-2.9974967
+"236","North Luffenham",4,"United Kingdom",52.6196562,-0.6171914
+"237","Oundle",4,"United Kingdom",52.4808884,-0.467461
+"238","Polebrook",4,"United Kingdom",52.4703886,-0.4278708
+"239","Preston",4,"United Kingdom",53.7593363,-2.6992717
+"240","Quadring",4,"United Kingdom",52.8820823,-0.1836923
+"241","Rothley",4,"United Kingdom",52.71099595,-1.14231772209498
+"242","Sausthorpe",4,"United Kingdom",53.2007653,0.0697041
+"243","Scotter",4,"United Kingdom",53.4977931,-0.6674861
+"244","Sibstone",4,"United Kingdom",NA,NA
+"245","Sileby",4,"United Kingdom",52.7332174,-1.1045353
+"246","Singlesole",4,"United Kingdom",NA,NA
+"247","South Thoresby",4,"United Kingdom",53.2715916,0.1003293
+"248","South Willingham",4,"United Kingdom",53.33789475,-0.188935571120196
+"249","Southoe",4,"United Kingdom",52.2645461,-0.266987
+"250","Spaldwick",4,"United Kingdom",52.3423268,-0.3452323
+"251","Spaldyng",4,"United Kingdom",NA,NA
+"252","Spillesby",4,"United Kingdom",NA,NA
+"253","Stickford",4,"United Kingdom",53.1209768,0.0248635
+"254","Surfleet",4,"United Kingdom",52.8351289,-0.1426897
+"255","Tansor",4,"United Kingdom",52.5060951,-0.4468001
+"256","Tewin",4,"United Kingdom",51.8165701,-0.155517
+"257","Thurleigh",4,"United Kingdom",52.2152272,-0.4596295
+"258","Towcester",4,"United Kingdom",52.1350273,-0.9948465
+"259","Twyford",4,"United Kingdom",51.9315564,-1.0358424
+"260","Uffington",4,"United Kingdom",51.6009313,-1.5626067
+"261","Upper Heyford",4,"United Kingdom",51.9309707,-1.2762488
+"262","Waddingham",4,"United Kingdom",53.4533093,-0.5194654
+"263","Windsor",4,"United Kingdom",51.4814958,-0.6133183
+"264","Woodston",4,"United Kingdom",52.5634876,-0.2571498
+"265","Wraysbury",4,"United Kingdom",51.4574568,-0.5606471
+"266","Wytteneye",4,"United Kingdom",NA,NA
+"267","Althorpe",3,"United Kingdom",53.5772252,-0.7404416
+"268","Ambrosden",3,"United Kingdom",51.871261,-1.1243062
+"269","Armagh",3,"United Kingdom",54.3481977,-6.6540432
+"270","Ashby Folville",3,"United Kingdom",52.7019391,-0.9545019
+"271","Aynho",3,"United Kingdom",51.9965417,-1.2512976
+"272","Ayston",3,"United Kingdom",52.6029782,-0.728837159980996
+"273","Bag Enderby",3,"United Kingdom",53.2290638,0.0201129
+"274","Bamack",3,"United Kingdom",NA,NA
+"275","Belleau",3,"United Kingdom",53.2855442,0.1017862
+"276","Beltisloe",3,"United Kingdom",NA,NA
+"277","Binbrook",3,"United Kingdom",53.4290439,-0.179191
+"278","Blunham",3,"United Kingdom",52.1463441,-0.3174754
+"279","Blyborough",3,"United Kingdom",53.4382298,-0.5929338
+"280","Boothby Graffoe",3,"United Kingdom",53.1208644,-0.5298767
+"281","Branston",3,"United Kingdom",52.78867905,-1.66066838052343
+"282","Broadwell",3,"United Kingdom",51.7346341,-1.6358497
+"283","Brocklesby",3,"United Kingdom",53.586905,-0.2757603
+"284","Bulwick",3,"United Kingdom",52.5375251,-0.5802007
+"285","Buslingthorpe",3,"United Kingdom",53.3523061,-0.378701
+"286","Bustardthorpe",3,"United Kingdom",NA,NA
+"287","Byfield",3,"United Kingdom",52.1744947,-1.2480551
+"288","Cadeby",3,"United Kingdom",53.4995392,-1.2224675
+"289","Caenby",3,"United Kingdom",53.393398,-0.4966098
+"290","Checkendon",3,"United Kingdom",51.5439758,-1.0403108
+"291","Chichester",3,"United Kingdom",50.8364862,-0.7791721
+"292","Courteenhall",3,"United Kingdom",52.1705656,-0.8822032
+"293","Croft",3,"United Kingdom",53.1307519,0.2533976
+"294","Crowland",3,"United Kingdom",52.675299,-0.1685608
+"295","Croxton",3,"United Kingdom",52.4474701,0.7555784
+"296","Dalderby",3,"United Kingdom",53.1770547,-0.1328685
+"297","Denford",3,"United Kingdom",52.37832,-0.5433848
+"298","Doddington",3,"United Kingdom",52.4975308,0.0603807
+"299","Donington",3,"United Kingdom",52.9046401,-0.206098
+"300","Dunton",3,"United Kingdom",52.0833347,-0.1963257
+"301","Edmondthorpe",3,"United Kingdom",52.7497621,-0.7274336
+"302","Egremont",3,"United Kingdom",54.4838316,-3.5327921
+"303","Eresby",3,"United Kingdom",NA,NA
+"304","Essendon",3,"United Kingdom",51.762891,-0.15423
+"305","Everdon",3,"United Kingdom",52.2138067,-1.1344154
+"306","Exeter",3,"United Kingdom",50.725562,-3.5269108
+"307","Firsby",3,"United Kingdom",53.1442864,0.1744662
+"308","Flamstead",3,"United Kingdom",51.8191023,-0.4387736
+"309","Folkingham",3,"United Kingdom",52.8897079,-0.4085024
+"310","Garthorpe",3,"United Kingdom",52.7795803,-0.7651441
+"311","Gosberton",3,"United Kingdom",52.869059,-0.161089
+"312","Great Linford",3,"United Kingdom",52.0717778,-0.7600445
+"313","Greatford",3,"United Kingdom",52.6946463,-0.392001
+"314","Hallaton",3,"United Kingdom",52.5617485,-0.83554
+"315","Hallington",3,"United Kingdom",53.350578,-0.0415659
+"316","Hampton Poyle",3,"United Kingdom",51.8370746,-1.2730362
+"317","Harlaxton",3,"United Kingdom",52.8840417,-0.686898
+"318","Hatcliffe",3,"United Kingdom",53.4891174,-0.1723789
+"319","Haversham",3,"United Kingdom",52.0759306,-0.804732
+"320","Heather",3,"United Kingdom",52.6931702,-1.4239897
+"321","Hedges",3,"United Kingdom",52.0276459,-1.18565614602424
+"322","Hemingby",3,"United Kingdom",53.2534359,-0.1461344
+"323","Henley",3,"United Kingdom",51.5375786,-0.9050287
+"324","Hertingfordbury",3,"United Kingdom",51.7909737,-0.1062996
+"325","Hitchin",3,"United Kingdom",51.9464129,-0.2791646
+"326","Holton",3,"United Kingdom",52.3426095,1.5271935
+"327","Houghton",3,"United Kingdom",52.330324,-0.1150244
+"328","Ipsden",3,"United Kingdom",51.5635127,-1.0834514
+"329","Ipswich",3,"United Kingdom",52.0579495,1.1526345
+"330","Irthlingborough",3,"United Kingdom",52.3261928,-0.6128414
+"331","Isenhamstead Chenies",3,"United Kingdom",NA,NA
+"332","Iver",3,"United Kingdom",51.5207742,-0.5092417
+"333","Kegworth",3,"United Kingdom",52.8355376,-1.2779346
+"334","Keyston",3,"United Kingdom",52.3662058,-0.4684638
+"335","Kings Cliffe",3,"United Kingdom",52.5657117,-0.5208584
+"336","Kirby Bellars",3,"United Kingdom",52.7521539,-0.9388857
+"337","Kirkby Laythorpe",3,"United Kingdom",NA,NA
+"338","Leckhampstead",3,"United Kingdom",51.4848305,-1.3688493
+"339","Little Billing",3,"United Kingdom",52.2547676,-0.814322254231545
+"340","Littlemore",3,"United Kingdom",51.7215188,-1.2244863
+"341","Louth Park",3,"United Kingdom",53.3675163,-0.0022381
+"342","Ludford Parva",3,"United Kingdom",53.3839145,-0.203441
+"343","Marholm",3,"United Kingdom",52.604129,-0.3068511
+"344","Marston Moretaine",3,"United Kingdom",52.0698414,-0.5414541
+"345","Martinsthorpe",3,"United Kingdom",52.63161825,-0.725635386875608
+"346","Medboume",3,"United Kingdom",NA,NA
+"347","Melton Mowbray",3,"United Kingdom",52.7649964,-0.887587
+"348","Mere",3,"United Kingdom",51.0894379,-2.2684427
+"349","Middleton Cheney",3,"United Kingdom",52.0740489,-1.2728199
+"350","Moulton",3,"United Kingdom",51.4222089,-3.3338837
+"351","Newcastle upon Tyne",3,"United Kingdom",54.9738474,-1.6131572
+"352","Newstead",3,"United Kingdom",55.5998126,-2.696165
+"353","Normanby",3,"United Kingdom",54.2258603,-0.8751185
+"354","North Marston",3,"United Kingdom",51.897351,-0.8731709
+"355","North Mimms",3,"United Kingdom",51.6977643,-0.2338319
+"356","Northborough",3,"United Kingdom",52.6592107,-0.2985578
+"357","Northboume",3,"United Kingdom",NA,NA
+"358","Norwich",3,"United Kingdom",52.628606,1.29227
+"359","Nuneham Courtenay",3,"United Kingdom",51.6898005,-1.2035402
+"360","ofBuchan",3,"United Kingdom",NA,NA
+"361","Partney",3,"United Kingdom",53.1937563,0.1097321
+"362","Pertenhall",3,"United Kingdom",52.2756278,-0.4141971
+"363","Pickworth",3,"United Kingdom",52.8896933,-0.4506361
+"364","Polesworth",3,"United Kingdom",52.6191549,-1.6147524
+"365","Quainton",3,"United Kingdom",51.8748451,-0.9168183
+"366","Ramsey",3,"United Kingdom",52.4494068,-0.1021136
+"367","Rotherfield Peppard",3,"United Kingdom",51.5297718,-0.9775368
+"368","Roughton",3,"United Kingdom",52.8852283,1.2989556
+"369","Saddington",3,"United Kingdom",52.5217931,-1.0305815
+"370","Scremby",3,"United Kingdom",53.187946,0.1585096
+"371","Seyton",3,"United Kingdom",NA,NA
+"372","Shangton",3,"United Kingdom",52.5593689,-0.9480879
+"373","Shelswell",3,"United Kingdom",51.9727833,-1.1194899
+"374","Shenley",3,"United Kingdom",51.6922396,-0.2811968
+"375","Skellingthorpe",3,"United Kingdom",53.2377485,-0.614846567673043
+"376","Skinnand",3,"United Kingdom",53.1069686,-0.596791
+"377","Souldrop",3,"United Kingdom",52.2450561,-0.5572172
+"378","South Newington",3,"United Kingdom",51.9966271,-1.4079304
+"379","Springthorpe",3,"United Kingdom",53.3966831,-0.6837717
+"380","St Martin",3,"United Kingdom",50.3697775,-4.4473158
+"381","St Mary",3,"United Kingdom",52.4156645,1.36957111861067
+"382","St Mary Magdalene",3,"United Kingdom",NA,NA
+"383","St Paul's",3,"United Kingdom",51.9078911,-2.0796788
+"384","Stanford",3,"United Kingdom",52.0560796,-0.3046456
+"385","Stanground",3,"United Kingdom",52.5531093,-0.2245411
+"386","Steeple Gidding",3,"United Kingdom",52.4185971,-0.3351044
+"387","Swineshead",3,"United Kingdom",52.2790839,-0.4505649
+"388","Syston",3,"United Kingdom",52.6980264,-1.08373539662781
+"389","Tempsford",3,"United Kingdom",52.1622127,-0.3027693
+"390","Thrapston",3,"United Kingdom",52.3968605,-0.5368916
+"391","Ufford",3,"United Kingdom",52.6236877,-0.3863627
+"392","Walesby",3,"United Kingdom",53.4162893,-0.2950299
+"393","Waltham Cross",3,"United Kingdom",51.6857829,-0.0330001
+"394","Walton",3,"United Kingdom",52.01691055,-0.692772921111885
+"395","Walton on the Wolds",3,"United Kingdom",52.7723611,-1.1235575
+"396","Washingley",3,"United Kingdom",52.4875401,-0.3306131
+"397","Welboum",3,"United Kingdom",NA,NA
+"398","West Deeping",3,"United Kingdom",52.6668064,-0.3600155
+"399","Weston",3,"United Kingdom",51.3471927,-2.9778916
+"400","Wilksby",3,"United Kingdom",53.1483646,-0.0818711
+"401","Woobum",3,"United Kingdom",NA,NA
+"402","Wragby",3,"United Kingdom",53.287009,-0.3035517
+"403","Yelden",3,"United Kingdom",52.2897904,-0.5165551
+"404","Ab Kettleby",2,"United Kingdom",52.8006983,-0.9279618
+"405","Abington",2,"United Kingdom",55.492181,-3.6921002
+"406","Achecote",2,"United Kingdom",NA,NA
+"407","Adderbury",2,"United Kingdom",52.0165013,-1.3131166
+"408","Alwalton",2,"United Kingdom",52.5495688,-0.3290653
+"409","Ashby Parva",2,"United Kingdom",52.4919316,-1.2249506
+"410","Ashley",2,"United Kingdom",52.2274533,0.4853366
+"411","Aston",2,"United Kingdom",52.5006916,-1.8841916
+"412","Aston le Walls",2,"United Kingdom",52.1512264,-1.28351358121074
+"413","Atholl",2,"United Kingdom",56.765301,-3.8474871
+"414","Aunsby",2,"United Kingdom",52.9368545,-0.445664103819644
+"415","Aveland",2,"United Kingdom",NA,NA
+"416","Avon",2,"United Kingdom",NA,NA
+"417","Barnwell All Saints",2,"United Kingdom",NA,NA
+"418","Barton Westcott",2,"United Kingdom",51.9283193,-1.3722008
+"419","Bassingham",2,"United Kingdom",53.128616,-0.6406939
+"420","Beachampstead",2,"United Kingdom",NA,NA
+"421","Beaconsfield",2,"United Kingdom",51.6082881,-0.6571233
+"422","Beeby",2,"United Kingdom",52.6686038,-1.0212345
+"423","Berkshire",2,"United Kingdom",NA,NA
+"424","Biggleswade",2,"United Kingdom",52.0882012,-0.2589013
+"425","Bikeleswad",2,"United Kingdom",NA,NA
+"426","Blatherwycke",2,"United Kingdom",52.5506071,-0.5676373
+"427","Bletchingdon",2,"United Kingdom",51.8551298,-1.2718614
+"428","Boughton",2,"United Kingdom",52.590018,0.5081021
+"429","Braceborough",2,"United Kingdom",52.705869,-0.4020882
+"430","Brackley",2,"United Kingdom",52.0297607,-1.1484577
+"431","Bramfield",2,"United Kingdom",52.3102628,1.51871
+"432","Brauncewell",2,"United Kingdom",53.0557703,-0.489743
+"433","Braunston",2,"United Kingdom",52.2919571,-1.2075452
+"434","Britwell Salome",2,"United Kingdom",51.6341461,-1.032776
+"435","Burton Latimer",2,"United Kingdom",52.3638663,-0.6777104
+"436","Burton Overy",2,"United Kingdom",52.5764261,-0.9997826
+"437","Bury St Edmunds",2,"United Kingdom",52.2460367,0.7125173
+"438","Calcethorpe",2,"United Kingdom",53.396878,-0.121178982485688
+"439","Castle Ashby",2,"United Kingdom",52.2284992,-0.7408927
+"440","Chalfont St Giles",2,"United Kingdom",51.6321046,-0.5697912
+"441","Charwelton",2,"United Kingdom",52.1990761,-1.2198716
+"442","Cheddington",2,"United Kingdom",51.8472781,-0.6640398
+"443","Chellington",2,"United Kingdom",52.1924322,-0.6011665
+"444","Chepingnorton",2,"United Kingdom",NA,NA
+"445","Chesham",2,"United Kingdom",51.7062914,-0.6123113
+"446","Claxby",2,"United Kingdom",53.4372176,-0.3253572
+"447","Clifton",2,"United Kingdom",51.4615884,-2.6202846
+"448","Clipsham",2,"United Kingdom",52.73201485,-0.560570613430484
+"449","Clipston",2,"United Kingdom",52.4283861,-0.9561629
+"450","Clipstone",2,"United Kingdom",51.9269172,-0.6224106
+"451","Cockayne Hatley",2,"United Kingdom",52.1314863,-0.1595885
+"452","Cold Overton",2,"United Kingdom",52.6836203,-0.8018819
+"453","Coleby",2,"United Kingdom",53.1328743,-0.5426358
+"454","Collingtree",2,"United Kingdom",52.1942555,-0.9047029
+"455","Collyweston",2,"United Kingdom",52.613792,-0.529687
+"456","Colmworth",2,"United Kingdom",52.217642,-0.3783267
+"457","Colsterworth",2,"United Kingdom",52.8065684,-0.6190473
+"458","Combe",2,"United Kingdom",51.84558465,-1.4106205829758
+"459","Coningsby",2,"United Kingdom",53.1056488,-0.1746758
+"460","Cotterstock",2,"United Kingdom",52.5047988,-0.4632286
+"461","Cottesmore",2,"United Kingdom",52.7135125,-0.6628332
+"462","Covesgrave",2,"United Kingdom",NA,NA
+"463","Crick",2,"United Kingdom",51.6056911,-2.7389112
+"464","Cublington",2,"United Kingdom",51.8922815,-0.7786112
+"465","Cuddesdon",2,"United Kingdom",51.722757,-1.1333223
+"466","Dalby Chaucombe",2,"United Kingdom",NA,NA
+"467","Dallington",2,"United Kingdom",52.2475536,-0.9209432
+"468","Darlington",2,"United Kingdom",54.5242081,-1.5555812
+"469","Dartford",2,"United Kingdom",51.4443059,0.21807
+"470","Deddington",2,"United Kingdom",51.9814489,-1.3212113
+"471","Dover",2,"United Kingdom",51.1251275,1.3134228
+"472","Dowsby",2,"United Kingdom",52.8517971,-0.3480069
+"473","Drayton Parslow",2,"United Kingdom",51.9487462,-0.7798637
+"474","Driby",2,"United Kingdom",53.2484059,0.0780808
+"475","East Claydon",2,"United Kingdom",51.9238187,-0.9285388
+"476","Easton on the Hill",2,"United Kingdom",52.6267333,-0.5077638
+"477","Edlesborough",2,"United Kingdom",51.8663877,-0.5852479
+"478","Epworth",2,"United Kingdom",53.5243031,-0.8215111
+"479","Ewerby",2,"United Kingdom",53.0122705,-0.329662
+"480","Faldingworth",2,"United Kingdom",53.3483117,-0.3995194
+"481","Farthinghoe",2,"United Kingdom",52.04811755,-1.21114465913696
+"482","Fawley",2,"United Kingdom",51.5296931,-1.4353837
+"483","Fenstanton",2,"United Kingdom",52.2993983,-0.0713548
+"484","Finmere",2,"United Kingdom",51.9903279,-1.0738677
+"485","Flixborough",2,"United Kingdom",53.61378815,-0.684147551925646
+"486","France",2,"United Kingdom",51.5686869,-2.308958
+"487","Freiston",2,"United Kingdom",52.9756282,0.0484107
+"488","Frodingham",2,"United Kingdom",53.5848856,-0.6494042
+"489","Fulstow",2,"United Kingdom",53.4544582,-0.0030853
+"490","Gainsborough",2,"United Kingdom",52.0331273,1.1784258
+"491","Gautby",2,"United Kingdom",53.2361042,-0.2431746
+"492","Gedney",2,"United Kingdom",52.7980271,0.081399
+"493","Glendon",2,"United Kingdom",NA,NA
+"494","Godstow",2,"United Kingdom",51.7795509,-1.2997954
+"495","Great Billing",2,"United Kingdom",52.2572671,-0.8112409
+"496","Great Bowden",2,"United Kingdom",52.4929888,-0.9039293
+"497","Great Casterton",2,"United Kingdom",52.6704334,-0.5216589
+"498","Great Coates",2,"United Kingdom",53.5746218,-0.1316432
+"499","Great Haseley",2,"United Kingdom",51.7108991,-1.0702833
+"500","Great Marlow",2,"United Kingdom",51.58607595,-0.801375679794063
+"501","Grimesby",2,"United Kingdom",NA,NA
+"502","Guthlaxton",2,"United Kingdom",NA,NA
+"503","Hambleden",2,"United Kingdom",51.5719351,-0.8691036
+"504","Hamerton",2,"United Kingdom",52.4053221,-0.3318714
+"505","Hanwell",2,"United Kingdom",51.5089838,-0.3381584
+"506","Hardmead",2,"United Kingdom",52.11928,-0.6342652
+"507","Harringay Park",2,"United Kingdom",51.5847966,-0.1050978
+"508","Hathem",2,"United Kingdom",NA,NA
+"509","Haydour",2,"United Kingdom",NA,NA
+"510","Helmsley",2,"United Kingdom",54.246172,-1.0612597
+"511","Helpston",2,"United Kingdom",52.63074615,-0.341242325602981
+"512","Hemel Hempstead",2,"United Kingdom",51.7511784,-0.472528
+"513","Hemingford Grey",2,"United Kingdom",52.318243,-0.1039332
+"514","Henlow",2,"United Kingdom",52.0323139,-0.2892463
+"515","Holdenby",2,"United Kingdom",52.3039907,-0.9814552
+"516","Holywell",2,"United Kingdom",53.2714061,-3.2212991
+"517","Houghton Conquest",2,"United Kingdom",52.0624959,-0.4762832
+"518","Hoyland",2,"United Kingdom",53.5022442,-1.4442458
+"519","Humberstone",2,"United Kingdom",52.6463523,-1.0799397
+"520","Hungarton",2,"United Kingdom",52.659052,-0.9801114
+"521","Isham",2,"United Kingdom",52.3565188,-0.7033649
+"522","Keelby",2,"United Kingdom",53.5746924,-0.2438955
+"523","Kempsey",2,"United Kingdom",52.1403051,-2.2179724
+"524","Kettering",2,"United Kingdom",52.3994233,-0.728004
+"525","Kettlethorpe",2,"United Kingdom",53.6437451,-1.5040003
+"526","Kilsby",2,"United Kingdom",52.3349814,-1.1773932
+"527","Kirton",2,"United Kingdom",52.0108529,1.3199496
+"528","Kislingbury",2,"United Kingdom",52.228625,-0.9792925
+"529","Knebworth",2,"United Kingdom",51.8658893,-0.1844945
+"530","Knossington",2,"United Kingdom",52.6700309,-0.8153971
+"531","Laughton",2,"United Kingdom",52.4960393,-1.0278627
+"532","Leighton Buzzard",2,"United Kingdom",51.9165794,-0.6620551
+"533","Leightonstone",2,"United Kingdom",NA,NA
+"534","Lewknor",2,"United Kingdom",51.6721095,-0.9679187
+"535","Lidlington",2,"United Kingdom",52.0401962,-0.5580153
+"536","Little Kimble",2,"United Kingdom",51.7551499,-0.8068889
+"537","Long Bennington",2,"United Kingdom",52.9920803,-0.7569752
+"538","Lowick",2,"United Kingdom",55.6506848,-1.9776917
+"539","Luton",2,"United Kingdom",51.8784385,-0.4152837
+"540","Maidwell",2,"United Kingdom",52.3849578,-0.9058576
+"541","Marlow",2,"United Kingdom",51.5718668,-0.77695
+"542","Milton Keynes",2,"United Kingdom",52.0429797,-0.7589607
+"543","Mongewell",2,"United Kingdom",51.5867196,-1.1207411
+"544","Monte Alto",2,"United Kingdom",NA,NA
+"545","Morcott",2,"United Kingdom",52.59802245,-0.642319410478154
+"546","Naseby",2,"United Kingdom",52.3965517,-0.9888121
+"547","Newcastle-upon-Tyne",2,"United Kingdom",54.9738474,-1.6131572
+"548","Newenton",2,"United Kingdom",NA,NA
+"549","Newport Pagnell",2,"United Kingdom",52.0863864,-0.7237341
+"550","Newsham",2,"United Kingdom",55.1122294,-1.5298126
+"551","Norfolk",2,"United Kingdom",52.835652,1.12765976862862
+"552","Normanton",2,"United Kingdom",53.6991226,-1.4194401
+"553","North Coates",2,"United Kingdom",53.4847044,0.032448
+"554","North Kelsey",2,"United Kingdom",53.5022218,-0.4276514
+"555","Northill",2,"United Kingdom",52.1056247,-0.3220143
+"556","Northkeleseye",2,"United Kingdom",NA,NA
+"557","Noseley",2,"United Kingdom",52.5806821,-0.9089414
+"558","Offley",2,"United Kingdom",51.92340685,-0.334746313964045
+"559","ofYelvertoft",2,"United Kingdom",NA,NA
+"560","OldTemple",2,"United Kingdom",NA,NA
+"561","Ormsby",2,"United Kingdom",53.2564228,0.0519777
+"562","Orton Waterville",2,"United Kingdom",52.5499677,-0.295159
+"563","Over Worton",2,"United Kingdom",51.9590824,-1.3715956
+"564","Overoverton",2,"United Kingdom",NA,NA
+"565","Oxendon",2,"United Kingdom",52.4434377,-0.9192346
+"566","Pilton",2,"United Kingdom",55.97371,-3.2404424
+"567","Pontefract",2,"United Kingdom",53.6917422,-1.3105722
+"568","Potterhanworth",2,"United Kingdom",53.1831353,-0.4228439
+"569","Potterspury",2,"United Kingdom",52.0786827,-0.904507140987552
+"570","Pytchley",2,"United Kingdom",52.363594,-0.739943
+"571","Radclive",2,"United Kingdom",52.0005048,-1.0163713
+"572","Ragdale",2,"United Kingdom",52.772266,-1.0192178
+"573","Rammeseye",2,"United Kingdom",NA,NA
+"574","Rand",2,"United Kingdom",53.2945987,-0.3445336
+"575","Ridlington",2,"United Kingdom",52.6156258,-0.7481442
+"576","Rochester",2,"United Kingdom",51.389062,0.5049347
+"577","Rotherfield",2,"United Kingdom",51.0459837,0.2192646
+"578","Roxby",2,"United Kingdom",54.5353868,-0.8246192
+"579","Rushden",2,"United Kingdom",52.2911567,-0.5988177
+"580","Saltfleetby All Saints",2,"United Kingdom",NA,NA
+"581","Saxilby",2,"United Kingdom",53.27125095,-0.663678501054071
+"582","Scaldwell",2,"United Kingdom",52.3456479,-0.8736115
+"583","Scartho",2,"United Kingdom",53.5374084,-0.086356
+"584","Seaton",2,"United Kingdom",50.7045566,-3.0705105
+"585","Sedgebrook",2,"United Kingdom",52.9320924,-0.7270434
+"586","Sempringham",2,"United Kingdom",52.86744445,-0.332496065873694
+"587","Shaftesbury",2,"United Kingdom",51.0056195,-2.1955975
+"588","Sheepy",2,"United Kingdom",52.60454945,-1.53217476594223
+"589","Shelton",2,"United Kingdom",52.3078739,-0.4849632
+"590","Sibsey",2,"United Kingdom",53.0379996,0.0166928
+"591","Skegness",2,"United Kingdom",53.1437506,0.3428958
+"592","Somerby",2,"United Kingdom",52.6872803,-0.848781
+"593","South Croxton",2,"United Kingdom",52.6847557,-0.983758
+"594","South Hykeham",2,"United Kingdom",53.1696615,-0.5985305
+"595","Southill",2,"United Kingdom",50.6244555,-2.477101
+"596","St Benedict",2,"United Kingdom",NA,NA
+"597","St Guthlac",2,"United Kingdom",NA,NA
+"598","St Nicholas Hertford",2,"United Kingdom",NA,NA
+"599","St Paul",2,"United Kingdom",50.0895993,-5.5464337
+"600","Stainfield",2,"United Kingdom",52.8125664,-0.3992388
+"601","Standlake",2,"United Kingdom",51.7271557,-1.4241559
+"602","Stantonbury",2,"United Kingdom",52.0638179,-0.7678672
+"603","Stanwick",2,"United Kingdom",52.3329666,-0.5656154
+"604","Stapleford",2,"United Kingdom",52.1458532,0.1504635
+"605","Stepelaston",2,"United Kingdom",NA,NA
+"606","Stevington",2,"United Kingdom",52.1689009,-0.5554407
+"607","Stewton",2,"United Kingdom",53.3621662,0.0446575
+"608","Stibbington",2,"United Kingdom",52.5752345,-0.3966915
+"609","Stotfold",2,"United Kingdom",52.015001,-0.225135216134271
+"610","Studley",2,"United Kingdom",52.2691194,-1.8958966
+"611","Suthluffenham",2,"United Kingdom",NA,NA
+"612","Swalcliffe",2,"United Kingdom",52.0377301,-1.4495419
+"613","Swallow",2,"United Kingdom",53.5102865,-0.2263426
+"614","Theddlethorpe",2,"United Kingdom",53.3732727,0.2220177
+"615","Thorpe Achurch",2,"United Kingdom",52.4273947,-0.487093609746045
+"616","Thorpe Waterville",2,"United Kingdom",52.4227125,-0.4961023
+"617","Thuming",2,"United Kingdom",NA,NA
+"618","Tilbrook",2,"United Kingdom",52.0101904,-0.6899935
+"619","Titchmarsh",2,"United Kingdom",52.4050014,-0.4981564
+"620","Toynton All Saints",2,"United Kingdom",53.1533262,0.080844
+"621","Twywell",2,"United Kingdom",52.3947385,-0.6036602
+"622","Utterby",2,"United Kingdom",53.4212266,-0.0331194
+"623","Waddington",2,"United Kingdom",53.1672819,-0.5390813
+"624","Wainfleet St Mary",2,"United Kingdom",53.0770176,0.28311715312121
+"625","Walcot",2,"United Kingdom",52.9032857,-0.42378802452224
+"626","Wappenham",2,"United Kingdom",52.1072486,-1.0876578
+"627","Warblington",2,"United Kingdom",50.8484005,-0.9685347
+"628","Waresley",2,"United Kingdom",52.1759197,-0.1739093
+"629","Waterstock",2,"United Kingdom",51.7467749,-1.0778727
+"630","Welton le Wold",2,"United Kingdom",53.3681419,-0.0875199
+"631","Welwyn",2,"United Kingdom",51.837085,-0.202719884873545
+"632","Wendovere",2,"United Kingdom",NA,NA
+"633","Wheathampstead",2,"United Kingdom",51.8122786,-0.291035
+"634","Whilton",2,"United Kingdom",52.2770079,-1.0691702
+"635","Whitwick",2,"United Kingdom",52.7397097,-1.3556162
+"636","Wilden",2,"United Kingdom",52.182765,-0.3960161
+"637","Wilshamstead",2,"United Kingdom",52.0837831,-0.438021514098972
+"638","Winteringham",2,"United Kingdom",53.6878513,-0.590982
+"639","Winwick",2,"United Kingdom",52.4131438,-0.3798942
+"640","Wistow",2,"United Kingdom",52.4100175,-0.121366
+"641","Wolverton",2,"United Kingdom",52.060942,-0.8118554
+"642","Woodford",2,"United Kingdom",51.6051901,0.0395776
+"643","Wootton",2,"United Kingdom",52.0960512,-0.5305613
+"644","Wrawby",2,"United Kingdom",53.5711312,-0.464966995297033
+"645","Wyberton",2,"United Kingdom",52.9544795,-0.0411564
+"646","Wycombe",2,"United Kingdom",51.627422,-0.7484153
+"647","Wyton",2,"United Kingdom",52.3346441,-0.1302088
+"648","Abbeville",1,"United Kingdom",51.4545041,-0.1398146
+"649","Abingdon",1,"United Kingdom",51.6714842,-1.2779715
+"650","Addington",1,"United Kingdom",51.3586365,-0.0316347
+"651","Adestok",1,"United Kingdom",NA,NA
+"652","Aillesbur",1,"United Kingdom",NA,NA
+"653","Akeley",1,"United Kingdom",52.0335093,-0.9680537
+"654","Alconbury",1,"United Kingdom",52.3678041,-0.2605066
+"655","Aldenham",1,"United Kingdom",51.6735426,-0.3520014
+"656","Aldwincle",1,"United Kingdom",52.4259382,-0.5223319
+"657","Amesby",1,"United Kingdom",NA,NA
+"658","Amptehull",1,"United Kingdom",NA,NA
+"659","Ampthill",1,"United Kingdom",52.0282071,-0.4955122
+"660","Amtthill",1,"United Kingdom",NA,NA
+"661","Ancaster",1,"United Kingdom",52.9857374,-0.5345307
+"662","Ankerwyke",1,"United Kingdom",NA,NA
+"663","Ardley",1,"United Kingdom",51.9428336,-1.2117153
+"664","Arnold",1,"United Kingdom",53.0052605,-1.1255532
+"665","Arundel",1,"United Kingdom",50.85453835,-0.564816299557614
+"666","Ashby cum Fenby",1,"United Kingdom",53.4882228,-0.1119379
+"667","Ashby de la Zouche",1,"United Kingdom",NA,NA
+"668","Ashby St Ledgers",1,"United Kingdom",52.3078295,-1.1628578
+"669","Ashridge",1,"United Kingdom",NA,NA
+"670","Ashwell",1,"United Kingdom",52.0402221,-0.1550213
+"671","Aston Clinton",1,"United Kingdom",51.8025136,-0.7274903
+"672","Aston Sandford",1,"United Kingdom",51.764206,-0.9022683
+"673","Atterton",1,"United Kingdom",NA,NA
+"674","Aunsby (Ounesby",1,"United Kingdom",NA,NA
+"675","Autby",1,"United Kingdom",53.4536805,-0.0722683
+"676","Authorpe",1,"United Kingdom",53.3062696,0.0996031
+"677","Axholme",1,"United Kingdom",NA,NA
+"678","Aylesby.325",1,"United Kingdom",NA,NA
+"679","Aylmerthorp",1,"United Kingdom",NA,NA
+"680","Badby",1,"United Kingdom",52.2272661,-1.1783034
+"681","Banbury (Bannebury)",1,"United Kingdom",NA,NA
+"682","Bannebur",1,"United Kingdom",NA,NA
+"683","Bardon",1,"United Kingdom",52.71215755,-1.31148437756927
+"684","Barford St Michael",1,"United Kingdom",51.9900655,-1.3687931
+"685","Barnwell",1,"United Kingdom",52.4532496,-0.4594167
+"686","Barrow",1,"United Kingdom",52.2421932,0.5837441
+"687","Battlesden",1,"United Kingdom",51.9479314,-0.594986
+"688","Bayham",1,"United Kingdom",51.0993281,0.3384519
+"689","Beachampton",1,"United Kingdom",52.0241892,-0.8742193
+"690","Beausolace",1,"United Kingdom",NA,NA
+"691","Beckingham",1,"United Kingdom",53.402767,-0.8287217
+"692","Beesby",1,"United Kingdom",53.2984529,0.1951147
+"693","Benefield",1,"United Kingdom",52.4857636,-0.563391860416669
+"694","Bengeo",1,"United Kingdom",51.8063247,-0.0817045
+"695","Benington",1,"United Kingdom",51.8961123,-0.1117452
+"696","Berkswell",1,"United Kingdom",52.4101021,-1.6393487
+"697","Berwick upon Tweed",1,"United Kingdom",55.7692442,-2.0026472
+"698","Bestowe",1,"United Kingdom",NA,NA
+"699","Beverley",1,"United Kingdom",53.8425488,-0.4315677
+"700","Biddenham",1,"United Kingdom",52.1404805,-0.5051656
+"701","Biddlesden",1,"United Kingdom",52.0561899,-1.0751995
+"702","Bishop's Hatfield",1,"United Kingdom",NA,NA
+"703","Blackthorn",1,"United Kingdom",51.8699361,-1.10032
+"704","Bletsoe",1,"United Kingdom",52.2132914,-0.5037583
+"705","Blisworth",1,"United Kingdom",52.1759231,-0.9338992
+"706","Bloxholm",1,"United Kingdom",53.0699591,-0.4113665
+"707","Bluntisham",1,"United Kingdom",52.353456,0.0088242
+"708","Boarstall",1,"United Kingdom",51.8244741,-1.0930758
+"709","Bolyngbrok",1,"United Kingdom",NA,NA
+"710","Boothby GrafToe",1,"United Kingdom",NA,NA
+"711","Boothby Pagnell",1,"United Kingdom",52.866846,-0.5592875
+"712","Bottoclaydon",1,"United Kingdom",NA,NA
+"713","Bozeat",1,"United Kingdom",52.2223828,-0.6753141
+"714","Bracebridge",1,"United Kingdom",53.2027459,-0.554776
+"715","Brackele",1,"United Kingdom",NA,NA
+"716","Bradden",1,"United Kingdom",52.1297085,-1.04969729392944
+"717","Bradenstoke",1,"United Kingdom",51.5130424,-1.9986283
+"718","Brampton Ash",1,"United Kingdom",52.4792686,-0.8380555
+"719","Bratoft",1,"United Kingdom",53.1608506,0.2057099
+"720","Braunceston",1,"United Kingdom",NA,NA
+"721","Braundeston",1,"United Kingdom",NA,NA
+"722","Braunstone",1,"United Kingdom",52.6227709,-1.1647605
+"723","Bretenefelde",1,"United Kingdom",NA,NA
+"724","Brigg",1,"United Kingdom",53.5525329,-0.4896411
+"725","Briggecasterton",1,"United Kingdom",NA,NA
+"726","Bringhurst",1,"United Kingdom",52.5216207,-0.7614045
+"727","Brington",1,"United Kingdom",52.369716,-0.4100004
+"728","Brize",1,"United Kingdom",51.7664356,-1.5664074
+"729","Brooksby",1,"United Kingdom",52.7382671,-1.0055507
+"730","Broughton Astley",1,"United Kingdom",52.5278282,-1.2199593
+"731","Buckland",1,"United Kingdom",51.8027259,-0.7136715
+"732","Bumcestr",1,"United Kingdom",NA,NA
+"733","Burghclere",1,"United Kingdom",51.33208995,-1.32616219664103
+"734","Burncestr",1,"United Kingdom",NA,NA
+"735","Burton Stather",1,"United Kingdom",53.6545844,-0.6907503
+"736","Burwell",1,"United Kingdom",51.7807445,-1.50021266182147
+"737","Bushmead",1,"United Kingdom",NA,NA
+"738","Butterwick",1,"United Kingdom",52.9841838,0.0684667
+"739","Bydenham",1,"United Kingdom",NA,NA
+"740","Ca",1,"United Kingdom",NA,NA
+"741","Cadney",1,"United Kingdom",53.5177622,-0.4684998
+"742","Cambridgeshire",1,"United Kingdom",52.17965405,-0.00343681305037113
+"743","Campton",1,"United Kingdom",52.0293565,-0.3535435
+"744","Carlton",1,"United Kingdom",52.1537836,0.4002262
+"745","Carlton ' Paynel",1,"United Kingdom",NA,NA
+"746","Castor",1,"United Kingdom",52.5722503,-0.3404848
+"747","Cateby",1,"United Kingdom",NA,NA
+"748","Catesby",1,"United Kingdom",52.227621,-1.22799520943562
+"749","Caversham",1,"United Kingdom",51.4681022,-0.9738896
+"750","Caythorpe",1,"United Kingdom",53.0250422,-0.6033186
+"751","Chepyngnorton",1,"United Kingdom",NA,NA
+"752","Chesterton",1,"United Kingdom",52.2222881,0.1445917
+"753","Cheyne",1,"United Kingdom",NA,NA
+"754","Chiselhampton,)595",1,"United Kingdom",NA,NA
+"755","Chislehampton",1,"United Kingdom",NA,NA
+"756","Church Brampton",1,"United Kingdom",52.2863917,-0.9467397
+"757","Clapham",1,"United Kingdom",51.4622924,-0.1388561
+"758","Clapton",1,"United Kingdom",51.558602,-0.0558777
+"759","Clarendon",1,"United Kingdom",51.1232016,1.2993594
+"760","Claxby by Normanby",1,"United Kingdom",53.4372176,-0.3253572
+"761","Claxby Pluckacre",1,"United Kingdom",53.1643547,-0.048513
+"762","Claybrooke",1,"United Kingdom",52.486139,-1.2744302
+"763","Claypole",1,"United Kingdom",53.0315558,-0.7340555
+"764","Claythorpe",1,"United Kingdom",53.2898536,0.1196246
+"765","Clayworth",1,"United Kingdom",53.3870121,-0.9060628
+"766","Cohered",1,"United Kingdom",NA,NA
+"767","Coleorton",1,"United Kingdom",52.7529886,-1.4032292
+"768","Colster-worth",1,"United Kingdom",53.0810381,-0.5494661
+"769","Compostella",1,"United Kingdom",NA,NA
+"770","Conington",1,"United Kingdom",52.4603927,-0.2687146
+"771","Corby",1,"United Kingdom",52.48763,-0.701543
+"772","Cornwell",1,"United Kingdom",51.9424976,-1.6081034
+"773","Corringham",1,"United Kingdom",51.5250576,0.4477104
+"774","Cottingham",1,"United Kingdom",53.7804805,-0.4178553
+"775","Cottisford",1,"United Kingdom",51.9756306,-1.1419145
+"776","Covenham",1,"United Kingdom",53.4288994,0.0157257
+"777","Covenham St Bartholomew",1,"United Kingdom",53.4368713,0.0105533
+"778","Cowley",1,"United Kingdom",51.7313447,-1.2175301
+"779","Creslow",1,"United Kingdom",51.8896962,-0.8215179
+"780","Croughton",1,"United Kingdom",53.2466922,-2.8723027
+"781","Croule",1,"United Kingdom",NA,NA
+"782","Crovvle",1,"United Kingdom",NA,NA
+"783","Cudyngton",1,"United Kingdom",NA,NA
+"784","Culworth",1,"United Kingdom",52.11967515,-1.21883731382756
+"785","Dalby",1,"United Kingdom",54.1330419,-1.0259543
+"786","Datchworth",1,"United Kingdom",51.8564845,-0.1582465
+"787","Daventre",1,"United Kingdom",NA,NA
+"788","Deanshanger",1,"United Kingdom",52.0516167,-0.8892527
+"789","Denton",1,"United Kingdom",53.4547745,-2.1153406
+"790","Derby",1,"United Kingdom",52.9212617,-1.4761491
+"791","Dexthorpe",1,"United Kingdom",53.2227471,0.1049413
+"792","Dillington",1,"United Kingdom",52.2774148,-0.3360914
+"793","Dimslaple",1,"United Kingdom",NA,NA
+"794","Dingley",1,"United Kingdom",52.4808636,-0.8668656
+"795","Domey",1,"United Kingdom",NA,NA
+"796","Doneslaple",1,"United Kingdom",NA,NA
+"797","Donyngton",1,"United Kingdom",NA,NA
+"798","Dorrington",1,"United Kingdom",53.0623777,-0.3872865
+"799","Draughton",1,"United Kingdom",52.3840659,-0.8817508
+"800","Duns Tew",1,"United Kingdom",51.9522811,-1.3362442
+"801","Dyffryn Clwyd",1,"United Kingdom",53.0899559,-3.2960864
+"802","Earls Barton",1,"United Kingdom",52.2641644,-0.7523224
+"803","Easington",1,"United Kingdom",51.7871889,-1.0051337
+"804","East Famdon",1,"United Kingdom",NA,NA
+"805","East Haddon",1,"United Kingdom",52.3082305,-1.0226843
+"806","Easton Neston",1,"United Kingdom",52.14612445,-0.962132715077571
+"807","Ediweston",1,"United Kingdom",NA,NA
+"808","Edlington",1,"United Kingdom",53.47335855,-1.18779114242173
+"809","Elnestow",1,"United Kingdom",NA,NA
+"810","Elton",1,"United Kingdom",53.1454403,-1.6692806
+"811","Emmington",1,"United Kingdom",51.7145469,-0.9315496
+"812","Empingham",1,"United Kingdom",52.6664827,-0.5966682
+"813","Essex",1,"United Kingdom",51.8790698,0.945054
+"814","Estdepyng",1,"United Kingdom",NA,NA
+"815","Esthaddon",1,"United Kingdom",NA,NA
+"816","Estrasen",1,"United Kingdom",NA,NA
+"817","Eversholt",1,"United Kingdom",51.983113,-0.5706176
+"818","Evesham",1,"United Kingdom",52.0940158,-1.9483083
+"819","Ewelme",1,"United Kingdom",51.6194821,-1.0711793
+"820","Eynsham,702",1,"United Kingdom",NA,NA
+"821","Fahvesle",1,"United Kingdom",NA,NA
+"822","Famdish",1,"United Kingdom",NA,NA
+"823","Famham Royal",1,"United Kingdom",NA,NA
+"824","Farlesthorpe",1,"United Kingdom",53.2442611,0.2096452
+"825","Farthingstone",1,"United Kingdom",52.189714,-1.1014573
+"826","Felmersham",1,"United Kingdom",52.2089277,-0.5487778
+"827","Fenny Drayton",1,"United Kingdom",52.5694776,-1.4863313
+"828","Fillingham",1,"United Kingdom",53.3608972,-0.5787147
+"829","Finedon",1,"United Kingdom",52.3391456,-0.6556148
+"830","Flambleton",1,"United Kingdom",NA,NA
+"831","Fletton",1,"United Kingdom",52.5642461,-0.2454528
+"832","Flitwick",1,"United Kingdom",52.0043402,-0.4937512
+"833","Folksworth",1,"United Kingdom",52.4957566,-0.31315
+"834","Foulestowe",1,"United Kingdom",NA,NA
+"835","Fram",1,"United Kingdom",55.3129605,-1.795671
+"836","Frampton Cotterell",1,"United Kingdom",51.5341706,-2.4807987
+"837","Frencloit",1,"United Kingdom",NA,NA
+"838","Furtho",1,"United Kingdom",NA,NA
+"839","Gascony",1,"United Kingdom",NA,NA
+"840","Gate Burton",1,"United Kingdom",53.3351387,-0.7422838
+"841","Gayhurst",1,"United Kingdom",52.1113828,-0.760807
+"842","Gaytburton",1,"United Kingdom",NA,NA
+"843","Geddington",1,"United Kingdom",52.4388198,-0.6857236
+"844","Geynesburgh",1,"United Kingdom",NA,NA
+"845","Gilmorton",1,"United Kingdom",52.4861403,-1.1583465
+"846","Giymesby",1,"United Kingdom",NA,NA
+"847","Glastonbury",1,"United Kingdom",51.14804,-2.716577
+"848","Glenfield",1,"United Kingdom",52.6499184,-1.2052354
+"849","Glentham",1,"United Kingdom",53.4025425,-0.4945267
+"850","Gnayt",1,"United Kingdom",NA,NA
+"851","Gosberkirk",1,"United Kingdom",NA,NA
+"852","Gotliirst",1,"United Kingdom",NA,NA
+"853","Grace Dieu",1,"United Kingdom",NA,NA
+"854","Grafton Regis",1,"United Kingdom",52.1142174,-0.8936203
+"855","Grafton Underwood",1,"United Kingdom",52.4132236,-0.6447192
+"856","Grainthorpe",1,"United Kingdom",53.4533854,0.0806053
+"857","Gransden",1,"United Kingdom",NA,NA
+"858","Graveley",1,"United Kingdom",51.9355725,-0.2099339
+"859","Gray-ingham",1,"United Kingdom",NA,NA
+"860","Great Berkhamsted",1,"United Kingdom",NA,NA
+"861","Great Billing (Billyng' Magna",1,"United Kingdom",NA,NA
+"862","Great Dalby",1,"United Kingdom",52.7215718,-0.8987502
+"863","Great Doddington",1,"United Kingdom",52.2745249,-0.7103945
+"864","Great Hale",1,"United Kingdom",52.9716881,-0.2898672
+"865","Great Hampden",1,"United Kingdom",51.7062268,-0.7792143
+"866","Great Kimble",1,"United Kingdom",51.7459714,-0.8049734
+"867","Great Steeping",1,"United Kingdom",53.1576727,0.1503271
+"868","Greatworth",1,"United Kingdom",52.0789007,-1.194201
+"869","Greenfield",1,"United Kingdom",53.2884925,-3.2099834
+"870","Greens Norton",1,"United Kingdom",52.1432289,-1.0176604
+"871","Grendon Underwood",1,"United Kingdom",51.8782682,-1.0092803
+"872","Grymesby",1,"United Kingdom",NA,NA
+"873","Gumley",1,"United Kingdom",52.5033897,-0.9963966
+"874","Gurmundle",1,"United Kingdom",NA,NA
+"875","Gyllyng",1,"United Kingdom",NA,NA
+"876","Haceby",1,"United Kingdom",52.9116464,-0.4700634
+"877","Hackthom",1,"United Kingdom",NA,NA
+"878","Haddington",1,"United Kingdom",55.9556144,-2.779317
+"879","Hagnaby",1,"United Kingdom",53.2954406,0.2257085
+"880","Hagworthingham",1,"United Kingdom",53.2049164,0.0133902
+"881","Hale of Aylesbury",1,"United Kingdom",NA,NA
+"882","Haliwell",1,"United Kingdom",NA,NA
+"883","Haltham",1,"United Kingdom",53.1563539,-0.1365352
+"884","Halton",1,"United Kingdom",51.7827392,-0.7329026
+"885","Halton Holegate",1,"United Kingdom",53.1645304,0.117023
+"886","Hanborough",1,"United Kingdom",51.81468635,-1.37579069087076
+"887","Hardwick",1,"United Kingdom",52.2105528,0.0078691
+"888","Hargrave",1,"United Kingdom",52.2068106,0.5895829
+"889","Harmston",1,"United Kingdom",53.1485656,-0.547871
+"890","Harpole",1,"United Kingdom",52.2439861,-0.989227431493815
+"891","Harpsden",1,"United Kingdom",51.5215915,-0.9122245
+"892","Harpswell",1,"United Kingdom",53.3991893,-0.5946262
+"893","Harringay",1,"United Kingdom",51.582382,-0.0996181
+"894","Harrington",1,"United Kingdom",54.6142104,-3.5633466
+"895","Harrold",1,"United Kingdom",52.2017452,-0.6087087
+"896","Harston",1,"United Kingdom",52.1377,0.0788514
+"897","Haselbech",1,"United Kingdom",52.3907373,-0.9551754
+"898","HatclifFe",1,"United Kingdom",53.4891174,-0.1723789
+"899","Hatton",1,"United Kingdom",57.425098,-1.9164485
+"900","Haueryngdoun",1,"United Kingdom",NA,NA
+"901","Haughton le Skeme",1,"United Kingdom",NA,NA
+"902","Hawarden",1,"United Kingdom",53.1847774,-3.0266607
+"903","Hawardy",1,"United Kingdom",NA,NA
+"904","Hawkhurst",1,"United Kingdom",51.0469632,0.5082546
+"905","Heckington",1,"United Kingdom",52.9816716,-0.299956
+"906","Heigliarn Ferrers",1,"United Kingdom",NA,NA
+"907","Hellawe",1,"United Kingdom",NA,NA
+"908","Hemingford Abbots",1,"United Kingdom",52.3195448,-0.1154211
+"909","Hemmynford' Grey",1,"United Kingdom",NA,NA
+"910","Hemswell",1,"United Kingdom",53.4075994,-0.6015476
+"911","Hendon",1,"United Kingdom",51.5897442,-0.22162
+"912","Henxsteworth",1,"United Kingdom",NA,NA
+"913","Herlaston",1,"United Kingdom",NA,NA
+"914","Hertfordyngbur",1,"United Kingdom",NA,NA
+"915","Heynings",1,"United Kingdom",NA,NA
+"916","Heythrop",1,"United Kingdom",51.9473141,-1.4910318
+"917","Hiche",1,"United Kingdom",NA,NA
+"918","Hick",1,"United Kingdom",NA,NA
+"919","Higham Ferrers",1,"United Kingdom",52.3060303,-0.5923318
+"920","Higham on the Hill",1,"United Kingdom",52.5558187,-1.4384226
+"921","Hitch",1,"United Kingdom",59.9727745,-1.36357930822255
+"922","Hockliffe",1,"United Kingdom",51.9321488,-0.5838148
+"923","Hoghton ' Regis",1,"United Kingdom",NA,NA
+"924","Hogsthorpe",1,"United Kingdom",53.2257169,0.3003253
+"925","Hoiland",1,"United Kingdom",NA,NA
+"926","Holy Trinity",1,"United Kingdom",NA,NA
+"927","Homcastr",1,"United Kingdom",NA,NA
+"928","Horkstow",1,"United Kingdom",53.6537382,-0.508508
+"929","Horncastle",1,"United Kingdom",53.2088239,-0.1171111
+"930","Horncastre",1,"United Kingdom",NA,NA
+"931","Horsenden",1,"United Kingdom",51.7195051,-0.8515984
+"932","Horwood",1,"United Kingdom",51.0285989,-4.1373405
+"933","Houghton on the Hill",1,"United Kingdom",52.6254607,-0.9987893
+"934","Houghton Regis",1,"United Kingdom",51.904659,-0.5198277
+"935","Hull",1,"United Kingdom",53.7435722,-0.3394758
+"936","Huntingdon,350",1,"United Kingdom",NA,NA
+"937","Huntingdonshire",1,"United Kingdom",52.37108795,-0.22352977889663
+"938","Hynkele",1,"United Kingdom",NA,NA
+"939","Imham",1,"United Kingdom",NA,NA
+"940","Immingham",1,"United Kingdom",53.6159963,-0.2136727
+"941","Ingoldsby",1,"United Kingdom",52.8592595,-0.4993236
+"942","Ireland",1,"United Kingdom",52.0600343,-0.347478
+"943","John Dengayne kt",1,"United Kingdom",NA,NA
+"944","Kamelton",1,"United Kingdom",NA,NA
+"945","Ketering",1,"United Kingdom",NA,NA
+"946","Keteryng",1,"United Kingdom",NA,NA
+"947","Keysoe",1,"United Kingdom",52.2554913,-0.4250513
+"948","Kiddington",1,"United Kingdom",51.902818,-1.3988084
+"949","Kimble",1,"United Kingdom",51.7568381,-0.822587436880053
+"950","King's Lynn",1,"United Kingdom",52.7538673,0.3954774
+"951","King's Norton",1,"United Kingdom",52.4072579,-1.9293043
+"952","King's Walden",1,"United Kingdom",51.8986317,-0.3169731
+"953","Kingham",1,"United Kingdom",51.9155733,-1.622031
+"954","Kingsey",1,"United Kingdom",51.7548778,-0.9243742
+"955","Kirkby",1,"United Kingdom",53.4851525,-2.898906
+"956","Kirkeby Beler",1,"United Kingdom",NA,NA
+"957","Kirkstead",1,"United Kingdom",53.1401097,-0.2168619
+"958","Kirkton",1,"United Kingdom",55.4167604,-2.7284814
+"959","Kymbauton",1,"United Kingdom",NA,NA
+"960","Kynebauton",1,"United Kingdom",NA,NA
+"961","Kyrkeby Laythorp",1,"United Kingdom",NA,NA
+"962","Kyrketon",1,"United Kingdom",NA,NA
+"963","LafFord",1,"United Kingdom",NA,NA
+"964","Langeton",1,"United Kingdom",NA,NA
+"965","Langley",1,"United Kingdom",50.8082848,-1.3679873
+"966","Lathbury",1,"United Kingdom",52.0982657,-0.7228151
+"967","Lavenham",1,"United Kingdom",52.1100356,0.7978942
+"968","Leake",1,"United Kingdom",54.3089313,-1.3350266
+"969","Leasingham",1,"United Kingdom",53.0260911,-0.4249358
+"970","Legboume",1,"United Kingdom",NA,NA
+"971","Leighton' Busard'",1,"United Kingdom",NA,NA
+"972","lekford",1,"United Kingdom",NA,NA
+"973","Lewie",1,"United Kingdom",NA,NA
+"974","Lillingston",1,"United Kingdom",NA,NA
+"975","Lillingstone",1,"United Kingdom",52.06442195,-0.959709786605851
+"976","Limber",1,"United Kingdom",53.54966215,-0.296964279152737
+"977","Lincolnshire",1,"United Kingdom",53.5841303,-0.6649323
+"978","Lindesey",1,"United Kingdom",NA,NA
+"979","Little Berkhamsted",1,"United Kingdom",51.7548901,-0.1288048
+"980","Little Bowden",1,"United Kingdom",52.4746209,-0.9053644
+"981","Little Cawthorpe",1,"United Kingdom",53.3344113,0.0367064
+"982","Little Crawley",1,"United Kingdom",52.0979462,-0.6563655
+"983","Little Gidding (",1,"United Kingdom",52.4219467,-0.3433311
+"984","Little Ponton",1,"United Kingdom",52.8781442,-0.6266418
+"985","Little Stukeley",1,"United Kingdom",52.3648203,-0.2272199
+"986","Long Whatton",1,"United Kingdom",52.8071829,-1.2911833
+"987","Longevill",1,"United Kingdom",NA,NA
+"988","Longoboby",1,"United Kingdom",NA,NA
+"989","Longville",1,"United Kingdom",52.5397206,-2.6794518
+"990","Loughton Magna",1,"United Kingdom",NA,NA
+"991","Lower Heyford",1,"United Kingdom",51.9197945,-1.2943556
+"992","Lubenham",1,"United Kingdom",52.478912,-0.963708
+"993","Ludborough",1,"United Kingdom",53.4406964,-0.0511011
+"994","Luddington",1,"United Kingdom",52.1704564,-1.7595399
+"995","Luffield",1,"United Kingdom",52.0588333,-0.991157897136189
+"996","Lusby",1,"United Kingdom",53.1906818,0.0030858
+"997","Lutterworth",1,"United Kingdom",52.4552224,-1.1997815
+"998","Lutton",1,"United Kingdom",52.8071349,0.1247533
+"999","Maldon",1,"United Kingdom",51.731198,0.6791849
+"1000","Maltby",1,"United Kingdom",53.4264287,-1.2070444
+"1001","Maltby le Marsh",1,"United Kingdom",53.3118619,0.2011065
+"1002","Manby",1,"United Kingdom",53.3616463,0.0968488
+"1003","Manlake",1,"United Kingdom",NA,NA
+"1004","Mar",1,"United Kingdom",52.9403368,-2.3089752
+"1005","Market Bosworth",1,"United Kingdom",52.6238898,-1.4009254
+"1006","Market Overton",1,"United Kingdom",52.74420225,-0.68104056857965
+"1007","Market Rasen",1,"United Kingdom",53.3874028,-0.336659
+"1008","Markfield",1,"United Kingdom",52.69063535,-1.28581714651856
+"1009","Markyate",1,"United Kingdom",51.8356392,-0.4579499
+"1010","Marston",1,"United Kingdom",52.8458517,-2.1185346
+"1011","Mears Ashby",1,"United Kingdom",52.2923942,-0.7727787
+"1012","Melton",1,"United Kingdom",52.8117106,-0.859286729224446
+"1013","Melton' Moubray",1,"United Kingdom",NA,NA
+"1014","Mentmore",1,"United Kingdom",51.8694849,-0.6840518
+"1015","Messingham",1,"United Kingdom",53.5291579,-0.6530156
+"1016","Middle Rasen",1,"United Kingdom",53.3885262,-0.3621677
+"1017","Milton Bryan",1,"United Kingdom",51.9646586,-0.5873164
+"1018","Misterton",1,"United Kingdom",50.8692082,-2.7697167
+"1019","Mixbury",1,"United Kingdom",52.0010399,-1.114766
+"1020","Mold",1,"United Kingdom",53.1688711,-3.1431489
+"1021","Moorby",1,"United Kingdom",53.1587947,-0.0677066
+"1022","Morland",1,"United Kingdom",54.5950391,-2.6219927
+"1023","Mounsoref",1,"United Kingdom",NA,NA
+"1024","Mowsley",1,"United Kingdom",52.4947415,-1.0473406
+"1025","Muckton",1,"United Kingdom",53.3115503,0.0633026
+"1026","Multon",1,"United Kingdom",NA,NA
+"1027","Mursley",1,"United Kingdom",51.9518511,-0.8120369
+"1028","Nailstone",1,"United Kingdom",52.6600671,-1.3863515
+"1029","Narborough",1,"United Kingdom",52.6824783,0.58615963849308
+"1030","Ness",1,"United Kingdom",53.2780718,-3.0487173
+"1031","Nettleton",1,"United Kingdom",51.8218431,-2.0815893
+"1032","Neuport",1,"United Kingdom",NA,NA
+"1033","Neuportpaynel",1,"United Kingdom",NA,NA
+"1034","Neuportpaynel1",1,"United Kingdom",NA,NA
+"1035","New Sleaford",1,"United Kingdom",52.9984193,-0.4094529
+"1036","Newhouse",1,"United Kingdom",55.8310086,-3.9249303
+"1037","Newton",1,"United Kingdom",52.0322303,0.7943311
+"1038","Newton Blossomville",1,"United Kingdom",52.1540413,-0.6484901
+"1039","Newton Bromswold",1,"United Kingdom",52.2750306,-0.545359932761722
+"1040","Newton Longville",1,"United Kingdom",51.9744292,-0.7656714
+"1041","Noke",1,"United Kingdom",51.8144074,-1.2120747
+"1042","North'merston",1,"United Kingdom",NA,NA
+"1043","North-bourne",1,"United Kingdom",51.3491518,-0.6008427
+"1044","North '",1,"United Kingdom",NA,NA
+"1045","North 'Keleseye",1,"United Kingdom",NA,NA
+"1046","North Crawley",1,"United Kingdom",52.0939909,-0.6510074
+"1047","North Kilworth",1,"United Kingdom",52.4459437,-1.0954306
+"1048","North Scarle",1,"United Kingdom",53.1931113,-0.7288789
+"1049","North Willingham",1,"United Kingdom",53.3791052,-0.2545967
+"1050","Northmerston0",1,"United Kingdom",NA,NA
+"1051","Northyevele",1,"United Kingdom",NA,NA
+"1052","Norton 'Brim",1,"United Kingdom",NA,NA
+"1053","Notley",1,"United Kingdom",51.8338836,0.5909803
+"1054","Nouport Paynel",1,"United Kingdom",NA,NA
+"1055","Nova Lafford",1,"United Kingdom",NA,NA
+"1056","nt",1,"United Kingdom",NA,NA
+"1057","Oakham",1,"United Kingdom",52.66666035,-0.749967640456989
+"1058","Oddeston",1,"United Kingdom",NA,NA
+"1059","Oddington",1,"United Kingdom",51.8304461,-1.1989803
+"1060","Odell",1,"United Kingdom",52.2099053,-0.5904619
+"1061","Odstone",1,"United Kingdom",52.6664479,-1.4200487
+"1062","ofArdley",1,"United Kingdom",NA,NA
+"1063","ofGlatton",1,"United Kingdom",NA,NA
+"1064","ofHelrnsley",1,"United Kingdom",NA,NA
+"1065","ofHenley",1,"United Kingdom",NA,NA
+"1066","ofHolland",1,"United Kingdom",NA,NA
+"1067","Ofiford Cluny",1,"United Kingdom",NA,NA
+"1068","ofLincoln",1,"United Kingdom",NA,NA
+"1069","ofNailstone",1,"United Kingdom",NA,NA
+"1070","ofNettleton",1,"United Kingdom",NA,NA
+"1071","ofNorthampton",1,"United Kingdom",NA,NA
+"1072","ofNorthorpe",1,"United Kingdom",NA,NA
+"1073","ofPipewell",1,"United Kingdom",NA,NA
+"1074","ofTackley",1,"United Kingdom",NA,NA
+"1075","ofTathwell",1,"United Kingdom",NA,NA
+"1076","ofTaynton",1,"United Kingdom",NA,NA
+"1077","ofThimbleby",1,"United Kingdom",NA,NA
+"1078","ofWilliamdeRosofHelmsleykt",1,"United Kingdom",NA,NA
+"1079","ofYardley",1,"United Kingdom",NA,NA
+"1080","Olney",1,"United Kingdom",52.1539179,-0.7013942
+"1081","Orby",1,"United Kingdom",53.1819232,0.2291969
+"1082","Oriel College",1,"United Kingdom",NA,NA
+"1083","Orton",1,"United Kingdom",54.87497005,-3.03613440350702
+"1084","Overstone",1,"United Kingdom",52.2881265,-0.8334022
+"1085","Overton' Watervill",1,"United Kingdom",NA,NA
+"1086","Overton1 Qualremars",1,"United Kingdom",NA,NA
+"1087","Oxcombe",1,"United Kingdom",53.2754989,-0.0362084
+"1088","Oxon",1,"United Kingdom",NA,NA
+"1089","Panton",1,"United Kingdom",53.2945863,-0.2373409
+"1090","Parva Byllyng'",1,"United Kingdom",NA,NA
+"1091","Parva Styvecle",1,"United Kingdom",NA,NA
+"1092","Passenham",1,"United Kingdom",52.0473959,-0.8614619
+"1093","Paston",1,"United Kingdom",52.6067842,-0.2480361
+"1094","Paulerspury",1,"United Kingdom",52.0999939,-0.9546457
+"1095","Paxton",1,"United Kingdom",55.7703779,-2.1057387
+"1096","Paynel",1,"United Kingdom",NA,NA
+"1097","Peatling Pam",1,"United Kingdom",NA,NA
+"1098","Peckleton",1,"United Kingdom",52.6067443,-1.3067118
+"1099","Pencestr",1,"United Kingdom",NA,NA
+"1100","Penshurst",1,"United Kingdom",51.1612732,0.176626741246239
+"1101","Pickwell",1,"United Kingdom",51.1459236,-4.2065092
+"1102","Pilham",1,"United Kingdom",53.4346784,-0.7022331
+"1103","Pipewell",1,"United Kingdom",52.4623709,-0.7666712
+"1104","Pitchcott",1,"United Kingdom",51.8761894,-0.8749324
+"1105","Plumpton",1,"United Kingdom",50.92332315,-0.0652568512614444
+"1106","Potton",1,"United Kingdom",52.1305155,-0.203921615642684
+"1107","Quaderyng",1,"United Kingdom",NA,NA
+"1108","Quadryng",1,"United Kingdom",NA,NA
+"1109","Radwell",1,"United Kingdom",52.2057873,-0.5314322
+"1110","Raithby",1,"United Kingdom",53.1839138,0.0529871
+"1111","Rarnmes",1,"United Kingdom",NA,NA
+"1112","Rauceby",1,"United Kingdom",52.9966735,-0.4701711
+"1113","Ravenstone",1,"United Kingdom",52.1487992,-0.7600213
+"1114","Rearsby",1,"United Kingdom",52.72281575,-1.02996174338715
+"1115","Rippingale",1,"United Kingdom",52.8381603,-0.3696044
+"1116","Riseholme",1,"United Kingdom",53.26407,-0.531583
+"1117","Riskyngton",1,"United Kingdom",NA,NA
+"1118","Riston",1,"United Kingdom",53.859059,-0.297377901069246
+"1119","Rnaptoft",1,"United Kingdom",NA,NA
+"1120","Rotherfield Greys",1,"United Kingdom",51.5356454,-0.9539297
+"1121","Rothwell",1,"United Kingdom",53.7493842,-1.478151
+"1122","Ruckland",1,"United Kingdom",53.2831122,-0.000368
+"1123","Ruislip",1,"United Kingdom",51.5775626,-0.4278453
+"1124","Ruskington",1,"United Kingdom",53.0451565,-0.396665290012613
+"1125","Salford",1,"United Kingdom",53.4877463,-2.2891921
+"1126","Saltfleetby",1,"United Kingdom",53.38894225,0.172208667973892
+"1127","Saltfleetby St Clements",1,"United Kingdom",NA,NA
+"1128","Saltfleetby St Peter",1,"United Kingdom",53.3812611,0.1518902
+"1129","Sandwich",1,"United Kingdom",51.2752527,1.3408309
+"1130","Sandy",1,"United Kingdom",52.1295713,-0.2931657
+"1131","Sapperton",1,"United Kingdom",51.7279459,-2.0773788
+"1132","Sarre",1,"United Kingdom",51.3388787,1.2385156
+"1133","Sarsden",1,"United Kingdom",51.9069314,-1.5793569
+"1134","Scotland",1,"United Kingdom",53.7559832,-2.0770106
+"1135","Scrivelsby",1,"United Kingdom",53.1780161,-0.1023101
+"1136","Seal",1,"United Kingdom",51.2662464,0.244551057313478
+"1137","Selby",1,"United Kingdom",53.784012,-1.0687806
+"1138","Sempyngham",1,"United Kingdom",NA,NA
+"1139","Shabbington",1,"United Kingdom",51.7566975,-1.0358172
+"1140","Shamford",1,"United Kingdom",NA,NA
+"1141","Shawell",1,"United Kingdom",52.4177341,-1.2009171
+"1142","Shelford",1,"United Kingdom",52.9739527,-1.0143987
+"1143","Sherington",1,"United Kingdom",52.1106483,-0.7022122
+"1144","Sibberton",1,"United Kingdom",52.5865728,-0.432667
+"1145","Sibbethorp",1,"United Kingdom",NA,NA
+"1146","Skeggenesce",1,"United Kingdom",NA,NA
+"1147","Skikenesshe",1,"United Kingdom",NA,NA
+"1148","Snelland",1,"United Kingdom",53.31083535,-0.386653871865298
+"1149","Snitterby",1,"United Kingdom",53.4405793,-0.5184184
+"1150","Souldem",1,"United Kingdom",NA,NA
+"1151","South Elkington",1,"United Kingdom",53.3763874,-0.0528127
+"1152","South Kilworth",1,"United Kingdom",52.4292286,-1.1121132
+"1153","South LufFenham",1,"United Kingdom",52.60507645,-0.606018680507261
+"1154","South Marefield",1,"United Kingdom",52.6644917,-0.8984629
+"1155","South Ormsby",1,"United Kingdom",53.2564228,0.0519777
+"1156","South Stoke",1,"United Kingdom",50.8809034,-0.5415345
+"1157","South Witham",1,"United Kingdom",52.7645587,-0.6278948
+"1158","Southmardefeld",1,"United Kingdom",NA,NA
+"1159","Southwick",1,"United Kingdom",50.8345258,-0.2383308
+"1160","Sparkenhoe",1,"United Kingdom",NA,NA
+"1161","Spridlington",1,"United Kingdom",53.3480476,-0.4862988
+"1162","St Albans",1,"United Kingdom",51.7492956,-0.3422526
+"1163","St Frideswide",1,"United Kingdom",NA,NA
+"1164","St Giles",1,"United Kingdom",51.5154723,-0.1284181
+"1165","St John",1,"United Kingdom",50.3613746,-4.2376225
+"1166","St Mary Bynwerk",1,"United Kingdom",NA,NA
+"1167","St Mary Delapre Northampton",1,"United Kingdom",NA,NA
+"1168","St Mary iuxtapontem",1,"United Kingdom",NA,NA
+"1169","St Mary le Wigford",1,"United Kingdom",NA,NA
+"1170","St Mary Stainton",1,"United Kingdom",NA,NA
+"1171","St Mary, Binbrook",1,"United Kingdom",NA,NA
+"1172","St Mary, Covenham,373",1,"United Kingdom",NA,NA
+"1173","St Neots",1,"United Kingdom",52.2275439,-0.2707598
+"1174","St Peter at Arches",1,"United Kingdom",NA,NA
+"1175","St Peter, Ashby cum Fenby",1,"United Kingdom",NA,NA
+"1176","Stainton",1,"United Kingdom",54.2648817,-2.7338225
+"1177","Stallingborough",1,"United Kingdom",53.5871929,-0.1855069
+"1178","Stanlak",1,"United Kingdom",NA,NA
+"1179","Stanton Flarcourt",1,"United Kingdom",NA,NA
+"1180","Staynton ' Wadinham",1,"United Kingdom",NA,NA
+"1181","Steeple Aston",1,"United Kingdom",51.9292854,-1.3088773
+"1182","Steeple Claydon",1,"United Kingdom",51.9376924,-0.9866761
+"1183","Stepelgiddyng",1,"United Kingdom",NA,NA
+"1184","Stepulaston",1,"United Kingdom",NA,NA
+"1185","Stilton",1,"United Kingdom",52.4892606,-0.2869974
+"1186","Stockerston",1,"United Kingdom",52.5688468,-0.7643262
+"1187","Stoke",1,"United Kingdom",53.0162014,-2.1812607
+"1188","Stoke Dry",1,"United Kingdom",52.5637425,-0.7385683
+"1189","Stoke Hammond",1,"United Kingdom",51.9570842,-0.7194722
+"1190","Stonesby",1,"United Kingdom",52.8141747,-0.7807748
+"1191","Stonton' Bany",1,"United Kingdom",NA,NA
+"1192","Stonton 'Barn",1,"United Kingdom",NA,NA
+"1193","Stubton",1,"United Kingdom",53.0303771,-0.6986066
+"1194","Sulby",1,"United Kingdom",52.4221695,-1.02917539606384
+"1195","Surjlet",1,"United Kingdom",NA,NA
+"1196","Suthyevel",1,"United Kingdom",NA,NA
+"1197","Suthyevele",1,"United Kingdom",NA,NA
+"1198","Sutton in the Marsh",1,"United Kingdom",53.2976462,0.2843248
+"1199","Swarby",1,"United Kingdom",52.9528038,-0.442019567270902
+"1200","Swaton",1,"United Kingdom",52.9246359,-0.316716
+"1201","Swaueton",1,"United Kingdom",NA,NA
+"1202","Swayfield",1,"United Kingdom",52.7937315,-0.5323912
+"1203","Swerford",1,"United Kingdom",51.9786554,-1.4514507
+"1204","Swinbrook",1,"United Kingdom",51.8068532,-1.5942182
+"1205","Swynbrok",1,"United Kingdom",NA,NA
+"1206","Swyncombe",1,"United Kingdom",51.6067545,-1.0152317
+"1207","Tadmarton",1,"United Kingdom",52.0379879,-1.4288018
+"1208","Tallington,636",1,"United Kingdom",NA,NA
+"1209","Tannesorr",1,"United Kingdom",NA,NA
+"1210","Tannesovere",1,"United Kingdom",NA,NA
+"1211","Tansore",1,"United Kingdom",NA,NA
+"1212","Tetford",1,"United Kingdom",53.251946,-0.0066612
+"1213","Tew",1,"United Kingdom",51.9540519,-1.4415212
+"1214","Theddingworth",1,"United Kingdom",52.465072,-1.0183402
+"1215","Theddlethorpe St Helen",1,"United Kingdom",53.3732727,0.2220177
+"1216","Thenford",1,"United Kingdom",52.0725556,-1.2437205
+"1217","Thomborough",1,"United Kingdom",NA,NA
+"1218","Thomby",1,"United Kingdom",NA,NA
+"1219","Thornton",1,"United Kingdom",52.0154955,-0.9053801
+"1220","Thorp Watervill'",1,"United Kingdom",NA,NA
+"1221","Thorpe",1,"United Kingdom",53.0490983,-1.7694748
+"1222","ThorpwaterviW",1,"United Kingdom",NA,NA
+"1223","Thumby",1,"United Kingdom",NA,NA
+"1224","Thurgarton",1,"United Kingdom",52.8662675,1.2414571
+"1225","Thurnby",1,"United Kingdom",52.6299666,-1.0473563
+"1226","Tickford",1,"United Kingdom",52.0846407,-0.712353
+"1227","Tiffield",1,"United Kingdom",52.15929675,-0.979702587002265
+"1228","Tingrith",1,"United Kingdom",51.9802179,-0.5336043
+"1229","Toddington",1,"United Kingdom",51.9479518,-0.5342802
+"1230","Tolethorpe",1,"United Kingdom",52.6810903,-0.4898794
+"1231","Torkeseye",1,"United Kingdom",NA,NA
+"1232","Touceslre",1,"United Kingdom",NA,NA
+"1233","Toveceslr",1,"United Kingdom",NA,NA
+"1234","Tovescestr",1,"United Kingdom",NA,NA
+"1235","Toynton St Peter",1,"United Kingdom",53.1472991,0.1000436
+"1236","Turvey",1,"United Kingdom",52.1622615,-0.6249986
+"1237","tVilshamsted",1,"United Kingdom",NA,NA
+"1238","Tydd St Mary",1,"United Kingdom",52.7456824,0.131329
+"1239","Ulceby,390",1,"United Kingdom",NA,NA
+"1240","Uppingham",1,"United Kingdom",52.5887243,-0.7234249
+"1241","Uxbridge",1,"United Kingdom",51.5449509,-0.4816672
+"1242","Waddingham St Mary",1,"United Kingdom",NA,NA
+"1243","Wadenhoe",1,"United Kingdom",52.4409051,-0.5136356
+"1244","Wainfleet",1,"United Kingdom",53.1074468,0.2369499
+"1245","Wakerley",1,"United Kingdom",52.584642,-0.5934329
+"1246","Wales",1,"United Kingdom",53.3418732,-1.2789459
+"1247","Walgrave",1,"United Kingdom",52.3418649,-0.8239322
+"1248","Wallington",1,"United Kingdom",51.357945,-0.1495621
+"1249","Walmsgate",1,"United Kingdom",53.2831293,0.0449961
+"1250","Walshcroft",1,"United Kingdom",NA,NA
+"1251","Wardeboise",1,"United Kingdom",NA,NA
+"1252","Wardeboys",1,"United Kingdom",NA,NA
+"1253","Warkton",1,"United Kingdom",52.4097709,-0.6888135
+"1254","Washingborough",1,"United Kingdom",53.2223092,-0.4734512
+"1255","Water Stratford",1,"United Kingdom",52.004066,-1.0508568
+"1256","Watford",1,"United Kingdom",51.6553875,-0.3957425
+"1257","Watton at Stone",1,"United Kingdom",51.8585119,-0.1165373
+"1258","Wavendon",1,"United Kingdom",52.0253895,-0.6743361
+"1259","Waynflet",1,"United Kingdom",NA,NA
+"1260","Weedon Beck",1,"United Kingdom",NA,NA
+"1261","Welby",1,"United Kingdom",52.9335215,-0.550761
+"1262","Weldon",1,"United Kingdom",52.49525225,-0.62641891859969
+"1263","Wellingborough",1,"United Kingdom",52.30189,-0.6937309
+"1264","Wellow",1,"United Kingdom",50.9771135,-1.56413854155698
+"1265","Welton",1,"United Kingdom",53.7331192,-0.5486138
+"1266","Wendlebury",1,"United Kingdom",51.872327,-1.186175
+"1267","West Halton",1,"United Kingdom",53.6752076,-0.630060255863454
+"1268","West Peckham",1,"United Kingdom",51.2484693,0.3577653
+"1269","West Wycombe",1,"United Kingdom",51.6448823,-0.8022534
+"1270","Westborough",1,"United Kingdom",53.6956442,-1.646726
+"1271","Westbury",1,"United Kingdom",51.261079,-2.1836535
+"1272","Westdeping",1,"United Kingdom",NA,NA
+"1273","Westdepyng",1,"United Kingdom",NA,NA
+"1274","Westenhanger",1,"United Kingdom",51.0910118,1.0371594
+"1275","Westmill",1,"United Kingdom",51.9263479,-0.011441
+"1276","Westminster",1,"United Kingdom",51.5004439,-0.1265398
+"1277","Weston' TurvyU",1,"United Kingdom",NA,NA
+"1278","Weston ' Underwode",1,"United Kingdom",NA,NA
+"1279","Weston Turville",1,"United Kingdom",51.79145,-0.760317
+"1280","Weston Underwood",1,"United Kingdom",52.9803292,-1.5672063
+"1281","Wexham",1,"United Kingdom",51.53127355,-0.551826774742268
+"1282","Wheatfield",1,"United Kingdom",51.6865946,-1.0050192
+"1283","Willian",1,"United Kingdom",51.9602456,-0.2203753
+"1284","Wilmington",1,"United Kingdom",51.4271361,0.2026679
+"1285","Wilshamsted",1,"United Kingdom",NA,NA
+"1286","Winceby",1,"United Kingdom",53.1954339,-0.025208
+"1287","Wing",1,"United Kingdom",51.8964455,-0.7180656
+"1288","Winthorpe",1,"United Kingdom",53.1657623,0.3346971
+"1289","Wisbech",1,"United Kingdom",52.6651733,0.1606824
+"1290","Wisborough",1,"United Kingdom",51.01453655,-0.506503134896232
+"1291","Wispington",1,"United Kingdom",53.2281885,-0.1953534
+"1292","Withem",1,"United Kingdom",NA,NA
+"1293","Witleneye",1,"United Kingdom",NA,NA
+"1294","Wold Newton",1,"United Kingdom",53.4517959,-0.1283258
+"1295","Woldeweston",1,"United Kingdom",NA,NA
+"1296","Woldweston",1,"United Kingdom",NA,NA
+"1297","Wood Walton",1,"United Kingdom",52.43556775,-0.211957530144877
+"1298","Woodford Halse",1,"United Kingdom",52.1706055,-1.2066886
+"1299","Wotlesdon",1,"United Kingdom",NA,NA
+"1300","Wottesdon",1,"United Kingdom",NA,NA
+"1301","Wranget",1,"United Kingdom",NA,NA
+"1302","Wrauby",1,"United Kingdom",NA,NA
+"1303","Wyfordby",1,"United Kingdom",52.7626242,-0.8278147
+"1304","Wyham",1,"United Kingdom",53.4375684,-0.0781559
+"1305","Wyke Dyve",1,"United Kingdom",NA,NA
+"1306","Wyrardesbwy",1,"United Kingdom",NA,NA
+"1307","Wyville",1,"United Kingdom",52.8543662,-0.6907722
+"1308","Wyxebrigg",1,"United Kingdom",NA,NA
+"1309","Yelling",1,"United Kingdom",52.2488415,-0.1589432
+"1310","Yelvertofl",1,"United Kingdom",NA,NA
+"1311","Yelvertoft",1,"United Kingdom",52.3747026,-1.1201908
+"1312","yevele",1,"United Kingdom",NA,NA
+"1313","Yorkshire",1,"United Kingdom",NA,NA

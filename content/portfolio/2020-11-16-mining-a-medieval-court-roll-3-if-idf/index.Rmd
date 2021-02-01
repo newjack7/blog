@@ -2,11 +2,10 @@
 title: 'Mining a Medieval Court Roll 3: TF-IDF'
 author: "Jack Newman"
 date: '2020-11-16'
-slug: Text Mining
-categories: Text Mining
+slug: 
+categories: 
 tags:
-- Medieval History
-- Text Mining
+
 ---
 **This post is a work in progress.**
 
@@ -124,10 +123,10 @@ TFIDFCounts <- left_join(lincsYearTFIDF, wordCounts)
 ```
 
 ```{r}
-TFIDFCounts %>%
-  filter(totalDistinct>20) %>% 
-  filter(!(allegation %in% monthOrder)) %>% 
-  arrange(desc(tf_idf))
+#TFIDFCounts %>%
+ # filter(totalDistinct>20) %>% 
+  #filter(!(allegation %in% monthOrder)) %>% 
+  #arrange(desc(tf_idf))
 
 ```
 

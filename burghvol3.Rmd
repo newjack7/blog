@@ -9,6 +9,13 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(tidytext)
+#Load the packages for spacy parsing
+library(lubridate)
+library(tidygeocoder)
+library(tif)
+library(reticulate)
+library(spacyr)
+
 ```
 
 Import and format the data
@@ -24,7 +31,7 @@ burghershVol3Filter <- burghershVol3Filter %>% filter(!is.na(ID1))
 burghershVol3Filter <- burghershVol3Filter %>% select(ID1, text)
 #remove the last character from column ID1 (full stops)
 burghershVol3Filter$ID1 = substr(burghershVol3Filter$ID1,1,nchar(burghershVol3Filter$ID1)-1)
-#check to see if any entries are missing or duplicated
+#check to see if any entries are missing or duplicated (should return 0)
 setdiff(1:5007, burghershVol3Filter$ID1)
 #Turn ID1 column into a sortable numeric column
 burghershVol3Filter <- transform(burghershVol3Filter, ID1 = as.numeric(ID1))
@@ -33,12 +40,8 @@ burghershVol3Filter <- transform(burghershVol3Filter, ID1 = as.numeric(ID1))
 ```
 
 ```{r}
-#Load the packages for spacy parsing
-library(lubridate)
-library(spacyr)
-library(tif)
-library(reticulate)
-spacy_initialize()
+#Would prefer the large but it takes too long
+spacy_initialize(model = "en_core_web_trf")
 ```
 
 ```{r}
@@ -50,10 +53,29 @@ burghVol3TIF <- data.frame(doc_id = burghershVol3Filter$ID1, text = burghershVol
 tif_is_corpus_df(burghVol3TIF)
 #This always seems to say FALSE but it still works in spacy?
 
-#Parse the text through Spacy
-burghVol3parsed <- spacy_parse(burghVol3TIF)
+#Parse the text through Spacy (takes too long and is unecessary at this point)
+  #burghVol3parsed <- spacy_parse(burghVol3TIF, lemma = FALSE, entity = TRUE, nounphrase = TRUE)
+
+#This has to use the small spacy model as it takes too long otherwise
+burghVol3parsed <- spacy_extract_entity(burghVol3TIF)
 
 slice(burghVol3parsed, 500:510)
+
+```
+
+```{r}
+#Re-unite the entities  - not needed as I used spacy_extract_entity which consolidates entities already
+  #burghConsolidate <- burghVol3parsed %>% entity_consolidate()
+
+#Filter for locations - includes organisations as I want to capture 'university of oxford' as well
+vol3Places <- burghVol3parsed %>% filter(ent_type == "GPE" | ent_type == "ORG")
+#count locations 
+vol3PlacesCount <-vol3Places  %>% count(text, sort = TRUE)
+#filter out some mistakes
+vol3PlacesCount<- vol3PlacesCount %>% mutate(country = "United Kingdom") %>% rename(city = text)
+vol3Geo <- vol3PlacesCount %>% geocode(city = city, country = country, method = 'osm')
+
+write.csv(vol3Geo, file = "vol3Geo.csv")
 
 ```
 

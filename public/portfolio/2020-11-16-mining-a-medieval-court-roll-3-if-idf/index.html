@@ -14,119 +14,186 @@ tags:
 <script src="index_files/anchor-sections/anchor-sections.js"></script>
 
 
-<p>Term frequency inverse document frequency (TF-IDF) is both a mouthful and a process often carried out as part of the text mining approach. The primary idea behind TF-IDF is to find the words which are most important for the content of each document by decreasing the weight for commonly used words and increasing the weight for words that are not used very much in a collection as a whole. Essentially it tries to find words that are important (i.e, common) in a text but not too common. For example, if there were two identical texts with only a single word difference between the two then a tf-idf approach would isolate that single word as the most important when comparing the two texts.</p>
-<pre class="r"><code>library(tidyverse)</code></pre>
-<pre><code>## -- Attaching packages --------------------------------------- tidyverse 1.3.0 --</code></pre>
-<pre><code>## v ggplot2 3.3.2     v purrr   0.3.4
-## v tibble  3.0.3     v dplyr   1.0.2
-## v tidyr   1.1.2     v stringr 1.4.0
-## v readr   1.4.0     v forcats 0.5.0</code></pre>
-<pre><code>## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
-## x dplyr::filter() masks stats::filter()
-## x dplyr::lag()    masks stats::lag()</code></pre>
-<pre class="r"><code>library(tidytext)
-setwd(&quot;C:/Users/Jack/Documents/GitHub/bi-grams&quot;)
-load(&quot;.Rdata&quot;)</code></pre>
-<pre class="r"><code>lincs_words &lt;- Lincolnshire_Tokens %&gt;% count(Lincolnshire_ID, word, sort = TRUE)
+<p><strong>This post is a work in progress.</strong></p>
+<p>Term frequency inverse document frequency (TF-IDF) is both a mouthful and a process often carried out as part of the text mining approach. The primary idea behind TF-IDF is to find the words which are most important for the content of each document by decreasing the weight for commonly used words and increasing the weight for words that are not used very much in a collection as a whole. Essentially it tries to find words that are important (i.e, common) in a text but not ubiquitous. For example, if there were two identical texts with only a single word difference between the two then a tf-idf approach would isolate that single word as the most important when comparing the two texts.</p>
+<pre class="r"><code>lincs_words &lt;- lincsEventsTokens %&gt;% count(lincsID, word, sort = TRUE)
 
-total_words &lt;- lincs_words %&gt;% group_by(Lincolnshire_ID) %&gt;%  summarize(total = sum(n))</code></pre>
-<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
-<pre class="r"><code>lincs_words &lt;- left_join(lincs_words, total_words)</code></pre>
-<pre><code>## Joining, by = &quot;Lincolnshire_ID&quot;</code></pre>
-<pre class="r"><code>lincs_words</code></pre>
-<pre><code>## # A tibble: 38,788 x 4
-##    Lincolnshire_ID word       n total
-##    &lt;chr&gt;           &lt;chr&gt;  &lt;int&gt; &lt;int&gt;
-##  1 1016            of       131   657
-##  2 1016            from      66   657
-##  3 1016            the       66   657
-##  4 1016            wool      66   657
-##  5 1016            vill      61   657
-##  6 1016            stones    46   657
-##  7 1130            the       46   490
-##  8 1142            and       29   462
-##  9 1044            of        28   245
-## 10 1133            the       27   254
-## # ... with 38,778 more rows</code></pre>
+total_words &lt;- lincs_words %&gt;% group_by(lincsID) %&gt;%  summarize(total = sum(n))
+
+lincs_words &lt;- left_join(lincs_words, total_words)
+
+lincs_words</code></pre>
+<pre><code>## # A tibble: 39,309 x 4
+##    lincsID word       n total
+##      &lt;dbl&gt; &lt;chr&gt;  &lt;int&gt; &lt;int&gt;
+##  1    1016 of       131   656
+##  2    1016 from      66   656
+##  3    1016 the       66   656
+##  4    1016 wool      66   656
+##  5    1016 vill      61   656
+##  6    1142 and       50   766
+##  7    1016 stones    46   656
+##  8    1130 the       46   493
+##  9    1142 the       46   766
+## 10    1142 of        40   766
+## # ... with 39,299 more rows</code></pre>
 <p>This creates a table (lincs_words) with one row for each word-allegation combination. <code>n</code> is the number of times that work is used in that particular allegation and <code>total</code> is the total number of words within that particular allegation. Above you can see the first ten rows from the resulting dataframe.</p>
-<pre class="r"><code>freq_by_rank &lt;- lincs_words %&gt;%  group_by(Lincolnshire_ID) %&gt;% mutate(rank = row_number(), &#39;term frequency&#39; = n/total) %&gt;%  ungroup()
+<pre class="r"><code>freq_by_rank &lt;- lincs_words %&gt;%  group_by(lincsID) %&gt;% mutate(rank = row_number(), &#39;term frequency&#39; = n/total) %&gt;%  ungroup()
 
 freq_by_rank</code></pre>
-<pre><code>## # A tibble: 38,788 x 6
-##    Lincolnshire_ID word       n total  rank `term frequency`
-##    &lt;chr&gt;           &lt;chr&gt;  &lt;int&gt; &lt;int&gt; &lt;int&gt;            &lt;dbl&gt;
-##  1 1016            of       131   657     1           0.199 
-##  2 1016            from      66   657     2           0.100 
-##  3 1016            the       66   657     3           0.100 
-##  4 1016            wool      66   657     4           0.100 
-##  5 1016            vill      61   657     5           0.0928
-##  6 1016            stones    46   657     6           0.0700
-##  7 1130            the       46   490     1           0.0939
-##  8 1142            and       29   462     1           0.0628
-##  9 1044            of        28   245     1           0.114 
-## 10 1133            the       27   254     1           0.106 
-## # ... with 38,778 more rows</code></pre>
+<pre><code>## # A tibble: 39,309 x 6
+##    lincsID word       n total  rank `term frequency`
+##      &lt;dbl&gt; &lt;chr&gt;  &lt;int&gt; &lt;int&gt; &lt;int&gt;            &lt;dbl&gt;
+##  1    1016 of       131   656     1           0.200 
+##  2    1016 from      66   656     2           0.101 
+##  3    1016 the       66   656     3           0.101 
+##  4    1016 wool      66   656     4           0.101 
+##  5    1016 vill      61   656     5           0.0930
+##  6    1142 and       50   766     1           0.0653
+##  7    1016 stones    46   656     6           0.0701
+##  8    1130 the       46   493     1           0.0933
+##  9    1142 the       46   766     2           0.0601
+## 10    1142 of        40   766     3           0.0522
+## # ... with 39,299 more rows</code></pre>
 <p>Now I can calculate the frequency of each term across the entire document. This is carried out by dividing <code>n</code> - which is the number of times a particular word appears in each allegation - by the total number of times that word appears in the whole court roll. Again, above is a random 10 row selection from the dataframe which results from these calculations.</p>
-<pre class="r"><code>lincs_tf_idf &lt;- lincs_words %&gt;% bind_tf_idf(word, Lincolnshire_ID, n)
+<pre class="r"><code>lincs_tf_idf &lt;- lincs_words %&gt;% bind_tf_idf(word, lincsID, n)
 
 lincs_tf_idf</code></pre>
-<pre><code>## # A tibble: 38,788 x 7
-##    Lincolnshire_ID word       n total     tf    idf  tf_idf
-##    &lt;chr&gt;           &lt;chr&gt;  &lt;int&gt; &lt;int&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
-##  1 1016            of       131   657 0.199  0.0572 0.0114 
-##  2 1016            from      66   657 0.100  0.486  0.0488 
-##  3 1016            the       66   657 0.100  0.285  0.0286 
-##  4 1016            wool      66   657 0.100  1.78   0.179  
-##  5 1016            vill      61   657 0.0928 1.39   0.129  
-##  6 1016            stones    46   657 0.0700 2.41   0.168  
-##  7 1130            the       46   490 0.0939 0.285  0.0267 
-##  8 1142            and       29   462 0.0628 0.332  0.0208 
-##  9 1044            of        28   245 0.114  0.0572 0.00654
-## 10 1133            the       27   254 0.106  0.285  0.0303 
-## # ... with 38,778 more rows</code></pre>
+<pre><code>## # A tibble: 39,309 x 7
+##    lincsID word       n total     tf    idf  tf_idf
+##      &lt;dbl&gt; &lt;chr&gt;  &lt;int&gt; &lt;int&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
+##  1    1016 of       131   656 0.200  0.0734 0.0146 
+##  2    1016 from      66   656 0.101  0.508  0.0511 
+##  3    1016 the       66   656 0.101  0.277  0.0279 
+##  4    1016 wool      66   656 0.101  1.80   0.181  
+##  5    1016 vill      61   656 0.0930 1.41   0.132  
+##  6    1142 and       50   766 0.0653 0.321  0.0210 
+##  7    1016 stones    46   656 0.0701 2.43   0.171  
+##  8    1130 the       46   493 0.0933 0.277  0.0259 
+##  9    1142 the       46   766 0.0601 0.277  0.0167 
+## 10    1142 of        40   766 0.0522 0.0734 0.00383
+## # ... with 39,299 more rows</code></pre>
 <p>The tf_idf will be close to zero for the most common words. These are the words which appear in most allegations. From the first ten rows ‘of’ and ‘the’ are the lowest. The highest values will be those words which occur in fewer allegations.</p>
 <pre class="r"><code>lincs_tf_idf %&gt;%
   select(-total) %&gt;%
+  filter(n&gt;10) %&gt;% 
   arrange(desc(tf_idf))</code></pre>
-<pre><code>## # A tibble: 38,788 x 6
-##    Lincolnshire_ID word               n    tf   idf tf_idf
-##    &lt;chr&gt;           &lt;chr&gt;          &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
-##  1 141             glentham           3 0.158  7.08  1.12 
-##  2 1045            1045               1 0.125  7.08  0.885
-##  3 1045            maintainer         1 0.125  7.08  0.885
-##  4 124             waddington         3 0.167  5.13  0.856
-##  5 376             briselaunce        2 0.118  7.08  0.833
-##  6 1189            scothem            3 0.158  5.13  0.811
-##  7 74              stragglethorpe     2 0.111  7.08  0.787
-##  8 787             beesby             2 0.111  7.08  0.787
-##  9 787             hawerby            2 0.111  7.08  0.787
-## 10 35              mablethorpe        2 0.133  5.69  0.759
-## # ... with 38,778 more rows</code></pre>
+<pre><code>## # A tibble: 69 x 6
+##    lincsID word         n     tf   idf tf_idf
+##      &lt;dbl&gt; &lt;chr&gt;    &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+##  1    1016 wool        66 0.101   1.80 0.181 
+##  2    1016 stones      46 0.0701  2.43 0.171 
+##  3    1016 vill        61 0.0930  1.41 0.132 
+##  4    1142 brampton    16 0.0209  6.02 0.126 
+##  5    1044 lincoln     18 0.0738  1.54 0.114 
+##  6    1016 stone       19 0.0290  2.76 0.0799
+##  7    1016 2           21 0.0320  2.12 0.0678
+##  8    1134 to          13 0.0549  1.07 0.0587
+##  9    1142 master      14 0.0183  3.13 0.0571
+## 10    1016 1           17 0.0259  2.04 0.0529
+## # ... with 59 more rows</code></pre>
 <p>It is unsurprising that almost all of the words which are determined as the most important are place or personal names. A further delving shows that some occupations are also determined as important with ‘fletcher’ occurring twice and foodstuffs ‘pork’ and ‘poultry’. It may be that the text within each allegation is often too small to adequately characterise using tf-idf. This text is based on a calendared edition. In other words, it has omitted much of the repetitive legalese which predominates in fourteenth century court documents (perhaps all court documents). This aids readability but might hinder analyses such as this one.</p>
 <pre class="r"><code>#Removes entries containing personal names, place names, digits, and common english words.
 
-stop_tf_idf &lt;- lincs_tf_idf %&gt;% anti_join(lincs_stop_people)</code></pre>
-<pre><code>## Joining, by = &quot;word&quot;</code></pre>
-<pre class="r"><code>stop_tf_idf &lt;- stop_tf_idf %&gt;% anti_join(lincs_stop_places)</code></pre>
-<pre><code>## Joining, by = &quot;word&quot;</code></pre>
-<pre class="r"><code>stop_tf_idf &lt;- stop_tf_idf %&gt;% filter(grepl(&#39;^\\D&#39;, word))
-stop_tf_idf &lt;- stop_tf_idf %&gt;% anti_join(stop_words)</code></pre>
-<pre><code>## Joining, by = &quot;word&quot;</code></pre>
-<pre class="r"><code>stop_tf_idf %&gt;%
-  select(-total) %&gt;%
+stop_tf_idf &lt;- lincs_tf_idf %&gt;% anti_join(lincs_stop_people)
+stop_tf_idf &lt;- stop_tf_idf %&gt;% anti_join(lincs_stop_places)
+stop_tf_idf &lt;- stop_tf_idf %&gt;% filter(grepl(&#39;^\\D&#39;, word))
+stop_tf_idf &lt;- stop_tf_idf %&gt;% anti_join(stop_words)
+
+stop_tf_idf %&gt;%
+  filter(n&gt;3) %&gt;% 
+  arrange(desc(tf))</code></pre>
+<pre><code>## # A tibble: 88 x 7
+##    lincsID word         n total     tf   idf tf_idf
+##      &lt;dbl&gt; &lt;chr&gt;    &lt;int&gt; &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+##  1    1016 wool        66   656 0.101   1.80  0.181
+##  2     992 wool         4    40 0.1     1.80  0.180
+##  3     778 vill         7    74 0.0946  1.41  0.134
+##  4    1016 vill        61   656 0.0930  1.41  0.132
+##  5     947 oats         7    78 0.0897  3.90  0.350
+##  6     947 quarters     7    78 0.0897  2.40  0.215
+##  7     294 vill         4    45 0.0889  1.41  0.126
+##  8    1011 wool         5    60 0.0833  1.80  0.150
+##  9    1098 wool         6    73 0.0822  1.80  0.148
+## 10     709 wool         6    74 0.0811  1.80  0.146
+## # ... with 78 more rows</code></pre>
+<p>Removing those words which refer to locations, individuals, or digits (primarily the index create by Bernard McLane the original editor) gives a word list of much more interest. This contains words which indicate a legal process such as ‘maintainer’ (someone who facilitates lawsuits for third parties to harass others), ‘forestaller’ (an individual who buys goods in anticipation of rising prices so that they might resell them at a profit.) It also includes words which are indicative of the material involved in the allegations, ‘sheep’, ‘chickens’, and professions, ‘archer’, ‘bookbinder’, ‘oilmaker’. A list like this could be the beginning of a tailored classification which sought to annotate professions, evidence of the possessions of victims of crime, or the prevalence of particular types of judicial processes. I suspect that tf-idf might be even more useful when comparing between larger bodies of text such as between different courts rather than internal comparisons of the sort I have carried out here.</p>
+<pre class="r"><code>  lincsYearWords &lt;- full_join(lincsTotalTidy, fullDated, by = &#39;UUID&#39;)
+
+  lincsYearWords &lt;- lincsYearWords %&gt;% select(UUID, lincsID, word, day, month, year, date)
+
+  lincsYearWords &lt;- lincsYearWords %&gt;% count(year, word, sort = TRUE)
+
+  #incsTotalYearWords &lt;- lincsYearWords %&gt;% group_by(year) %&gt;%  summarize(total = sum(n))
+
+  lincsTotalYearWords &lt;- left_join(lincsYearWords, lincsTotalYearWords)
+
+#Remove all rows without a year
+
+  lincsTotalYearWords &lt;- lincsTotalYearWords %&gt;%  na.omit()
+
+lincsTotalYearWords</code></pre>
+<pre><code>## # A tibble: 2,236 x 4
+##    year  word            n total
+##    &lt;chr&gt; &lt;chr&gt;       &lt;int&gt; &lt;int&gt;
+##  1 1340  feloniously    82  1580
+##  2 1340  killed         68  1580
+##  3 1338  wool           67  1708
+##  4 1340  beat           43  1580
+##  5 1340  paid           43  1580
+##  6 1340  peace          41  1580
+##  7 1340  arms           40  1580
+##  8 1338  feloniously    39  1708
+##  9 1340  fine           39  1580
+## 10 1340  force          39  1580
+## # ... with 2,226 more rows</code></pre>
+<p>From this we can see, for example, that more felonies were reported in 1340 than in 1338 or that wool was mentioned more often in 1338 than in other years. Not particularly informative so far. Again <code>n</code> is the number of occurences of a word within a year and <code>total</code> is the over number of words within each year.</p>
+<pre class="r"><code>yearFreqRank &lt;- lincsTotalYearWords %&gt;%  group_by(year) %&gt;% mutate(rank = row_number(), &#39;term frequency&#39; = n/total) %&gt;%  ungroup()
+
+yearFreqRank</code></pre>
+<pre><code>## # A tibble: 2,236 x 6
+##    year  word            n total  rank `term frequency`
+##    &lt;chr&gt; &lt;chr&gt;       &lt;int&gt; &lt;int&gt; &lt;int&gt;            &lt;dbl&gt;
+##  1 1340  feloniously    82  1580     1           0.0519
+##  2 1340  killed         68  1580     2           0.0430
+##  3 1338  wool           67  1708     1           0.0392
+##  4 1340  beat           43  1580     3           0.0272
+##  5 1340  paid           43  1580     4           0.0272
+##  6 1340  peace          41  1580     5           0.0259
+##  7 1340  arms           40  1580     6           0.0253
+##  8 1338  feloniously    39  1708     2           0.0228
+##  9 1340  fine           39  1580     7           0.0247
+## 10 1340  force          39  1580     8           0.0247
+## # ... with 2,226 more rows</code></pre>
+<pre class="r"><code>lincsYearTFIDF &lt;- lincsTotalYearWords %&gt;% bind_tf_idf(word, year, n)
+
+lincsYearTFIDF %&gt;%
+  filter(n&gt;8) %&gt;% 
   arrange(desc(tf_idf))</code></pre>
-<pre><code>## # A tibble: 9,702 x 6
-##    Lincolnshire_ID word            n     tf   idf tf_idf
-##    &lt;chr&gt;           &lt;chr&gt;       &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
-##  1 1045            maintainer      1 0.125   7.08  0.885
-##  2 348             fletcher        2 0.125   5.98  0.748
-##  3 251             vilk            1 0.0909  7.08  0.644
-##  4 889             pork            1 0.0769  7.08  0.545
-##  5 889             poultry         1 0.0769  7.08  0.545
-##  6 889             forestaller     1 0.0769  5.98  0.460
-##  7 791             pnorth          1 0.0625  7.08  0.442
-##  8 994             perpetrated     1 0.0625  7.08  0.442
-##  9 267             hog             2 0.0606  7.08  0.429
-## 10 835             farms           2 0.0588  7.08  0.416
-## # ... with 9,692 more rows</code></pre>
-<p>Removing those words which refer to locations, individuals, or digits (primarily the index create by Bernard McLane the original editor) gives a word list of much more interest. This contains words which indicate a legal process such as ‘maintainer’ (someone who facilitates lawsuits for third parties to harass others), ‘forestaller’ (an individual who buys goods in anticipation of rising prices so that they might resell them at a profit.) It also includes words which are indicative of the material involved in the allegations, ‘sheep’, ‘chickens’, and professions, ‘archer’, ‘bookbinder’, ‘oilmaker’. A list like this could be the beginning of a tailored classification which sought to annotate professions, evidence of the posessions of victims of crime, or the prevalence of particular types of judicial processes. I suspect that tf-idf might be even more useful when comparing between larger bodies of text such as between different courts rather than internal comparisons of the sort I have carried out here.</p>
+<pre><code>## # A tibble: 118 x 7
+##    year  word          n total     tf   idf tf_idf
+##    &lt;chr&gt; &lt;chr&gt;     &lt;int&gt; &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+##  1 1338  wool         67  1708 0.0396 0.981 0.0389
+##  2 1334  marks        13   236 0.0563 0.575 0.0324
+##  3 1341  justices     11   356 0.0310 0.981 0.0304
+##  4 1338  quarters     30  1708 0.0178 1.39  0.0246
+##  5 1336  brother      19   662 0.0288 0.827 0.0238
+##  6 1333  paid          9   145 0.0634 0.375 0.0237
+##  7 1336  inquest      15   662 0.0227 0.981 0.0223
+##  8 1341  jan          10   356 0.0282 0.693 0.0195
+##  9 1336  countessâ     9   662 0.0136 1.39  0.0189
+## 10 1337  sack          9   689 0.0136 1.39  0.0188
+## # ... with 108 more rows</code></pre>
+<p>How many words in total? 4063 distinct words.</p>
+<pre class="r"><code>#Number of occurrences of each distinct word once names and sums of money are removed
+wordCounts &lt;- lincsTotalTidy %&gt;% count(word, sort = TRUE)
+
+wordCounts &lt;- wordCounts %&gt;% rename(&#39;allegation&#39; = &#39;word&#39;)
+lincsYearTFIDF &lt;- lincsYearTFIDF %&gt;% rename(&#39;allegation&#39; = word)
+
+TFIDFCounts &lt;- left_join(lincsYearTFIDF, wordCounts)</code></pre>
+<pre><code>## Joining, by = c(&quot;allegation&quot;, &quot;n&quot;)</code></pre>
+<pre class="r"><code>#TFIDFCounts %&gt;%
+ # filter(totalDistinct&gt;20) %&gt;% 
+  #filter(!(allegation %in% monthOrder)) %&gt;% 
+  #arrange(desc(tf_idf))</code></pre>

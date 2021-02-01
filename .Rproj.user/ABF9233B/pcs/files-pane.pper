@@ -1,9 +1,13 @@
 {
-    "path": "~/GitHub/blog/Lincolnshire csv Data",
+    "path": "~/GitHub/blog/public/portfolio",
     "sortOrder": [
         {
             "columnIndex": 2,
-            "ascending": true
+            "ascending": false
+        },
+        {
+            "columnIndex": 4,
+            "ascending": false
         }
     ]
 }
