@@ -46,34 +46,55 @@ Filter the master data frame, lincsEvents, which has all the text attached to th
 
 ```{r}
 #Create Gilbert data frame using the vector which is constructed from the index
-gilbertDF <-  lincsEvents %>% 
+gilbertDF <-  categorisedDated %>% 
   group_by(lincsID) %>% 
   filter(all(lincsID %in% gilbertTotal))
 
 #semi_join fullDated to gilbertDF to make a dated data frame of just Gilbert's offences
 
-gilbertDF <- semi_join(lincsEventsDated, gilbertDF, by = 'lincsID')
+gilbertDF <- semi_join(categorisedDated, gilbertDF, by = 'lincsID')
 
-#add column as tag for Henry allegations
+#add column as tag for Gilbert allegations
 gilbertDF <- gilbertDF %>% mutate(person = "Gilbert Leatherhead")
 
 
-#plot of Gilbert data frame
-gilbertDF %>% 
+#plot of Gilbert data frame categories
+gilbertPlotCat <- gilbertDF %>% 
 #filter(!is.na(dateType)) %>% 
   filter(year %in%  c("1327", "1328", "1329", "1330", "1331", "1332", "1333", "1334", "1335", "1336", "1337", "1338", "1339", "1340", "1341")) %>% 
-  count(year, sort=TRUE)  %>% 
-  ggplot(aes(year, n)) + 
-    geom_col(fill="#ffd700", position = "dodge") + 
-    geom_text(aes(label=n), hjust=0.3, size=3.5) + 
+  #count(year, sort=TRUE)  %>% 
+  #ggplot(aes(year, n)) + 
+  #geom_col(fill="#ffd700", position = "dodge") + 
+   # geom_text(aes(label=n), hjust=0.3, size=3.5) + 
+    group_by(Category, year) %>% 
+    count(year, Category) %>% 
+  filter(!is.na(year)) %>%
+    ggplot(aes(year, n, fill=factor(Category))) + 
+  geom_col(aes(fill = factor(Category), position = "dodge")) +
+    scale_fill_manual(values = myColours)+
     ggtitle("Dateable Allegations against Gilbert Ledred c. 1327-1341")+ 
     ylab(NULL) + 
     xlab(NULL) + 
     coord_flip() + 
     theme_minimal()
-    
+   
+gilbertPlotCat 
 
+#plot of Gilbert data frame basic
+gilbertPlot <- gilbertDF %>% 
+filter(!is.na(year)) %>% 
+  filter(year %in%  c("1327", "1328", "1329", "1330", "1331", "1332", "1333", "1334", "1335", "1336", "1337", "1338", "1339", "1340", "1341")) %>% 
+  count(year, sort=TRUE)  %>% 
+  ggplot(aes(year, n)) + 
+  geom_col(fill="#ffd700", position = "dodge") + 
+  geom_text(aes(label=n), hjust=0.3, size=3.5) + 
+      ggtitle("Dateable Allegations against Gilbert Ledred c. 1327-1341")+ 
+    ylab(NULL) + 
+    xlab(NULL) + 
+    coord_flip() + 
+    theme_minimal()
 
+gilbertPlot
 
 ```
 
@@ -86,35 +107,16 @@ Tichwell <- c('Tichwell, Thichewell, Tichewell, Tiddeswell, Tideswell, Tychewell
 tichwellIDS <- c(462, 499, 542, 580, 610:638, 650, 651, 654:660, 709, 749, 757, 777, 811, 821, 843, 873, 881, 882, 891:893, 895, 923, 925, 928, 929, 932, 941, 949, 954, 992, 1015, 1053:1057, 1060, 1061, 1076:1079, 1098)
 
 #Create Tichwell dara frame from the vector of IDs
-tichwellDF <-  lincsEvents %>% 
+tichwellDF <-  woolCrimesSameDay %>% 
   group_by(lincsID) %>% 
   filter(all(lincsID %in% tichwellIDS))
 
-#semi_join fullDated to gilbertDF to make a dated data frame of just Gilbert's offences
+#semi_join fullDated to gilbertDF to make a dated data frame of just Henry's offences
 
-tichwellDF <- semi_join(lincsEventsDated, tichwellDF, by = 'lincsID')
+tichwellDF <- semi_join(woolCrimesSameDay, tichwellDF, by = 'lincsID')
 
 tichwellDFTest <- tichwellDF
-#tichwellDFTest <-  tichwellDFTest[!duplicated(tichwellDFTest$UUID), ]
 
-#Fix Henry Dates
-tichwellDFTest[6:18,7] <- ymd("1337-09-12")
-tichwellDFTest[20:33,7] <- ymd("1337-08-04")
-tichwellDFTest[35,7] <- ymd("1338-09-09")
-tichwellDFTest[37:39,7] <- ymd("1337-07-25")
-tichwellDFTest[41,7] <- ymd("1337-07-20")
-tichwellDFTest[59, 7] <- ymd("1336-08-30")
-tichwellDFTest[76:78,7] <- ymd("1337-08-18")
-tichwellDFTest[81:84,7] <- ymd("1337-08-29")
-
-tichwellDFTest[6:18,6] <- "1337"
-tichwellDFTest[20:33,6] <- "1337"
-tichwellDFTest[35,6] <- "1338"
-tichwellDFTest[37:39,6] <- "1337"
-tichwellDFTest[41,6] <- "1337"
-tichwellDFTest[59,6] <- "1336"
-tichwellDFTest[76:78,6] <- "1337"
-tichwellDFTest[81:84,6] <- "1337"
 
 
 #add column as tag for Henry allegations
@@ -145,36 +147,36 @@ woolsthorpeVector <- "Woolsthorpe (Wolesthorp, Wollesthorp, Wollesthorpe, Wolsth
 woolsthorpeIDS <- c(1016, 431, 433, 437, 451, 452, 462, 542, 580, 587, 610:638, 640:653, 658:662, 749, 757, 758, 777, 810, 811, 999:1002, 1006:1014, 1016:1018, 1037, 1060, 1061, 1098, 610, 716, 875, 1006, 1017, 1098, 639)
 
 #Create Woolthorpe data frame from the vector of IDs
-woolsthorpeDF <-  lincsEventsDated %>% 
+woolsthorpeDF <-  woolCrimesSameDay %>% 
   group_by(lincsID) %>% 
   filter(all(lincsID %in% woolsthorpeIDS))
 
-woolsthorpeDF <- semi_join(lincsEventsDated, woolsthorpeDF, by = 'UUID')
+woolsthorpeDF <- semi_join(woolCrimesSameDay, woolsthorpeDF, by = 'UUID')
 
 woolsthorpeDFTest <- woolsthorpeDF
 
 
-woolsthorpeDFTest[1:5,6] <- "1339"
-woolsthorpeDFTest[11:23,7] <- ymd("1337-09-12")
-woolsthorpeDFTest[11:23,6] <- "1337"
-woolsthorpeDFTest[25:38,7] <- ymd("1337-08-04")
-woolsthorpeDFTest[25:38,6] <- "1337"
-woolsthorpeDFTest[41:49,7] <- ymd("1338-06-29")
-woolsthorpeDFTest[41:49,6] <- "1338"
-woolsthorpeDFTest[51,7] <- ymd("1338-09-09")
-woolsthorpeDFTest[51,6] <- "1338"
-woolsthorpeDFTest[53,7] <- ymd("1338-07-28")
-woolsthorpeDFTest[53,6] <- "1338"
-woolsthorpeDFTest[55,7] <- ymd("1337-07-20")
-woolsthorpeDFTest[55,6] <- "1337"
-woolsthorpeDFTest[68:71,6] <- "1333"
-woolsthorpeDFTest[74:80,6] <- "1338"
-woolsthorpeDFTest[82:83,6] <- "1339"
-woolsthorpeDFTest[86,6] <- "1338"
-woolsthorpeDFTest[89,6] <- "1338"
-woolsthorpeDFTest[90,6] <- "1334"
+#woolsthorpeDFTest[1:5,6] <- "1339"
+#woolsthorpeDFTest[11:23,7] <- ymd("1337-09-12")
+#woolsthorpeDFTest[11:23,6] <- "1337"
+#woolsthorpeDFTest[25:38,7] <- ymd("1337-08-04")
+#woolsthorpeDFTest[25:38,6] <- "1337"
+#woolsthorpeDFTest[41:49,7] <- ymd("1338-06-29")
+#woolsthorpeDFTest[41:49,6] <- "1338"
+#woolsthorpeDFTest[51,7] <- ymd("1338-09-09")
+#woolsthorpeDFTest[51,6] <- "1338"
+#woolsthorpeDFTest[53,7] <- ymd("1338-07-28")
+#woolsthorpeDFTest[53,6] <- "1338"
+#woolsthorpeDFTest[55,7] <- ymd("1337-07-20")
+#woolsthorpeDFTest[55,6] <- "1337"
+#woolsthorpeDFTest[68:71,6] <- "1333"
+#woolsthorpeDFTest[74:80,6] <- "1338"
+#woolsthorpeDFTest[82:83,6] <- "1339"
+#woolsthorpeDFTest[86,6] <- "1338"
+#woolsthorpeDFTest[89,6] <- "1338"
+#woolsthorpeDFTest[90,6] <- "1334"
 
-
+woolsthorpeDFTest <- woolsthorpeDFTest %>% mutate(person = "Roger Woolsthorpe")
 #plot of Tichwell data frame
 woolsthorpeDFTest %>% 
 #filter(!is.na(dateType)) %>% 
@@ -189,7 +191,7 @@ woolsthorpeDFTest %>%
     coord_flip() + 
     theme_minimal()
 
-woolsthorpeDFTest <- woolsthorpeDFTest %>% mutate(person = "Roger Woolsthorpe")
+
 ```
 
 ```{r}
@@ -198,30 +200,17 @@ dunstapleV <- c("Dunstable (Dunstapel, Dunstapil, Dunstaple), Thomas de, brother
 dunstapleIDS <- c(8, 10, 11, 18, 19, 32, 46, 83, 84, 86, 185, 207, 214, 216, 221, 226, 229, 243, 248,251, 264,265, 269,292,294, 309,317, 318, 356:358, 360, 379, 380, 388:397, 909, 21, 32, 128, 320, 413, 415, 423, 459, 461, 472, 869, 902, 903, 924)
 
 #Create dunstable data frame from the vector of IDs
-dunstableDF <-  lincsEventsDated %>% 
+dunstableDF <-  woolCrimesSameDay %>% 
   group_by(lincsID) %>% 
   filter(all(lincsID %in% dunstapleIDS))
 
-dunstableDF <- semi_join(lincsEventsDated, dunstableDF, by = 'UUID')
+dunstableDF <- semi_join(woolCrimesSameDay, dunstableDF, by = 'UUID')
 
 dunstableDFTest <- dunstableDF
 
-dunstableDFTest[4:5,6] <- "1338"
-dunstableDFTest[13:16,6] <- "1337"
-dunstableDFTest[18:19,6] <- "1337"
-dunstableDFTest[28,6] <- "1338"
-dunstableDFTest[30,6] <- "1338"
-dunstableDFTest[32:36,6] <- "1337"
-dunstableDFTest[67,6] <- "1338"
-dunstableDFTest[70,6] <- "1339"
-dunstableDFTest[74:75,6] <- "1337"
-dunstableDFTest[77:85,6] <- "1338"
-
-dunstableDFTest <- dunstableDFTest[-c(38:65), ]
-#dunstableDFTest[11:23,7] <- ymd("1337-09-12")
+dunstableDFTest <- dunstableDFTest %>% mutate(person = "Thomas Dunstaple")
 
 dunstableDFTest %>% 
-#filter(!is.na(dateType)) %>% 
   filter(year %in%  c("1327", "1328", "1329", "1330", "1331", "1332", "1333", "1334", "1335", "1336", "1337", "1338", "1339", "1340", "1341")) %>% 
   count(year, sort=TRUE)  %>% 
   ggplot(aes(year, n)) + 
@@ -233,7 +222,7 @@ dunstableDFTest %>%
     coord_flip() + 
     theme_minimal()
 
-dunstableDFTest <- dunstableDFTest %>% mutate(person = "Thomas Dunstaple")
+
 
 ```
 
@@ -247,7 +236,7 @@ gangOfFourFinal <- full_join(table1, table2)
 
 gangOfFourFinal %>% 
 #filter(!is.na(dateType)) %>% 
-  filter(year %in%  c("1327", "1328", "1329", "1330", "1331", "1332", "1333", "1334", "1335", "1336", "1337", "1338", "1339", "1340", "1341")) %>% 
+  filter(year %in%  c("1327", "1328", "1329", "1330", "1331", "1332", "1333", "1334", "1335", "1336", "1337", "1338", "1339", "1340")) %>% 
   count(year, person, sort=TRUE)  %>% 
   ggplot(aes(year, n)) + 
     geom_col(fill="#ffd700", position = "dodge") + 

@@ -84,7 +84,10 @@ verbDetails %>% count(tag, sort = TRUE) %>% mutate(tag = reorder(tag,n)) %>% ggp
 Now I will count the most common verbs.
 
 ```{r}
-verbDetails %>% count(lemma, sort = TRUE) %>% filter(n > 40) %>% mutate(lemma = reorder(lemma,n)) %>% ggplot(aes(lemma, n)) + geom_col(fill="#ffd700") + xlab(NULL) + coord_flip() + theme_minimal()
+verbDetails %>% count(lemma, sort = TRUE) %>% filter(n > 40) %>% mutate(lemma = reorder(lemma,n)) %>% ggplot(aes(lemma, n)) + testLocations <- geocode(location = studiesPlaces$location, output = "more", source = "google")
+testLocations <- cbind(testLocations, studiesPlaces)
+testLocations <- testLocations %>% select(-type, -north, -south, -east, -west)
+geom_col(fill="#ffd700") + xlab(NULL) + coord_flip() + theme_minimal()
 ```
 
 There are a few interesting verbs here. A couple require some further exploration. To look at the text alongside the verbs I will append the two together for easy reference. I want to specifically look at the word 'see'. This occupies such a high position as it is used by the original editor Bernard McLane to draw links between allegations. For example McLane would refer to other similar crimes by the same perpetrator. If that was always the case then it might be possible to automate these linkages.
