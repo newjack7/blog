@@ -9,6 +9,13 @@ draft: yes
 image: ''
 showonlyimage: no
 ---
+```{r}
+library(tidyverse)
+
+```
+Test
+
+
 # Handwriting Text Recognition, The King's Bench, and the Anglo-American Legal Tradition
 
 So, I was writing an email to someone about my project, the development of a Handwriting Text Recognition (HTR) model based on the fourteenth century records of the court of the King’s Bench, and I decided to add a throwaway line to give an idea of how much surviving material there is from the court of the King's Bench (KB27) in the fourteenth century. One of the most remarkable aspects of fourteenth century English administrative records is the quality and quantity of their survival. Therefore, I wanted to put something together to reflect this for the record class I am currently looking at as part of my Leverhulme funded postdoc at the University of Antwerp.
