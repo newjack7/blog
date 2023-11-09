@@ -1,0 +1,32 @@
+---
+title: KB HTR AALT
+author: Jack Newman
+date: '2023-11-09'
+slug: []
+categories: []
+tags: []
+draft: yes
+image: ''
+showonlyimage: no
+---
+# Handwriting Text Recognition, The King's Bench, and the Anglo-American Legal Tradition
+
+So, I was writing an email to someone about my project, the development of a Handwriting Text Recognition (HTR) model based on the fourteenth century records of the court of the King’s Bench, and I decided to add a throwaway line to give an idea of how much surviving material there is from the court of the King's Bench (KB27) in the fourteenth century. One of the most remarkable aspects of fourteenth century English administrative records is the quality and quantity of their survival. Therefore, I wanted to put something together to reflect this for the record class I am currently looking at as part of my Leverhulme funded postdoc at the University of Antwerp.
+To build a HTR model it is first necessary to create a ground truth which is a set of transcribed images which is 100% accurate. It is this data which is used by the machine learning algorithm to train a HTR model which can then automate transcription of future, unseen, images.
+I am currently experimenting with using the images from the Anglo-American Legal Tradition (AALT) website as the basis for my HTR model. This is because this project has made millions of images of these administrative records publicly available. They are not without problems as the quality is variable and it is sometimes hard to reconstruct the original sequence of the records due to the way the photos are posted on the website. Despite these problems, if I can get the HTR model working satisfactorily on these images then a significant portion of the labour will be eliminated. It can also demonstrate that such a model is possible using these photos for other record classes which are beyond the scope of my project.
+Therefore, as part of the work I have already carried out I have already transcribed a decent amount of the KB27 images from the AALT website. Given this, I thought I could average the number of words per photo from my transcriptions and then use that to estimate the number of words in these records across the reign of Edward III.
+
+# The Script
+
+The first stage was involved working out how many KB27 photos were on the AALT website for this period (1327-77). This involved a lot of pain and two days writing a script which could query the website for the number of images on each relevant page.
+This was made more difficult due to the (understandable) idiosyncrasies of the AALT website. Directing the script toward the right pages and sub-links and then troubleshooting where the AALT URLs deviated from the expected format took quite a while. I also had to build a delay into the script and instruct it to access the pages sequentially rather than all at once so as to not flood the website with requests. These aspects meant I had to leave the script to run for several hours.
+The result was a datasheet with all the relevant figures which show that there are 117,704 images on pages which contain images of KB27 records. 
+This is certainly not the exact number of photographs of KB27 records for two reasons. Firstly, at least one KB entry points to the wrong URL (and so half of one roll was uncounted). And secondly, the script also counts the small number of images which are part of the overall website design. Given that these appear on each page then the total numbers are quite significant.
+Nevertheless, I can still estimate the number of words. Based on my transcriptions I transcribed around 453 words per photograph. However, this figure stems only from photos which contain text – albeit sometimes very little text. 
+On the AALT website there are always several images of the manuscript which do not contain any text. This includes the initial photographs which show the roll in its entirety, the flyleaves, images which denote the division between civil and crown pleas, and often photos at the end which simply indicate that they are the last photo in the roll. There are occasionally further blank images within the photographs but it is difficult, if not impossible, to estimate these without combing through 100,000 images.
+
+# The Figures
+
+So, as an estimate, perhaps twelve images per roll do not contain textual information. Given there are 199 rolls for Edward’s reign then we should discount about 2,388 photos. However, we should also eliminate the banner images and the arrow gifs. These appear on every AALT page consistently although the number of arrow gifs, used to navigate between pages, vary slightly depending on the nature of each particular roll. Therefore, we can use an estimate of six per page queried which gives us 2,400. Subtracting these from the total figures gives us a number of 112,916. This is slightly lower than the probable actual figures as we overestimated incorrect or blank images and we are missing at least half of one roll, which is usually around 300 images.
+So far, I have transcribed 20,861 words across 46 photos which gives us an average of 453.5 words per photo. So therefore, based on these envelope calculations I estimate that there is something like 51,207,406 words in the KB27 records for Edward III’s reign.
+This is an estimate which will improve as I transcribe more records, develop the HTR model, and use it to automate transcription of more images. As I gain more data about the number of words per AALT image the average number of words will be more realistic. My goal is at least 1,000 transcribed images which would be around 1% of the total KB27 images.
